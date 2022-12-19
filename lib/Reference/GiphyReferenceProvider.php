@@ -113,8 +113,8 @@ class GiphyReferenceProvider extends ADiscoverableReferenceProvider implements I
 		// 2 types of supported links:
 		// https://giphy.com/gifs/seal-sappy-seals-BaDsH4FpMBnqdK8J0g
 		// https://media.giphy.com/media/BaDsH4FpMBnqdK8J0g/giphy.gif
-		return preg_match('/^(?:https?:\/\/)?(?:www\.)?giphy\.com\/gifs\/[^/?&]+$/i', $referenceText) === 1
-			|| preg_match('/^(?:https?:\/\/)?(?:www\.)?media\.giphy\.com\/media\/[^/?&]+\/giphy\.gif$/i', $referenceText) === 1;
+		return preg_match('/^(?:https?:\/\/)?(?:www\.)?giphy\.com\/gifs\/[^\/?&]+$/i', $referenceText) === 1
+			|| preg_match('/^(?:https?:\/\/)?(?:www\.)?media\.giphy\.com\/media\/[^\/?&]+\/giphy\.gif$/i', $referenceText) === 1;
 	}
 
 	/**
@@ -155,14 +155,14 @@ class GiphyReferenceProvider extends ADiscoverableReferenceProvider implements I
 	 * @return array|null
 	 */
 	private function getGifId(string $url): ?string {
-		preg_match('/^(?:https?:\/\/)?(?:www\.)?giphy\.com\/gifs\/([^/?&]+)$/i', $url, $matches);
+		preg_match('/^(?:https?:\/\/)?(?:www\.)?giphy\.com\/gifs\/([^\/?&]+)$/i', $url, $matches);
 		if (count($matches) > 1) {
 			$slug = $matches[1];
 			$parts = explode('-', $slug);
 			return end($parts);
 		}
 
-		preg_match('/^(?:https?:\/\/)?(?:www\.)?media\.giphy\.com\/media\/([^/?&]+)\/giphy\.gif$/i', $url, $matches);
+		preg_match('/^(?:https?:\/\/)?(?:www\.)?media\.giphy\.com\/media\/([^\/?&]+)\/giphy\.gif$/i', $url, $matches);
 		if (count($matches) > 1) {
 			return $matches[1];
 		}

@@ -58,7 +58,7 @@ class GiphyAPIService {
 	 * @return string
 	 */
 	public function getGifProxiedUrl(array $gifInfo): string {
-		[$domainPrefix, $fileName, $cid, $rid, $ct] = self::getGifUrlInfo($gifInfo['original']['url']);
+		[$domainPrefix, $fileName, $cid, $rid, $ct] = self::getGifUrlInfo($gifInfo['images']['original']['url']);
 		return $this->urlGenerator->linkToRoute(
 			Application::APP_ID . '.giphyAPI.getGifFromDirectUrl',
 			[
@@ -79,11 +79,11 @@ class GiphyAPIService {
 	public static function getGifUrlInfo(string $mediaUrl): array {
 		// example: https://media4.giphy.com/media/BaDsH4FpMBnqdK8J0g/giphy.gif?cid=ae23904804a21bf61bc9d904e66605c31a584d73c05db5ad&rid=giphy.gif&ct=g
 		preg_match(
-			'/^(?:https?:\/\/)?(?:www\.)?([A-Za-z0-9]+)\.giphy\.com\/media\/[^/?&]+\/([^/&?]+)\?cid=([a-z0-9]+)&rid=([^/?&]+)&ct=([^/?&])$/i',
+			'/^(?:https?:\/\/)?(?:www\.)?([A-Za-z0-9]+)\.giphy\.com\/media\/[^\/?&]+\/([^\/&?]+)\?cid=([a-z0-9]+)&rid=([^\/?&]+)&ct=([^\/?&]+)$/i',
 			$mediaUrl,
 			$matches
 		);
-		if (count($matches) > 5) {
+		if ($matches !== null && count($matches) > 5) {
 			return [$matches[1], $matches[2], $matches[3], $matches[4], $matches[5]];
 		}
 		return [];
@@ -94,7 +94,11 @@ class GiphyAPIService {
 	 * @return array
 	 */
 	public function getGifInfo(string $gifId): array {
-		return $this->request($gifId);
+		$response = $this->request($gifId);
+		if (!isset($response['error']) && isset($response['data'])) {
+			return $response['data'];
+		}
+		return $response;
 	}
 
 	/**
@@ -106,7 +110,7 @@ class GiphyAPIService {
 	public function getGifFromId(string $gifId): ?array {
 		$gifInfo = $this->getGifInfo($gifId);
 		if (!isset($gifInfo['error']) && isset($gifInfo['id']) && $gifInfo['id'] === $gifId) {
-			$gifResponse = $this->client->get($gifInfo['original']['url']);
+			$gifResponse = $this->client->get($gifInfo['images']['original']['url']);
 			return [
 				'body' => $gifResponse->getBody(),
 				'headers' => $gifResponse->getHeaders(),

@@ -106,7 +106,7 @@ class GiphySearchGifsProvider implements IProvider {
 			$gifs = $searchResult;
 		}
 
-		$formattedResults = array_map(static function (array $gif): GiphySearchResultEntry {
+		$formattedResults = array_map(function (array $gif): GiphySearchResultEntry {
 			return new GiphySearchResultEntry(
 				$this->getThumbnailUrl($gif),
 				$this->getMainText($gif),
@@ -153,8 +153,8 @@ class GiphySearchGifsProvider implements IProvider {
 	 * @return string
 	 */
 	protected function getThumbnailUrl(array $entry): string {
-		if (isset($entry['original'], $entry['original']['url'])) {
-			return GiphyAPIService::getGifProxiedUrl($entry['original']['url']);
+		if (isset($entry['images']['original'], $entry['images']['original']['url'])) {
+			return $this->service->getGifProxiedUrl($entry);
 		}
 		return '';
 	}
