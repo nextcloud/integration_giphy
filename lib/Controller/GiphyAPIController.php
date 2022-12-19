@@ -37,9 +37,10 @@ class GiphyAPIController extends Controller {
 	 * Get gif content
 	 * @param string $gifId
 	 * @return DataDisplayResponse The gif image content
+	 * @throws \Exception
 	 */
-	public function getGifFromId(string $gifId): DataDisplayResponse {
-		$gif = $this->giphyAPIService->getGifFromId($gifId);
+	public function getGifFromId(string $gifId, string $preferredVersion = 'original'): DataDisplayResponse {
+		$gif = $this->giphyAPIService->getGifFromId($gifId, $preferredVersion);
 		if ($gif !== null && isset($gif['body'], $gif['headers'])) {
 			$response = new DataDisplayResponse(
 				$gif['body'],

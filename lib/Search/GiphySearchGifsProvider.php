@@ -40,18 +40,15 @@ class GiphySearchGifsProvider implements IProvider {
 	private IAppManager $appManager;
 	private IL10N $l10n;
 	private IConfig $config;
-	private IURLGenerator $urlGenerator;
 	private GiphyAPIService $service;
 
 	public function __construct(IAppManager     $appManager,
 								IL10N           $l10n,
 								IConfig         $config,
-								IURLGenerator   $urlGenerator,
 								GiphyAPIService $service) {
 		$this->appManager = $appManager;
 		$this->l10n = $l10n;
 		$this->config = $config;
-		$this->urlGenerator = $urlGenerator;
 		$this->service = $service;
 	}
 
@@ -153,9 +150,6 @@ class GiphySearchGifsProvider implements IProvider {
 	 * @return string
 	 */
 	protected function getThumbnailUrl(array $entry): string {
-		if (isset($entry['images']['original'], $entry['images']['original']['url'])) {
-			return $this->service->getGifProxiedUrl($entry);
-		}
-		return '';
+		return $this->service->getGifProxiedUrl($entry);
 	}
 }

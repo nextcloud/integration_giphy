@@ -32,7 +32,6 @@ class GiphyAPIService {
 	private IL10N $l10n;
 	private IConfig $config;
 	private IURLGenerator $urlGenerator;
-	private IUserManager $userManager;
 	private IClient $client;
 
 	/**
@@ -43,22 +42,27 @@ class GiphyAPIService {
 								IL10N $l10n,
 								IConfig $config,
 								IURLGenerator $urlGenerator,
-								IUserManager $userManager,
 								IClientService $clientService) {
 		$this->client = $clientService->newClient();
 		$this->logger = $logger;
 		$this->l10n = $l10n;
 		$this->config = $config;
 		$this->urlGenerator = $urlGenerator;
-		$this->userManager = $userManager;
 	}
 
 	/**
 	 * @param array $gifInfo
+	 * @param string $preferredVersion
 	 * @return string
 	 */
-	public function getGifProxiedUrl(array $gifInfo): string {
-		[$domainPrefix, $fileName, $cid, $rid, $ct] = self::getGifUrlInfo($gifInfo['images']['original']['url']);
+	public function getGifProxiedUrl(array $gifInfo, string $preferredVersion = 'original'): string {
+		if (!isset($gifInfo['images'][$preferredVersion])) {
+			if (!isset($gifInfo['images']['original'])) {
+				return '';
+			}
+			$preferredVersion = 'original';
+		}
+		[$domainPrefix, $fileName, $cid, $rid, $ct] = self::getGifUrlInfo($gifInfo['images'][$preferredVersion]['url']);
 		return $this->urlGenerator->linkToRoute(
 			Application::APP_ID . '.giphyAPI.getGifFromDirectUrl',
 			[
@@ -104,13 +108,20 @@ class GiphyAPIService {
 	/**
 	 * Request a gif image
 	 * @param string $gifId
+	 * @param string $preferredVersion
 	 * @return array|null Avatar image data
 	 * @throws Exception
 	 */
-	public function getGifFromId(string $gifId): ?array {
+	public function getGifFromId(string $gifId, string $preferredVersion = 'original'): ?array {
 		$gifInfo = $this->getGifInfo($gifId);
 		if (!isset($gifInfo['error']) && isset($gifInfo['id']) && $gifInfo['id'] === $gifId) {
-			$gifResponse = $this->client->get($gifInfo['images']['original']['url']);
+			if (!isset($gifInfo['images'][$preferredVersion])) {
+				if (!isset($gifInfo['images']['original'])) {
+					return null;
+				}
+				$preferredVersion = 'original';
+			}
+			$gifResponse = $this->client->get($gifInfo['images'][$preferredVersion]['url']);
 			return [
 				'body' => $gifResponse->getBody(),
 				'headers' => $gifResponse->getHeaders(),
