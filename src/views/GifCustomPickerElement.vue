@@ -24,13 +24,16 @@
 						:key="gif.resourceUrl"
 						:gif="gif"
 						@click="onSubmit(gif)" />
-					<NcLoadingIcon v-if="searching"
-						:size="44"
-						:title="t('integration_giphy', 'Loading gifs')" />
-					<NcButton v-else-if="gifs.length > 0"
-						@click="search">
-						{{ t('integration_giphy', 'More') }}
-					</NcButton>
+					<div class="last-element-wrapper">
+						<NcLoadingIcon v-if="searching"
+							:size="44"
+							:title="t('integration_giphy', 'Loading gifs')" />
+						<NcButton v-else-if="gifs.length > 0"
+							class="more-button"
+							@click="search()">
+							{{ t('integration_giphy', 'More') }}
+						</NcButton>
+					</div>
 				</div>
 				<div class="footer">
 					<NcButton @click="onCancel">
@@ -136,12 +139,12 @@ export default {
 				this.abortController.abort()
 			}
 		},
-		search() {
+		search(limit = 5) {
 			this.abortController = new AbortController()
 			this.searching = true
 			const url = this.cursor === null
-				? generateOcsUrl('search/providers/{searchProviderId}/search?term={term}', { searchProviderId, term: this.searchQuery })
-				: generateOcsUrl('search/providers/{searchProviderId}/search?term={term}&cursor={cursor}', { searchProviderId, term: this.searchQuery, cursor: this.cursor })
+				? generateOcsUrl('search/providers/{searchProviderId}/search?term={term}&limit={limit}', { searchProviderId, term: this.searchQuery, limit })
+				: generateOcsUrl('search/providers/{searchProviderId}/search?term={term}&cursor={cursor}&limit={limit}', { searchProviderId, term: this.searchQuery, cursor: this.cursor, limit })
 			return axios.get(url, {
 				signal: this.abortController.signal,
 			})
@@ -165,6 +168,7 @@ export default {
 #gif-picker-modal-wrapper {
 	::v-deep .modal-container {
 		display: flex !important;
+		height: 100%;
 	}
 }
 
@@ -186,10 +190,18 @@ export default {
 	}
 
 	.results {
+		width: 100%;
+		flex-grow: 1;
 		display: flex;
-		align-items: center;
+		align-items: start;
 		flex-wrap: wrap;
 		overflow-y: scroll;
+
+		.last-element-wrapper {
+			height: 200px;
+			display: flex;
+			align-items: center;
+		}
 	}
 
 	.footer {
