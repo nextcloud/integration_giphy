@@ -16,6 +16,7 @@ webpackConfig.stats = {
 const appId = 'integration_giphy'
 webpackConfig.entry = {
 	adminSettings: { import: path.join(__dirname, 'src', 'adminSettings.js'), filename: appId + '-adminSettings.js' },
+	referenceGif: { import: path.join(__dirname, 'src', 'referenceGif.js'), filename: appId + '-referenceGif.js' },
 }
 
 webpackConfig.plugins.push(

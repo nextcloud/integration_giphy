@@ -38,7 +38,7 @@ class Application extends App implements IBootstrap {
 		$context->registerSearchProvider(GiphySearchGifsProvider::class);
 
 		$context->registerReferenceProvider(GiphyReferenceProvider::class);
-//		$context->registerEventListener(RenderReferenceEvent::class, GiphyReferenceListener::class);
+		$context->registerEventListener(RenderReferenceEvent::class, GiphyReferenceListener::class);
 	}
 
 	public function boot(IBootContext $context): void {

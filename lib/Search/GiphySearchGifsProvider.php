@@ -109,7 +109,7 @@ class GiphySearchGifsProvider implements IProvider {
 				$this->getMainText($gif),
 				$this->getSubline($gif),
 				$this->getLinkToGiphy($gif),
-				'',
+				$this->getIconUrl($gif),
 				false
 			);
 		}, $gifs);
@@ -143,6 +143,14 @@ class GiphySearchGifsProvider implements IProvider {
 	 */
 	protected function getLinkToGiphy(array $entry): string {
 		return $entry['url'] ?? '';
+	}
+
+	/**
+	 * @param array $entry
+	 * @return string
+	 */
+	protected function getIconUrl(array $entry): string {
+		return $this->service->getGifProxiedUrl($entry);
 	}
 
 	/**
