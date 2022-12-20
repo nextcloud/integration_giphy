@@ -64,7 +64,9 @@ export default {
 
 	.gif-image {
 		height: 200px;
-		width: auto;
+		width: 200px;
+		object-fit: cover;
+		border-radius: var(--border-radius);
 	}
 }
 </style>

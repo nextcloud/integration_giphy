@@ -1,0 +1,97 @@
+<!--
+  - @copyright Copyright (c) 2022 Julien Veyssier <eneiluj@posteo.net>
+  -
+  - @author 2022 Julien Veyssier <eneiluj@posteo.net>
+  -
+  - @license GNU AGPL version 3 or any later version
+  -
+  - This program is free software: you can redistribute it and/or modify
+  - it under the terms of the GNU Affero General Public License as
+  - published by the Free Software Foundation, either version 3 of the
+  - License, or (at your option) any later version.
+  -
+  - This program is distributed in the hope that it will be useful,
+  - but WITHOUT ANY WARRANTY; without even the implied warranty of
+  - MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  - GNU Affero General Public License for more details.
+  -
+  - You should have received a copy of the GNU Affero General Public License
+  - along with this program. If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<template>
+	<div class="gif-reference">
+		<div class="gif-wrapper">
+			<div v-if="!isLoaded" class="loading-icon">
+				<NcLoadingIcon
+					:size="44"
+					:title="t('integration_giphy', 'Loading gif')" />
+			</div>
+			<img v-show="isLoaded"
+				class="image"
+				:src="richObject.proxied_url"
+				@load="isLoaded = true">
+		</div>
+	</div>
+</template>
+
+<script>
+import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
+
+// import { generateUrl } from '@nextcloud/router'
+
+export default {
+	name: 'GifReferenceWidget',
+
+	components: {
+		NcLoadingIcon,
+	},
+
+	props: {
+		richObjectType: {
+			type: String,
+			default: '',
+		},
+		richObject: {
+			type: Object,
+			default: null,
+		},
+		accessible: {
+			type: Boolean,
+			default: true,
+		},
+	},
+
+	data() {
+		return {
+			isLoaded: false,
+		}
+	},
+
+	computed: {
+	},
+
+	methods: {
+	},
+}
+</script>
+
+<style scoped lang="scss">
+.gif-reference {
+	width: 100%;
+	padding: 12px;
+
+	.gif-wrapper {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		.image {
+			max-height: 300px;
+			max-width: 100%;
+			border-radius: var(--border-radius);
+		}
+	}
+}
+</style>

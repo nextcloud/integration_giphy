@@ -61,6 +61,7 @@ import Vue from 'vue'
 Vue.directive('tooltip', Tooltip)
 
 const searchProviderId = 'giphy-search-gifs'
+const LIMIT = 10
 
 export default {
 	name: 'GifCustomPickerElement',
@@ -139,12 +140,18 @@ export default {
 				this.abortController.abort()
 			}
 		},
-		search(limit = 5) {
+		search() {
 			this.abortController = new AbortController()
 			this.searching = true
 			const url = this.cursor === null
-				? generateOcsUrl('search/providers/{searchProviderId}/search?term={term}&limit={limit}', { searchProviderId, term: this.searchQuery, limit })
-				: generateOcsUrl('search/providers/{searchProviderId}/search?term={term}&cursor={cursor}&limit={limit}', { searchProviderId, term: this.searchQuery, cursor: this.cursor, limit })
+				? generateOcsUrl(
+					'search/providers/{searchProviderId}/search?term={term}&limit={limit}',
+					{ searchProviderId, term: this.searchQuery, limit: LIMIT }
+				)
+				: generateOcsUrl(
+					'search/providers/{searchProviderId}/search?term={term}&cursor={cursor}&limit={limit}',
+					{ searchProviderId, term: this.searchQuery, cursor: this.cursor, limit: LIMIT }
+				)
 			return axios.get(url, {
 				signal: this.abortController.signal,
 			})
@@ -196,16 +203,22 @@ export default {
 		align-items: start;
 		flex-wrap: wrap;
 		overflow-y: scroll;
+		scrollbar-width: auto;
+		scrollbar-color: var(--color-primary);
 
 		.last-element-wrapper {
+			width: 200px;
 			height: 200px;
 			display: flex;
 			align-items: center;
+			justify-content: center;
+			margin: 4px;
 		}
 	}
 
 	.footer {
 		width: 100%;
+		margin-top: 8px;
 		display: flex;
 		justify-content: end;
 	}

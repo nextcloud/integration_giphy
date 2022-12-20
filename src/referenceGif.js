@@ -20,17 +20,16 @@
  */
 
 import {
-	// registerWidget,
+	registerWidget,
 	registerCustomPickerElement,
 } from '@nextcloud/vue-richtext'
 import './bootstrap.js'
 import Vue from 'vue'
-// import GifReferenceWidget from './views/GifReferenceWidget.vue'
+import GifReferenceWidget from './views/GifReferenceWidget.vue'
 import GifCustomPickerElement from './views/GifCustomPickerElement.vue'
 
-/*
 registerWidget('integration_giphy_gif', (el, { richObjectType, richObject, accessible }) => {
-	const Widget = Vue.extend(GithubIssuePrReferenceWidget)
+	const Widget = Vue.extend(GifReferenceWidget)
 	new Widget({
 		propsData: {
 			richObjectType,
@@ -39,7 +38,6 @@ registerWidget('integration_giphy_gif', (el, { richObjectType, richObject, acces
 		},
 	}).$mount(el)
 })
-*/
 
 registerCustomPickerElement('giphy-gif', (el, { providerId, accessible }) => {
 	const Element = Vue.extend(GifCustomPickerElement)

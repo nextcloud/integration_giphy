@@ -93,13 +93,16 @@ class GiphyReferenceProvider extends ADiscoverableReferenceProvider implements I
 	 * @inheritDoc
 	 */
 	public function getSupportedSearchProviderIds(): array {
+		// not necessary since we inject a custom gif picker
+		/*
 		$ids = [];
 		$searchGifsEnabled = $this->config->getAppValue(Application::APP_ID, 'search_gifs_enabled', '1') === '1';
 		if ($searchGifsEnabled) {
 			$ids[] = 'giphy-search-gifs';
 		}
 		return $ids;
-
+		*/
+		return [];
 	}
 
 	/**
@@ -136,12 +139,12 @@ class GiphyReferenceProvider extends ADiscoverableReferenceProvider implements I
 					$reference->setDescription($gifInfo['username'] ?? $gifInfo['slug'] ?? $gifId);
 					$imageUrl = $this->giphyAPIService->getGifProxiedUrl($gifInfo);
 					$reference->setImageUrl($imageUrl);
-					/*
+
+					$gifInfo['proxied_url'] = $imageUrl;
 					$reference->setRichObject(
 						self::RICH_OBJECT_TYPE,
 						$gifInfo,
 					);
-					*/
 					return $reference;
 				}
 			}
