@@ -22,6 +22,7 @@
 
 namespace OCA\Giphy\Reference;
 
+use OC\Collaboration\Reference\LinkReferenceProvider;
 use OCP\Collaboration\Reference\ADiscoverableReferenceProvider;
 use OCP\Collaboration\Reference\ISearchableReferenceProvider;
 use OCP\Collaboration\Reference\Reference;
@@ -44,12 +45,14 @@ class GiphyReferenceProvider extends ADiscoverableReferenceProvider implements I
 	private ReferenceManager $referenceManager;
 	private IL10N $l10n;
 	private IURLGenerator $urlGenerator;
+	private LinkReferenceProvider $linkReferenceProvider;
 
 	public function __construct(GiphyAPIService $giphyAPIService,
 								IConfig $config,
 								IL10N $l10n,
 								IURLGenerator $urlGenerator,
 								ReferenceManager $referenceManager,
+								LinkReferenceProvider $linkReferenceProvider,
 								?string $userId) {
 		$this->giphyAPIService = $giphyAPIService;
 		$this->userId = $userId;
@@ -57,6 +60,7 @@ class GiphyReferenceProvider extends ADiscoverableReferenceProvider implements I
 		$this->referenceManager = $referenceManager;
 		$this->l10n = $l10n;
 		$this->urlGenerator = $urlGenerator;
+		$this->linkReferenceProvider = $linkReferenceProvider;
 	}
 
 	/**
@@ -148,6 +152,8 @@ class GiphyReferenceProvider extends ADiscoverableReferenceProvider implements I
 					return $reference;
 				}
 			}
+			// fallback to opengraph
+			return $this->linkReferenceProvider->resolveReference($referenceText);
 		}
 
 		return null;
