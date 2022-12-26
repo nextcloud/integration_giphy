@@ -158,6 +158,6 @@ class GiphySearchGifsProvider implements IProvider {
 	 * @return string
 	 */
 	protected function getThumbnailUrl(array $entry): string {
-		return $this->service->getGifProxiedUrl($entry, 'preview_gif');
+		return $this->service->getGifProxiedUrl($entry, 'fixed_width');
 	}
 }

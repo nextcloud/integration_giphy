@@ -9,7 +9,7 @@
 		</div>
 		<img v-show="isLoaded"
 			class="gif-image"
-			:src="gif.icon"
+			:src="gif.thumbnailUrl"
 			@load="isLoaded = true">
 	</div>
 </template>
