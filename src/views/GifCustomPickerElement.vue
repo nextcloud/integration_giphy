@@ -31,15 +31,15 @@
 						:key="gif.resourceUrl"
 						:gif="gif"
 						@click="onSubmit(gif)" />
-					<div class="last-element-wrapper">
+					<div v-if="searching || gifs.length > 0"
+						class="last-element-wrapper"
+						:title="t('integration_giphy', 'Load more results')"
+						@click="search()">
 						<NcLoadingIcon v-if="searching"
 							:size="44"
 							:title="t('integration_giphy', 'Loading gifs')" />
-						<NcButton v-else-if="gifs.length > 0"
-							class="more-button"
-							@click="search()">
-							{{ t('integration_giphy', 'More') }}
-						</NcButton>
+						<PlusIcon v-else-if="gifs.length > 0"
+							:size="20" />
 					</div>
 				</div>
 				<div class="footer">
@@ -53,6 +53,8 @@
 </template>
 
 <script>
+import PlusIcon from 'vue-material-design-icons/Plus.vue'
+
 import NcModal from '@nextcloud/vue/dist/Components/NcModal.js'
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
 import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
@@ -78,6 +80,7 @@ export default {
 		NcModal,
 		NcButton,
 		NcLoadingIcon,
+		PlusIcon,
 	},
 
 	props: {
@@ -202,11 +205,12 @@ export default {
 		display: flex;
 		align-items: center;
 		.attribution {
-			height: 38px;
+			height: 30px;
 			margin-left: 16px;
 		}
 		img {
 			border-radius: var(--border-radius);
+			height: 100%;
 		}
 	}
 
@@ -236,6 +240,11 @@ export default {
 			display: flex;
 			align-items: center;
 			justify-content: center;
+			cursor: pointer;
+			background-color: var(--color-background-dark);
+			> * {
+				cursor: pointer;
+			}
 		}
 	}
 
