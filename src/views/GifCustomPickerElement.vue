@@ -201,17 +201,15 @@ export default {
 		flex-grow: 1;
 		display: grid;
 		grid-auto-rows: 160px;
-		grid-template-columns: repeat(auto-fill, 200px);
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 		grid-gap: 8px;
 		overflow-y: scroll;
 		scrollbar-width: auto;
 		scrollbar-color: var(--color-primary);
-		padding: 0 12px;
+		padding-right: 12px;
 		margin: 12px 0;
 
 		.last-element-wrapper {
-			width: 200px;
-			height: 160px;
 			display: flex;
 			align-items: center;
 			justify-content: center;
