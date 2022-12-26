@@ -6,7 +6,10 @@
 			@close="onCancel">
 			<div class="gif-picker-modal-content">
 				<h2>
-					{{ t('integration_giphy', 'Giphy gif picker') }}
+					{{ t('integration_giphy', 'Gif picker') }}
+					<a class="attribution" target="_blank" href="https://giphy.com">
+						<img :src="poweredByImgSrc">
+					</a>
 				</h2>
 				<div class="input-wrapper">
 					<input ref="search-input"
@@ -53,7 +56,7 @@ import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
 import PickerResult from '../components/PickerResult.vue'
 
 import axios from '@nextcloud/axios'
-import { generateOcsUrl } from '@nextcloud/router'
+import { generateOcsUrl, imagePath } from '@nextcloud/router'
 import { delay } from '../utils.js'
 
 import Tooltip from '@nextcloud/vue/dist/Directives/Tooltip.js'
@@ -93,6 +96,7 @@ export default {
 			inputPlaceholder: t('integration_giphy', 'Search gifs'),
 			cursor: 0,
 			abortController: null,
+			poweredByImgSrc: imagePath('integration_giphy', 'powered-by-giphy.gif'),
 		}
 	},
 
@@ -108,7 +112,9 @@ export default {
 
 	methods: {
 		focusOnInput() {
-			this.$refs['search-input']?.focus()
+			this.$nextTick(() => {
+				this.$refs['search-input']?.focus()
+			})
 		},
 		onCancel() {
 			this.cancelSearchRequests()
@@ -186,6 +192,16 @@ export default {
 	align-items: center;
 	justify-content: center;
 	padding: 16px;
+
+	h2 {
+		display: flex;
+		align-items: center;
+		.attribution {
+			height: 38px;
+			margin-left: 16px;
+			border-radius: var(--border-radius);
+		}
+	}
 
 	.input-wrapper {
 		display: flex;
