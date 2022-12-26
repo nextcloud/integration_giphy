@@ -53,18 +53,23 @@ export default {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	margin: 4px;
+	width: 200px;
+	height: 160px;
+
+	> * {
+		cursor: pointer;
+	}
 
 	.loading-icon {
 		display: flex;
 		align-items: center;
-		width: 200px;
-		height: 200px;
+		width: 100%;
+		height: 100%;
 	}
 
 	.gif-image {
-		height: 200px;
-		width: 200px;
+		height: 100%;
+		width: 100%;
 		object-fit: cover;
 		border-radius: var(--border-radius);
 	}

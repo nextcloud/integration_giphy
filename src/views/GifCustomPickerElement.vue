@@ -199,20 +199,22 @@ export default {
 	.results {
 		width: 100%;
 		flex-grow: 1;
-		display: flex;
-		align-items: start;
-		flex-wrap: wrap;
+		display: grid;
+		grid-auto-rows: 160px;
+		grid-template-columns: repeat(auto-fill, 200px);
+		grid-gap: 8px;
 		overflow-y: scroll;
 		scrollbar-width: auto;
 		scrollbar-color: var(--color-primary);
+		padding: 0 12px;
+		margin: 12px 0;
 
 		.last-element-wrapper {
 			width: 200px;
-			height: 200px;
+			height: 160px;
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			margin: 4px;
 		}
 	}
 
