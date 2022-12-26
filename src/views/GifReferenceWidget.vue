@@ -31,6 +31,14 @@
 				class="image"
 				:src="richObject.proxied_url"
 				@load="isLoaded = true">
+			<a v-show="isLoaded"
+				class="attribution"
+				target="_blank"
+				:title="poweredByTitle"
+				href="https://giphy.com">
+				<img :src="poweredByImgSrc"
+					:alt="poweredByTitle">
+			</a>
 		</div>
 	</div>
 </template>
@@ -38,7 +46,7 @@
 <script>
 import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
 
-// import { generateUrl } from '@nextcloud/router'
+import { imagePath } from '@nextcloud/router'
 
 export default {
 	name: 'GifReferenceWidget',
@@ -65,6 +73,8 @@ export default {
 	data() {
 		return {
 			isLoaded: false,
+			poweredByImgSrc: imagePath('integration_giphy', 'powered-by-giphy-badge.gif'),
+			poweredByTitle: t('integration_giphy', 'Powered by Giphy'),
 		}
 	},
 
@@ -86,11 +96,23 @@ export default {
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		position: relative;
 
 		.image {
 			max-height: 300px;
 			max-width: 100%;
 			border-radius: var(--border-radius);
+		}
+
+		.attribution {
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			height: 70px;
+			img {
+				border-radius: var(--border-radius);
+				height: 100%;
+			}
 		}
 	}
 }

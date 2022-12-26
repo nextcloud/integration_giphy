@@ -7,8 +7,12 @@
 			<div class="gif-picker-modal-content">
 				<h2>
 					{{ t('integration_giphy', 'Gif picker') }}
-					<a class="attribution" target="_blank" href="https://giphy.com">
-						<img :src="poweredByImgSrc">
+					<a class="attribution"
+						target="_blank"
+						:title="poweredByTitle"
+						href="https://giphy.com">
+						<img :src="poweredByImgSrc"
+							:alt="poweredByTitle">
 					</a>
 				</h2>
 				<div class="input-wrapper">
@@ -97,6 +101,7 @@ export default {
 			cursor: 0,
 			abortController: null,
 			poweredByImgSrc: imagePath('integration_giphy', 'powered-by-giphy.gif'),
+			poweredByTitle: t('integration_giphy', 'Powered by Giphy'),
 		}
 	},
 
@@ -199,6 +204,8 @@ export default {
 		.attribution {
 			height: 38px;
 			margin-left: 16px;
+		}
+		img {
 			border-radius: var(--border-radius);
 		}
 	}
