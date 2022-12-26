@@ -36,6 +36,7 @@ class GiphyAPIController extends Controller {
 	 *
 	 * Get gif content
 	 * @param string $gifId
+	 * @param string $preferredVersion
 	 * @return DataDisplayResponse The gif image content
 	 * @throws \Exception
 	 */

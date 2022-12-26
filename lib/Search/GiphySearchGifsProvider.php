@@ -29,7 +29,6 @@ use OCA\Giphy\AppInfo\Application;
 use OCP\App\IAppManager;
 use OCP\IL10N;
 use OCP\IConfig;
-use OCP\IURLGenerator;
 use OCP\IUser;
 use OCP\Search\IProvider;
 use OCP\Search\ISearchQuery;

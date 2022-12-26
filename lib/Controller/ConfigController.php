@@ -11,13 +11,11 @@
 
 namespace OCA\Giphy\Controller;
 
-use OCA\Giphy\Reference\GiphyReferenceProvider;
 use OCP\IConfig;
 use OCP\IRequest;
 use OCP\AppFramework\Http\DataResponse;
 use OCP\AppFramework\Controller;
 
-use OCA\Giphy\Service\GiphyAPIService;
 use OCA\Giphy\AppInfo\Application;
 
 class ConfigController extends Controller {

@@ -11,18 +11,14 @@
 
 namespace OCA\Giphy\Service;
 
-use DateInterval;
-use DateTime;
 use Exception;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ServerException;
 use OCA\Giphy\AppInfo\Application;
-use OCP\Dashboard\Model\WidgetItem;
 use OCP\Http\Client\IClient;
 use OCP\IConfig;
 use OCP\IL10N;
 use OCP\IURLGenerator;
-use OCP\IUserManager;
 use Psr\Log\LoggerInterface;
 use OCP\Http\Client\IClientService;
 use Throwable;
