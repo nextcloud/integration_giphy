@@ -31,16 +31,21 @@
 						:key="gif.resourceUrl"
 						:gif="gif"
 						@click="onSubmit(gif)" />
-					<div v-if="searching || gifs.length > 0"
-						class="last-element-wrapper"
-						:title="t('integration_giphy', 'Load more results')"
-						@click="search()">
-						<NcLoadingIcon v-if="searching"
-							:size="44"
-							:title="t('integration_giphy', 'Loading gifs')" />
-						<PlusIcon v-else-if="gifs.length > 0"
-							:size="20" />
-					</div>
+					<InfiniteLoading v-if="gifs.length >= LIMIT"
+						@infinite="infiniteHandler">
+						<template #no-results>
+							<div class="infinite-end">
+								<img :src="sadGifUrl">
+								{{ t('integration_giphy', 'No results') }}
+							</div>
+						</template>
+						<template #no-more>
+							<div class="infinite-end">
+								<img :src="sadGifUrl">
+								{{ t('integration_giphy', 'No more gifs') }}
+							</div>
+						</template>
+					</InfiniteLoading>
 				</div>
 				<div class="footer">
 					<NcButton @click="onCancel">
@@ -53,8 +58,6 @@
 </template>
 
 <script>
-import PlusIcon from 'vue-material-design-icons/Plus.vue'
-
 import NcModal from '@nextcloud/vue/dist/Components/NcModal.js'
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
 import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
@@ -65,12 +68,13 @@ import axios from '@nextcloud/axios'
 import { generateOcsUrl, imagePath } from '@nextcloud/router'
 import { delay } from '../utils.js'
 
+import InfiniteLoading from 'vue-infinite-loading'
 import Tooltip from '@nextcloud/vue/dist/Directives/Tooltip.js'
 import Vue from 'vue'
 Vue.directive('tooltip', Tooltip)
 
 const searchProviderId = 'giphy-search-gifs'
-const LIMIT = 10
+const LIMIT = 20
 
 export default {
 	name: 'GifCustomPickerElement',
@@ -80,7 +84,7 @@ export default {
 		NcModal,
 		NcButton,
 		NcLoadingIcon,
-		PlusIcon,
+		InfiniteLoading,
 	},
 
 	props: {
@@ -105,6 +109,8 @@ export default {
 			abortController: null,
 			poweredByImgSrc: imagePath('integration_giphy', 'powered-by-giphy.gif'),
 			poweredByTitle: t('integration_giphy', 'Powered by Giphy'),
+			LIMIT,
+			sadGifUrl: imagePath('integration_giphy', 'sad.gif'),
 		}
 	},
 
@@ -147,6 +153,7 @@ export default {
 				this.searching = false
 				return
 			}
+			// first search for this query: 20
 			this.search()
 		},
 		cancelSearchRequests() {
@@ -154,17 +161,20 @@ export default {
 				this.abortController.abort()
 			}
 		},
-		search() {
+		infiniteHandler($state) {
+			this.search($state)
+		},
+		search(state = null, limit = LIMIT) {
 			this.abortController = new AbortController()
 			this.searching = true
 			const url = this.cursor === null
 				? generateOcsUrl(
 					'search/providers/{searchProviderId}/search?term={term}&limit={limit}',
-					{ searchProviderId, term: this.searchQuery, limit: LIMIT }
+					{ searchProviderId, term: this.searchQuery, limit }
 				)
 				: generateOcsUrl(
 					'search/providers/{searchProviderId}/search?term={term}&cursor={cursor}&limit={limit}',
-					{ searchProviderId, term: this.searchQuery, cursor: this.cursor, limit: LIMIT }
+					{ searchProviderId, term: this.searchQuery, cursor: this.cursor, limit }
 				)
 			return axios.get(url, {
 				signal: this.abortController.signal,
@@ -172,9 +182,20 @@ export default {
 				.then((response) => {
 					this.cursor = response.data.ocs.data.cursor
 					this.gifs.push(...response.data.ocs.data.entries)
+					if (state !== null) {
+						if (response.data.ocs.data.entries.length > 0) {
+							state.loaded()
+						}
+						if (response.data.ocs.data.entries.length < limit) {
+							state.complete()
+						}
+					}
 				})
 				.catch((error) => {
 					console.debug('giphy search request error', error)
+					if (state !== null) {
+						state.complete()
+					}
 				})
 				.then(() => {
 					this.searching = false
@@ -236,14 +257,13 @@ export default {
 		padding-right: 12px;
 		margin: 12px 0;
 
-		.last-element-wrapper {
+		.infinite-end {
 			display: flex;
+			flex-direction: column;
 			align-items: center;
 			justify-content: center;
-			cursor: pointer;
-			background-color: var(--color-background-dark);
-			> * {
-				cursor: pointer;
+			img {
+				width: 50px;
 			}
 		}
 	}
