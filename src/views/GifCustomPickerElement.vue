@@ -30,6 +30,7 @@
 					<PickerResult v-for="gif in gifs"
 						:key="gif.resourceUrl"
 						:gif="gif"
+						:tabindex="0"
 						@click="onSubmit(gif)" />
 					<InfiniteLoading v-if="gifs.length >= LIMIT"
 						@infinite="infiniteHandler">

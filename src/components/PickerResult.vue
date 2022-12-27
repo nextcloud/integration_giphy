@@ -1,6 +1,7 @@
 <template>
 	<div v-tooltip.top="{ content: gif.title }"
 		class="result"
+		@keydown.enter="$emit('click')"
 		@click="$emit('click')">
 		<div v-if="!isLoaded" class="loading-icon">
 			<NcLoadingIcon
