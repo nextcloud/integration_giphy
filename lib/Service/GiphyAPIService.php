@@ -161,6 +161,27 @@ class GiphyAPIService {
 	}
 
 	/**
+	 * Get trending gifs
+	 *
+	 * @param string $rating
+	 * @param int $offset
+	 * @param int $limit
+	 * @return array request result
+	 */
+	public function getTrendingGifs(string $rating = 'g', int $offset = 0, int $limit = 10): array {
+		$params = [
+			'rating' => $rating,
+			'limit' => $limit,
+			'offset' => $offset,
+		];
+		$result = $this->request('trending', $params);
+		if (!isset($result['error']) && isset($result['data']) && is_array($result['data'])) {
+			return $result['data'];
+		}
+		return $result;
+	}
+
+	/**
 	 * Make an HTTP request to the Giphy API
 	 * @param string $endPoint The path to reach in api.github.com
 	 * @param array $params Query parameters (key/val pairs)

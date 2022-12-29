@@ -26,6 +26,7 @@ namespace OCA\Giphy\Search;
 
 use OCA\Giphy\Service\GiphyAPIService;
 use OCA\Giphy\AppInfo\Application;
+use OCA\Giphy\Service\GiphySearchService;
 use OCP\App\IAppManager;
 use OCP\IL10N;
 use OCP\IConfig;
@@ -39,16 +40,19 @@ class GiphySearchGifsProvider implements IProvider {
 	private IAppManager $appManager;
 	private IL10N $l10n;
 	private IConfig $config;
-	private GiphyAPIService $service;
+	private GiphyAPIService $giphyAPIService;
+	private GiphySearchService $giphySearchService;
 
-	public function __construct(IAppManager     $appManager,
-								IL10N           $l10n,
-								IConfig         $config,
-								GiphyAPIService $service) {
+	public function __construct(IAppManager        $appManager,
+								IL10N              $l10n,
+								IConfig            $config,
+								GiphyAPIService    $giphyAPIService,
+								GiphySearchService $giphySearchService) {
 		$this->appManager = $appManager;
 		$this->l10n = $l10n;
 		$this->config = $config;
-		$this->service = $service;
+		$this->giphyAPIService = $giphyAPIService;
+		$this->giphySearchService = $giphySearchService;
 	}
 
 	/**
@@ -95,7 +99,7 @@ class GiphySearchGifsProvider implements IProvider {
 			return SearchResult::paginated($this->getName(), [], 0);
 		}
 
-		$searchResult = $this->service->searchGifs($term, $offset, $limit);
+		$searchResult = $this->giphyAPIService->searchGifs($term, $offset, $limit);
 		if (isset($searchResult['error'])) {
 			$gifs = [];
 		} else {
@@ -103,14 +107,7 @@ class GiphySearchGifsProvider implements IProvider {
 		}
 
 		$formattedResults = array_map(function (array $gif): GiphySearchResultEntry {
-			return new GiphySearchResultEntry(
-				$this->getThumbnailUrl($gif),
-				$this->getMainText($gif),
-				$this->getSubline($gif),
-				$this->getLinkToGiphy($gif),
-				$this->getIconUrl($gif),
-				false
-			);
+			return $this->giphySearchService->getSearchResultFromAPIEntry($gif);
 		}, $gifs);
 
 		return SearchResult::paginated(
@@ -120,43 +117,4 @@ class GiphySearchGifsProvider implements IProvider {
 		);
 	}
 
-	/**
-	 * @param array $entry
-	 * @return string
-	 */
-	protected function getMainText(array $entry): string {
-		return $entry['title'] ?? 'Unknown title';
-	}
-
-	/**
-	 * @param array $entry
-	 * @return string
-	 */
-	protected function getSubline(array $entry): string {
-		return $entry['username'] ?? $entry['slug'] ?? '';
-	}
-
-	/**
-	 * @param array $entry
-	 * @return string
-	 */
-	protected function getLinkToGiphy(array $entry): string {
-		return $entry['url'] ?? '';
-	}
-
-	/**
-	 * @param array $entry
-	 * @return string
-	 */
-	protected function getIconUrl(array $entry): string {
-		return $this->service->getGifProxiedUrl($entry);
-	}
-
-	/**
-	 * @param array $entry
-	 * @return string
-	 */
-	protected function getThumbnailUrl(array $entry): string {
-		return $this->service->getGifProxiedUrl($entry, 'fixed_width');
-	}
 }

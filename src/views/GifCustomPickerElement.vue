@@ -122,6 +122,7 @@ export default {
 	},
 
 	mounted() {
+		this.search()
 		this.focusOnInput()
 	},
 
@@ -150,11 +151,6 @@ export default {
 			this.cancelSearchRequests()
 			this.gifs = []
 			this.cursor = 0
-			if (this.searchQuery === '') {
-				this.searching = false
-				return
-			}
-			// first search for this query: 20
 			this.search()
 		},
 		cancelSearchRequests() {
@@ -168,15 +164,25 @@ export default {
 		search(state = null, limit = LIMIT) {
 			this.abortController = new AbortController()
 			this.searching = true
-			const url = this.cursor === null
-				? generateOcsUrl(
-					'search/providers/{searchProviderId}/search?term={term}&limit={limit}',
-					{ searchProviderId, term: this.searchQuery, limit }
-				)
-				: generateOcsUrl(
-					'search/providers/{searchProviderId}/search?term={term}&cursor={cursor}&limit={limit}',
-					{ searchProviderId, term: this.searchQuery, cursor: this.cursor, limit }
-				)
+			const url = this.searchQuery === ''
+				? this.cursor === null
+					? generateOcsUrl(
+						'apps/integration_giphy/api/v1/gifs/trending?limit={limit}',
+						{ limit }
+					)
+					: generateOcsUrl(
+						'apps/integration_giphy/api/v1/gifs/trending?cursor={cursor}&limit={limit}',
+						{ cursor: this.cursor, limit }
+					)
+				: this.cursor === null
+					? generateOcsUrl(
+						'search/providers/{searchProviderId}/search?term={term}&limit={limit}',
+						{ searchProviderId, term: this.searchQuery, limit }
+					)
+					: generateOcsUrl(
+						'search/providers/{searchProviderId}/search?term={term}&cursor={cursor}&limit={limit}',
+						{ searchProviderId, term: this.searchQuery, cursor: this.cursor, limit }
+					)
 			return axios.get(url, {
 				signal: this.abortController.signal,
 			})
