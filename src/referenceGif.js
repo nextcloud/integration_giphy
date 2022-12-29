@@ -22,6 +22,7 @@
 import {
 	registerWidget,
 	registerCustomPickerElement,
+	CustomPickerRenderResult,
 } from '@nextcloud/vue-richtext'
 import './bootstrap.js'
 import Vue from 'vue'
@@ -41,10 +42,14 @@ registerWidget('integration_giphy_gif', (el, { richObjectType, richObject, acces
 
 registerCustomPickerElement('giphy-gif', (el, { providerId, accessible }) => {
 	const Element = Vue.extend(GifCustomPickerElement)
-	return new Element({
+	const vueElement = new Element({
 		propsData: {
 			providerId,
 			accessible,
 		},
 	}).$mount(el)
+	return new CustomPickerRenderResult(vueElement.$el, vueElement)
+}, (el, renderResult) => {
+	console.debug('giphy custom destroy callback. el', el, 'renderResult:', renderResult)
+	renderResult.object.$destroy()
 })
