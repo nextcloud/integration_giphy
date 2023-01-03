@@ -1,61 +1,59 @@
 <template>
-	<div v-if="show" id="gif-picker-modal-wrapper">
-		<NcModal
-			class="gif-picker-modal"
-			size="large"
-			@close="onCancel">
-			<div class="gif-picker-modal-content">
-				<h2>
-					{{ t('integration_giphy', 'Gif picker') }}
-					<a class="attribution"
-						target="_blank"
-						:title="poweredByTitle"
-						href="https://giphy.com">
-						<img :src="poweredByImgSrc"
-							:alt="poweredByTitle">
-					</a>
-				</h2>
-				<div class="input-wrapper">
-					<input ref="search-input"
-						v-model="searchQuery"
-						type="text"
-						:placeholder="inputPlaceholder"
-						@input="onInput"
-						@keyup.esc="onCancel">
-					<NcLoadingIcon v-if="searching"
-						:size="20"
-						:title="t('integration_giphy', 'Loading gifs')" />
-				</div>
-				<div class="results">
-					<PickerResult v-for="gif in gifs"
-						:key="gif.resourceUrl"
-						:gif="gif"
-						:tabindex="0"
-						@click="onSubmit(gif)" />
-					<InfiniteLoading v-if="gifs.length >= LIMIT"
-						@infinite="infiniteHandler">
-						<template #no-results>
-							<div class="infinite-end">
-								<img :src="sadGifUrl">
-								{{ t('integration_giphy', 'No results') }}
-							</div>
-						</template>
-						<template #no-more>
-							<div class="infinite-end">
-								<img :src="sadGifUrl">
-								{{ t('integration_giphy', 'No more gifs') }}
-							</div>
-						</template>
-					</InfiniteLoading>
-				</div>
-				<div class="footer">
-					<NcButton @click="onCancel">
-						{{ t('integration_giphy', 'Cancel') }}
-					</NcButton>
-				</div>
+	<NcModal v-if="show"
+		class="gif-picker-modal"
+		size="large"
+		@close="onCancel">
+		<div class="gif-picker-modal-content">
+			<h2>
+				{{ t('integration_giphy', 'Gif picker') }}
+				<a class="attribution"
+					target="_blank"
+					:title="poweredByTitle"
+					href="https://giphy.com">
+					<img :src="poweredByImgSrc"
+						:alt="poweredByTitle">
+				</a>
+			</h2>
+			<div class="input-wrapper">
+				<input ref="search-input"
+					v-model="searchQuery"
+					type="text"
+					:placeholder="inputPlaceholder"
+					@input="onInput"
+					@keydown.esc="onCancel">
+				<NcLoadingIcon v-if="searching"
+					:size="20"
+					:title="t('integration_giphy', 'Loading gifs')" />
 			</div>
-		</NcModal>
-	</div>
+			<div class="results">
+				<PickerResult v-for="gif in gifs"
+					:key="gif.resourceUrl"
+					:gif="gif"
+					:tabindex="0"
+					@click="onSubmit(gif)" />
+				<InfiniteLoading v-if="gifs.length >= LIMIT"
+					@infinite="infiniteHandler">
+					<template #no-results>
+						<div class="infinite-end">
+							<img :src="sadGifUrl">
+							{{ t('integration_giphy', 'No results') }}
+						</div>
+					</template>
+					<template #no-more>
+						<div class="infinite-end">
+							<img :src="sadGifUrl">
+							{{ t('integration_giphy', 'No more gifs') }}
+						</div>
+					</template>
+				</InfiniteLoading>
+			</div>
+			<div class="footer">
+				<NcButton @click="onCancel">
+					{{ t('integration_giphy', 'Cancel') }}
+				</NcButton>
+			</div>
+		</div>
+	</NcModal>
 </template>
 
 <script>
