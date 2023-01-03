@@ -1,8 +1,8 @@
 <template>
 	<div v-if="show" id="gif-picker-modal-wrapper">
 		<NcModal
+			class="gif-picker-modal"
 			size="large"
-			:container="'#gif-picker-modal-wrapper'"
 			@close="onCancel">
 			<div class="gif-picker-modal-content">
 				<h2>
@@ -212,15 +212,15 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 // this is to avoid scroll on the container and leave it to the result block
-#gif-picker-modal-wrapper {
-	::v-deep .modal-container {
-		display: flex !important;
-		height: 100%;
-	}
+.gif-picker-modal .modal-container {
+	display: flex !important;
+	height: 100% !important;
 }
+</style>
 
+<style scoped lang="scss">
 .gif-picker-modal-content {
 	width: 100%;
 	display: flex;
