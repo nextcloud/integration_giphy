@@ -1,64 +1,52 @@
 <template>
-	<NcModal v-if="show"
-		class="gif-picker-modal"
-		size="large"
-		@close="onCancel">
-		<div class="gif-picker-modal-content">
-			<h2>
-				{{ t('integration_giphy', 'Gif picker') }}
-				<a class="attribution"
-					target="_blank"
-					:title="poweredByTitle"
-					href="https://giphy.com">
-					<img :src="poweredByImgSrc"
-						:alt="poweredByTitle">
-				</a>
-			</h2>
-			<div class="input-wrapper">
-				<input ref="search-input"
-					v-model="searchQuery"
-					type="text"
-					:placeholder="inputPlaceholder"
-					@input="onInput"
-					@keydown.esc="onCancel">
-				<NcLoadingIcon v-if="searching"
-					:size="20"
-					:title="t('integration_giphy', 'Loading gifs')" />
-			</div>
-			<div class="results">
-				<PickerResult v-for="gif in gifs"
-					:key="gif.resourceUrl"
-					:gif="gif"
-					:tabindex="0"
-					@click="onSubmit(gif)" />
-				<InfiniteLoading v-if="gifs.length >= LIMIT"
-					@infinite="infiniteHandler">
-					<template #no-results>
-						<div class="infinite-end">
-							<img :src="sadGifUrl">
-							{{ t('integration_giphy', 'No results') }}
-						</div>
-					</template>
-					<template #no-more>
-						<div class="infinite-end">
-							<img :src="sadGifUrl">
-							{{ t('integration_giphy', 'No more gifs') }}
-						</div>
-					</template>
-				</InfiniteLoading>
-			</div>
-			<div class="footer">
-				<NcButton @click="onCancel">
-					{{ t('integration_giphy', 'Cancel') }}
-				</NcButton>
-			</div>
+	<div class="gif-picker-content">
+		<h2>
+			{{ t('integration_giphy', 'Gif picker') }}
+			<a class="attribution"
+				target="_blank"
+				:title="poweredByTitle"
+				href="https://giphy.com">
+				<img :src="poweredByImgSrc"
+					:alt="poweredByTitle">
+			</a>
+		</h2>
+		<div class="input-wrapper">
+			<input ref="giphy-search-input"
+				v-model="searchQuery"
+				type="text"
+				:placeholder="inputPlaceholder"
+				@input="onInput"
+				@keyup.esc="onCancel">
+			<NcLoadingIcon v-if="searching"
+				:size="20"
+				:title="t('integration_giphy', 'Loading gifs')" />
 		</div>
-	</NcModal>
+		<div class="results">
+			<PickerResult v-for="gif in gifs"
+				:key="gif.resourceUrl"
+				:gif="gif"
+				:tabindex="0"
+				@click="onSubmit(gif)" />
+			<InfiniteLoading v-if="gifs.length >= LIMIT"
+				@infinite="infiniteHandler">
+				<template #no-results>
+					<div class="infinite-end">
+						<img :src="sadGifUrl">
+						{{ t('integration_giphy', 'No results') }}
+					</div>
+				</template>
+				<template #no-more>
+					<div class="infinite-end">
+						<img :src="sadGifUrl">
+						{{ t('integration_giphy', 'No more gifs') }}
+					</div>
+				</template>
+			</InfiniteLoading>
+		</div>
+	</div>
 </template>
 
 <script>
-import NcModal from '@nextcloud/vue/dist/Components/NcModal.js'
-import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
 import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
 
 import PickerResult from '../components/PickerResult.vue'
@@ -80,8 +68,6 @@ export default {
 
 	components: {
 		PickerResult,
-		NcModal,
-		NcButton,
 		NcLoadingIcon,
 		InfiniteLoading,
 	},
@@ -99,7 +85,6 @@ export default {
 
 	data() {
 		return {
-			show: true,
 			searchQuery: '',
 			searching: false,
 			gifs: [],
@@ -126,18 +111,16 @@ export default {
 
 	methods: {
 		focusOnInput() {
-			this.$nextTick(() => {
-				this.$refs['search-input']?.focus()
-			})
+			setTimeout(() => {
+				this.$refs['giphy-search-input']?.focus()
+			}, 300)
 		},
 		onCancel() {
 			this.cancelSearchRequests()
-			this.show = false
 			this.$emit('cancel')
 		},
 		onSubmit(gif) {
 			this.cancelSearchRequests()
-			this.show = false
 			this.$emit('submit', gif.resourceUrl)
 		},
 		onInput() {
@@ -210,22 +193,15 @@ export default {
 }
 </script>
 
-<style lang="scss">
-// this is to avoid scroll on the container and leave it to the result block
-.gif-picker-modal .modal-container {
-	display: flex !important;
-	height: 100% !important;
-}
-</style>
-
 <style scoped lang="scss">
-.gif-picker-modal-content {
-	width: 100%;
+.gif-picker-content {
+	//width: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	padding: 16px;
+	//padding: 16px;
+	overflow-y: auto;
 
 	h2 {
 		display: flex;
@@ -259,7 +235,7 @@ export default {
 		overflow-y: scroll;
 		scrollbar-width: auto;
 		scrollbar-color: var(--color-primary);
-		padding-right: 12px;
+		//padding: 0 12px;
 		margin: 12px 0;
 
 		.infinite-end {
@@ -271,13 +247,6 @@ export default {
 				width: 50px;
 			}
 		}
-	}
-
-	.footer {
-		width: 100%;
-		margin-top: 8px;
-		display: flex;
-		justify-content: end;
 	}
 }
 </style>
