@@ -195,13 +195,14 @@ export default {
 
 <style scoped lang="scss">
 .gif-picker-content {
-	//width: 100%;
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	//padding: 16px;
 	overflow-y: auto;
+	max-height: 800px;
 
 	h2 {
 		display: flex;
