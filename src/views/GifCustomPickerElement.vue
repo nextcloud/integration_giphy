@@ -263,6 +263,13 @@ export default {
 		//padding: 0 12px;
 		margin: 12px 0;
 
+		.result {
+			&:hover {
+				border: 4px solid var(--color-border-maxcontrast);
+				border-radius: var(--border-radius);
+			}
+		}
+
 		.infinite-end {
 			display: flex;
 			flex-direction: column;

@@ -71,6 +71,10 @@ export default {
 		width: 100%;
 		object-fit: cover;
 		border-radius: var(--border-radius);
+
+		&:hover {
+			object-fit: contain;
+		}
 	}
 }
 </style>
