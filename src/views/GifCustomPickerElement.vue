@@ -18,6 +18,7 @@
 				@input="onInput"
 				@keyup.esc="onCancel">
 			<NcLoadingIcon v-if="searching"
+				class="input-loading"
 				:size="20"
 				:title="t('integration_giphy', 'Loading gifs')" />
 		</div>
@@ -27,6 +28,20 @@
 				:gif="gif"
 				:tabindex="0"
 				@click="onSubmit(gif)" />
+			<NcEmptyContent v-if="gifs.length === 0 && !searching"
+				class="central-empty-content"
+				:title="t('integration_giphy', 'No results :-(')">
+				<template #icon>
+					<GiphyIcon />
+				</template>
+			</NcEmptyContent>
+			<NcEmptyContent v-else-if="gifs.length === 0 && searching"
+				class="central-empty-content"
+				:title="t('integration_giphy', 'Searching...')">
+				<template #icon>
+					<NcLoadingIcon />
+				</template>
+			</NcEmptyContent>
 			<InfiniteLoading v-if="gifs.length >= LIMIT"
 				@infinite="infiniteHandler">
 				<template #no-results>
@@ -48,7 +63,9 @@
 
 <script>
 import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
+import NcEmptyContent from '@nextcloud/vue/dist/Components/NcEmptyContent.js'
 
+import GiphyIcon from '../components/icons/GiphyIcon.vue'
 import PickerResult from '../components/PickerResult.vue'
 
 import axios from '@nextcloud/axios'
@@ -67,9 +84,11 @@ export default {
 	name: 'GifCustomPickerElement',
 
 	components: {
+		GiphyIcon,
 		PickerResult,
 		NcLoadingIcon,
 		InfiniteLoading,
+		NcEmptyContent,
 	},
 
 	props: {
@@ -224,10 +243,15 @@ export default {
 		input {
 			flex-grow: 1;
 		}
+		.input-loading {
+			padding: 0 4px;
+		}
 	}
 
 	.results {
 		width: 100%;
+		// ugly but...
+		height: 5000px;
 		flex-grow: 1;
 		display: grid;
 		grid-auto-rows: 160px;
