@@ -73,7 +73,7 @@ class GiphyReferenceProvider extends ADiscoverableReferenceProvider {
 	 * @inheritDoc
 	 */
 	public function getTitle(): string {
-		return $this->l10n->t('Giphy gifs');
+		return $this->l10n->t('Giphy GIFs');
 	}
 
 	/**

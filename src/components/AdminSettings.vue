@@ -21,7 +21,7 @@
 			<NcCheckboxRadioSwitch
 				:checked="state.search_gifs_enabled"
 				@update:checked="onCheckboxChanged($event, 'search_gifs_enabled')">
-				{{ t('integration_giphy', 'Enable search provider for gifs') }}
+				{{ t('integration_giphy', 'Enable search provider for GIFs') }}
 			</NcCheckboxRadioSwitch>
 			<NcCheckboxRadioSwitch
 				:checked="state.link_preview_enabled"

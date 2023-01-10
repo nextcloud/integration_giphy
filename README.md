@@ -1,8 +1,8 @@
 # Giphy integration in Nextcloud
 
 This app adds:
-* A search provider for gifs
-* A link reference provider to render links to gifs in Talk and Text
+* A search provider for GIFs
+* A link reference provider to render links to GIFs in Talk and Text
 
 ## 🔧 Configuration
 

@@ -1,14 +1,7 @@
 <template>
 	<div class="gif-picker-content">
 		<h2>
-			{{ t('integration_giphy', 'Gif picker') }}
-			<a class="attribution"
-				target="_blank"
-				:title="poweredByTitle"
-				href="https://giphy.com">
-				<img :src="poweredByImgSrc"
-					:alt="poweredByTitle">
-			</a>
+			{{ t('integration_giphy', 'Giphy GIF picker') }}
 		</h2>
 		<div class="input-wrapper">
 			<input ref="giphy-search-input"
@@ -20,7 +13,7 @@
 			<NcLoadingIcon v-if="searching"
 				class="input-loading"
 				:size="20"
-				:title="t('integration_giphy', 'Loading gifs')" />
+				:title="t('integration_giphy', 'Loading GIFs')" />
 		</div>
 		<div class="results">
 			<PickerResult v-for="gif in gifs"
@@ -53,11 +46,18 @@
 				<template #no-more>
 					<div class="infinite-end">
 						<img :src="sadGifUrl">
-						{{ t('integration_giphy', 'No more gifs') }}
+						{{ t('integration_giphy', 'No more GIFs') }}
 					</div>
 				</template>
 			</InfiniteLoading>
 		</div>
+		<a class="attribution"
+			target="_blank"
+			:title="poweredByTitle"
+			href="https://giphy.com">
+			<img :src="poweredByImgSrc"
+				:alt="poweredByTitle">
+		</a>
 	</div>
 </template>
 
@@ -107,7 +107,7 @@ export default {
 			searchQuery: '',
 			searching: false,
 			gifs: [],
-			inputPlaceholder: t('integration_giphy', 'Search gifs'),
+			inputPlaceholder: t('integration_giphy', 'Search GIFs'),
 			cursor: 0,
 			abortController: null,
 			poweredByImgSrc: imagePath('integration_giphy', 'powered-by-giphy.gif'),
@@ -226,10 +226,12 @@ export default {
 	h2 {
 		display: flex;
 		align-items: center;
-		.attribution {
-			height: 30px;
-			margin-left: 16px;
-		}
+	}
+
+	.attribution {
+		height: 30px;
+		align-self: start;
+		margin-bottom: 8px;
 		img {
 			border-radius: var(--border-radius);
 			height: 100%;

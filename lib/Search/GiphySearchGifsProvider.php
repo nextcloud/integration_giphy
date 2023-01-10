@@ -66,7 +66,7 @@ class GiphySearchGifsProvider implements IProvider {
 	 * @inheritDoc
 	 */
 	public function getName(): string {
-		return $this->l10n->t('Giphy gifs');
+		return $this->l10n->t('Giphy GIFs');
 	}
 
 	/**
