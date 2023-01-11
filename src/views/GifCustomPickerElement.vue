@@ -15,26 +15,27 @@
 				:size="20"
 				:title="t('integration_giphy', 'Loading GIFs')" />
 		</div>
-		<div class="results">
-			<PickerResult v-for="gif in gifs"
-				:key="gif.resourceUrl"
-				:gif="gif"
-				:tabindex="0"
-				@click="onSubmit(gif)" />
-			<NcEmptyContent v-if="gifs.length === 0 && !searching"
-				class="central-empty-content"
-				:title="t('integration_giphy', 'No results :-(')">
-				<template #icon>
-					<GiphyIcon />
-				</template>
-			</NcEmptyContent>
-			<NcEmptyContent v-else-if="gifs.length === 0 && searching"
-				class="central-empty-content"
+		<div v-if="gifs.length === 0"
+			class="empty-content-wrapper">
+			<NcEmptyContent v-if="searching"
 				:title="t('integration_giphy', 'Searching...')">
 				<template #icon>
 					<NcLoadingIcon />
 				</template>
 			</NcEmptyContent>
+			<NcEmptyContent v-else
+				:title="t('integration_giphy', 'No results :-(')">
+				<template #icon>
+					<GiphyIcon />
+				</template>
+			</NcEmptyContent>
+		</div>
+		<div v-else class="results">
+			<PickerResult v-for="gif in gifs"
+				:key="gif.resourceUrl"
+				:gif="gif"
+				:tabindex="0"
+				@click="onSubmit(gif)" />
 			<InfiniteLoading v-if="gifs.length >= LIMIT"
 				@infinite="infiniteHandler">
 				<template #no-results>
@@ -250,11 +251,17 @@ export default {
 		}
 	}
 
+	.empty-content-wrapper {
+		display: flex;
+		align-items: center;
+		height: 5000px;
+	}
+
 	.results {
 		width: 98%;
-		// ugly but...
+		// ugly but...makes it take all available space
 		height: 5000px;
-		flex-grow: 1;
+		//flex-grow: 1;
 		display: grid;
 		grid-auto-rows: 160px;
 		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -262,7 +269,6 @@ export default {
 		overflow-y: scroll;
 		scrollbar-width: auto;
 		scrollbar-color: var(--color-primary);
-		//padding: 0 12px;
 		margin: 12px 0;
 		padding-right: 16px;
 
