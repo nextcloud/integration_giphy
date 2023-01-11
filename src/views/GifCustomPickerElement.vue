@@ -24,13 +24,16 @@
 				</template>
 			</NcEmptyContent>
 			<NcEmptyContent v-else
-				:title="t('integration_giphy', 'No results :-(')">
+				:title="t('integration_giphy', 'No results')">
 				<template #icon>
-					<GiphyIcon />
+					<img class="empty-content-img"
+						:src="sadGifUrl">
 				</template>
 			</NcEmptyContent>
 		</div>
-		<div v-else class="results">
+		<div v-else
+			ref="results"
+			class="results">
 			<PickerResult v-for="gif in gifs"
 				:key="gif.resourceUrl"
 				:gif="gif"
@@ -66,7 +69,6 @@
 import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
 import NcEmptyContent from '@nextcloud/vue/dist/Components/NcEmptyContent.js'
 
-import GiphyIcon from '../components/icons/GiphyIcon.vue'
 import PickerResult from '../components/PickerResult.vue'
 
 import axios from '@nextcloud/axios'
@@ -85,7 +87,6 @@ export default {
 	name: 'GifCustomPickerElement',
 
 	components: {
-		GiphyIcon,
 		PickerResult,
 		NcLoadingIcon,
 		InfiniteLoading,
@@ -149,6 +150,7 @@ export default {
 			}, 500)()
 		},
 		updateSearch() {
+			this.$refs.results.scrollTop = 0
 			this.cancelSearchRequests()
 			this.gifs = []
 			this.cursor = 0
@@ -255,6 +257,10 @@ export default {
 		display: flex;
 		align-items: center;
 		height: 5000px;
+
+		.empty-content-img {
+			width: 100px;
+		}
 	}
 
 	.results {
@@ -279,13 +285,19 @@ export default {
 			}
 		}
 
-		.infinite-end {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			justify-content: center;
-			img {
-				width: 50px;
+		::v-deep .infinite-status-prompt {
+			height: 100%;
+
+			.infinite-end {
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+
+				img {
+					width: 50px;
+				}
 			}
 		}
 	}
