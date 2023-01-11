@@ -251,7 +251,7 @@ export default {
 	}
 
 	.results {
-		width: 100%;
+		width: 98%;
 		// ugly but...
 		height: 5000px;
 		flex-grow: 1;
@@ -264,10 +264,11 @@ export default {
 		scrollbar-color: var(--color-primary);
 		//padding: 0 12px;
 		margin: 12px 0;
+		padding-right: 16px;
 
 		.result {
 			&:hover {
-				border: 4px solid var(--color-border-maxcontrast);
+				border: 4px solid var(--color-primary);
 				border-radius: var(--border-radius);
 			}
 		}
