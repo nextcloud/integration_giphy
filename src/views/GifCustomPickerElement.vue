@@ -4,16 +4,19 @@
 			{{ t('integration_giphy', 'Giphy GIF picker') }}
 		</h2>
 		<div class="input-wrapper">
-			<input ref="giphy-search-input"
-				v-model="searchQuery"
-				type="text"
-				:placeholder="inputPlaceholder"
-				@input="onInput"
-				@keyup.esc="onCancel">
-			<NcLoadingIcon v-if="searching"
-				class="input-loading"
-				:size="20"
-				:title="t('integration_giphy', 'Loading GIFs')" />
+			<NcTextField
+				ref="giphy-search-input"
+				:value.sync="searchQuery"
+				:show-trailing-button="searchQuery !== ''"
+				:label="inputPlaceholder"
+				@trailing-button-click="onClear"
+				@update:value="onInput"
+				@keyup.native.esc="onCancel">
+				<template #trailing-button-icon>
+					<CloseIcon :size="16" />
+				</template>
+				<MagnifyIcon :size="16" />
+			</NcTextField>
 		</div>
 		<div v-if="gifs.length === 0"
 			class="empty-content-wrapper">
@@ -66,8 +69,12 @@
 </template>
 
 <script>
+import MagnifyIcon from 'vue-material-design-icons/Magnify.vue'
+import CloseIcon from 'vue-material-design-icons/Close.vue'
+
 import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
 import NcEmptyContent from '@nextcloud/vue/dist/Components/NcEmptyContent.js'
+import NcTextField from '@nextcloud/vue/dist/Components/NcTextField.js'
 
 import PickerResult from '../components/PickerResult.vue'
 
@@ -91,6 +98,9 @@ export default {
 		NcLoadingIcon,
 		InfiniteLoading,
 		NcEmptyContent,
+		NcTextField,
+		MagnifyIcon,
+		CloseIcon,
 	},
 
 	props: {
@@ -133,7 +143,8 @@ export default {
 	methods: {
 		focusOnInput() {
 			setTimeout(() => {
-				this.$refs['giphy-search-input']?.focus()
+				// this.$refs['giphy-search-input']?.focus()
+				this.$refs['giphy-search-input'].$el.getElementsByTagName('input')[0]?.focus()
 			}, 300)
 		},
 		onCancel() {
@@ -149,8 +160,14 @@ export default {
 				this.updateSearch()
 			}, 500)()
 		},
+		onClear() {
+			this.searchQuery = ''
+			this.updateSearch()
+		},
 		updateSearch() {
-			this.$refs.results.scrollTop = 0
+			if (this.$refs.results?.scrollTop) {
+				this.$refs.results.scrollTop = 0
+			}
 			this.cancelSearchRequests()
 			this.gifs = []
 			this.cursor = 0
