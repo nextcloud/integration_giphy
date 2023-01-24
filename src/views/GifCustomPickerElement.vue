@@ -10,8 +10,7 @@
 				:show-trailing-button="searchQuery !== ''"
 				:label="inputPlaceholder"
 				@trailing-button-click="onClear"
-				@update:value="onInput"
-				@keyup.native.esc="onCancel">
+				@update:value="onInput">
 				<template #trailing-button-icon>
 					<CloseIcon :size="16" />
 				</template>
@@ -140,16 +139,16 @@ export default {
 		this.focusOnInput()
 	},
 
+	beforeDestroy() {
+		this.cancelSearchRequests()
+	},
+
 	methods: {
 		focusOnInput() {
 			setTimeout(() => {
 				// this.$refs['giphy-search-input']?.focus()
 				this.$refs['giphy-search-input'].$el.getElementsByTagName('input')[0]?.focus()
 			}, 300)
-		},
-		onCancel() {
-			this.cancelSearchRequests()
-			this.$emit('cancel')
 		},
 		onSubmit(gif) {
 			this.cancelSearchRequests()
