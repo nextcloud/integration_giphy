@@ -248,11 +248,13 @@ export default {
 	}
 
 	.attribution {
+		position: absolute;
+		bottom: 16px;
+		left: 16px;
 		height: 30px;
-		align-self: start;
-		margin-bottom: 8px;
+		border-radius: var(--border-radius);
+		border: 2px solid var(--color-primary);
 		img {
-			border-radius: var(--border-radius);
 			height: 100%;
 		}
 	}
@@ -291,7 +293,7 @@ export default {
 		overflow-y: scroll;
 		scrollbar-width: auto;
 		scrollbar-color: var(--color-primary);
-		margin: 12px 0;
+		margin-top: 12px;
 		padding-right: 16px;
 
 		.result {
