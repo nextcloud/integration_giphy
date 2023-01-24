@@ -253,7 +253,7 @@ export default {
 		left: 16px;
 		height: 30px;
 		border-radius: var(--border-radius);
-		border: 2px solid var(--color-primary);
+		border: 2px solid var(--color-background-darker);
 		img {
 			height: 100%;
 		}
