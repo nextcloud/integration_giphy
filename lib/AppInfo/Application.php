@@ -12,7 +12,6 @@ namespace OCA\Giphy\AppInfo;
 use OCA\Giphy\Listener\GiphyReferenceListener;
 use OCA\Giphy\Reference\GiphyReferenceProvider;
 use OCP\Collaboration\Reference\RenderReferenceEvent;
-use OCP\IConfig;
 
 use OCP\AppFramework\App;
 use OCP\AppFramework\Bootstrap\IRegistrationContext;
@@ -24,14 +23,11 @@ use OCA\Giphy\Search\GiphySearchGifsProvider;
 class Application extends App implements IBootstrap {
 
 	public const APP_ID = 'integration_giphy';
+	// this key belongs to the eneiluj+giphy@posteo.net acount on https://developers.giphy.com
 	public const DEFAULT_API_KEY = 'LebyjhpSc5GpX5xKSEtdxFIWMneLlrIF';
 
 	public function __construct(array $urlParams = []) {
 		parent::__construct(self::APP_ID, $urlParams);
-
-		$container = $this->getContainer();
-		$this->container = $container;
-		$this->config = $container->query(IConfig::class);
 	}
 
 	public function register(IRegistrationContext $context): void {
