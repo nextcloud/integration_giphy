@@ -24,12 +24,14 @@ import {
 	registerCustomPickerElement,
 	CustomPickerRenderResult,
 } from '@nextcloud/vue-richtext'
-import './bootstrap.js'
-import Vue from 'vue'
-import GifReferenceWidget from './views/GifReferenceWidget.vue'
-import GifCustomPickerElement from './views/GifCustomPickerElement.vue'
 
-registerWidget('integration_giphy_gif', (el, { richObjectType, richObject, accessible }) => {
+__webpack_nonce__ = btoa(OC.requestToken) // eslint-disable-line
+__webpack_public_path__ = OC.linkTo('integration_giphy', 'js/') // eslint-disable-line
+
+registerWidget('integration_giphy_gif', async (el, { richObjectType, richObject, accessible }) => {
+	const { default: Vue } = await import(/* webpackChunkName: "reference-lazy" */'vue')
+	Vue.mixin({ methods: { t, n } })
+	const { default: GifReferenceWidget } = await import(/* webpackChunkName: "reference-lazy" */'./views/GifReferenceWidget.vue')
 	const Widget = Vue.extend(GifReferenceWidget)
 	new Widget({
 		propsData: {
@@ -40,7 +42,10 @@ registerWidget('integration_giphy_gif', (el, { richObjectType, richObject, acces
 	}).$mount(el)
 })
 
-registerCustomPickerElement('giphy-gif', (el, { providerId, accessible }) => {
+registerCustomPickerElement('giphy-gif', async (el, { providerId, accessible }) => {
+	const { default: Vue } = await import(/* webpackChunkName: "reference-picker-lazy" */'vue')
+	Vue.mixin({ methods: { t, n } })
+	const { default: GifCustomPickerElement } = await import(/* webpackChunkName: "reference-picker-lazy" */'./views/GifCustomPickerElement.vue')
 	const Element = Vue.extend(GifCustomPickerElement)
 	const vueElement = new Element({
 		propsData: {
@@ -50,6 +55,5 @@ registerCustomPickerElement('giphy-gif', (el, { providerId, accessible }) => {
 	}).$mount(el)
 	return new CustomPickerRenderResult(vueElement.$el, vueElement)
 }, (el, renderResult) => {
-	console.debug('giphy custom destroy callback. el', el, 'renderResult:', renderResult)
 	renderResult.object.$destroy()
 })
