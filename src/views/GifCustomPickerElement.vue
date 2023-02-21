@@ -36,8 +36,8 @@
 		<div v-else
 			ref="results"
 			class="results">
-			<PickerResult v-for="gif in gifs"
-				:key="gif.resourceUrl"
+			<PickerResult v-for="(gif, i) in gifs"
+				:key="i + '-' + gif.resourceUrl"
 				:gif="gif"
 				:tabindex="0"
 				@click="onSubmit(gif)" />
