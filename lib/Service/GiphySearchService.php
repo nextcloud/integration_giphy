@@ -11,7 +11,7 @@
 
 namespace OCA\Giphy\Service;
 
-use OCA\Giphy\Search\GiphySearchResultEntry;
+use OCP\Search\SearchResultEntry;
 
 class GiphySearchService {
 	private GiphyAPIService $giphyAPIService;
@@ -26,10 +26,10 @@ class GiphySearchService {
 
 	/**
 	 * @param array $entry
-	 * @return GiphySearchResultEntry
+	 * @return SearchResultEntry
 	 */
-	public function getSearchResultFromAPIEntry(array $entry): GiphySearchResultEntry {
-		return new GiphySearchResultEntry(
+	public function getSearchResultFromAPIEntry(array $entry): SearchResultEntry {
+		return new SearchResultEntry(
 			$this->getThumbnailUrl($entry),
 			$this->getMainText($entry),
 			$this->getSubline($entry),

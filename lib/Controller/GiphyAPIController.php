@@ -5,13 +5,12 @@
  * This file is licensed under the Affero General Public License version 3 or
  * later. See the COPYING file.
  *
- * @author Julien Veyssier <eneiluj@posteo.net>
+ * @author Julien Veyssier <julien-nc@posteo.net>
  * @copyright Julien Veyssier 2022
  */
 
 namespace OCA\Giphy\Controller;
 
-use OCA\Giphy\Search\GiphySearchResultEntry;
 use OCA\Giphy\Service\GiphySearchService;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\DataDisplayResponse;
@@ -20,6 +19,7 @@ use OCP\AppFramework\OCSController;
 use OCP\IRequest;
 
 use OCA\Giphy\Service\GiphyAPIService;
+use OCP\Search\SearchResultEntry;
 
 class GiphyAPIController extends OCSController {
 
@@ -101,7 +101,7 @@ class GiphyAPIController extends OCSController {
 			return new DataResponse($gifs, Http::STATUS_BAD_REQUEST);
 		}
 
-		$formattedEntries = array_map(function (array $gif): GiphySearchResultEntry {
+		$formattedEntries = array_map(function (array $gif): SearchResultEntry {
 			return $this->giphySearchService->getSearchResultFromAPIEntry($gif);
 		}, $gifs);
 		$responseData = [

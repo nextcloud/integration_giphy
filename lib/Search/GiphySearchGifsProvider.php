@@ -5,7 +5,7 @@ declare(strict_types=1);
 /**
  * @copyright Copyright (c) 2022, Julien Veyssier
  *
- * @author Julien Veyssier <eneiluj@posteo.net>
+ * @author Julien Veyssier <julien-nc@posteo.net>
  *
  * @license AGPL-3.0
  *
@@ -34,6 +34,7 @@ use OCP\IUser;
 use OCP\Search\IProvider;
 use OCP\Search\ISearchQuery;
 use OCP\Search\SearchResult;
+use OCP\Search\SearchResultEntry;
 
 class GiphySearchGifsProvider implements IProvider {
 
@@ -106,7 +107,7 @@ class GiphySearchGifsProvider implements IProvider {
 			$gifs = $searchResult;
 		}
 
-		$formattedResults = array_map(function (array $gif): GiphySearchResultEntry {
+		$formattedResults = array_map(function (array $gif): SearchResultEntry {
 			return $this->giphySearchService->getSearchResultFromAPIEntry($gif);
 		}, $gifs);
 
