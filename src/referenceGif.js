@@ -19,11 +19,14 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+// TODO remove after fixing dependency issue in nc/vue https://github.com/nextcloud/nextcloud-vue/issues/3864
+import {} from '@nextcloud/vue-richtext'
+
 import {
 	registerWidget,
 	registerCustomPickerElement,
-	CustomPickerRenderResult,
-} from '@nextcloud/vue-richtext'
+	NcCustomPickerRenderResult,
+} from '@nextcloud/vue/dist/Components/NcRichText.js'
 
 __webpack_nonce__ = btoa(OC.requestToken) // eslint-disable-line
 __webpack_public_path__ = OC.linkTo('integration_giphy', 'js/') // eslint-disable-line
@@ -53,7 +56,7 @@ registerCustomPickerElement('giphy-gif', async (el, { providerId, accessible }) 
 			accessible,
 		},
 	}).$mount(el)
-	return new CustomPickerRenderResult(vueElement.$el, vueElement)
+	return new NcCustomPickerRenderResult(vueElement.$el, vueElement)
 }, (el, renderResult) => {
 	renderResult.object.$destroy()
 })
