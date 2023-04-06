@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## 1.0.3 – 2023-04-06
+### Added
+- admin option to choose the rating filter used when searching and getting trending GIFs
+
 ## 1.0.2 – 2023-03-08
 ### Changed
 - lazy load reference scripts
