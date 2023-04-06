@@ -148,8 +148,10 @@ class GiphyAPIService {
 	 * @return array request result
 	 */
 	public function searchGifs(string $query, int $offset = 0, int $limit = 5): array {
+		$rating = $this->config->getAppValue(Application::APP_ID, 'rating', Application::DEFAULT_RATING) ?: Application::DEFAULT_RATING;
 		$params = [
 			'q' => $query,
+			'rating' => $rating,
 			'limit' => $limit,
 			'offset' => $offset,
 		];
@@ -163,12 +165,12 @@ class GiphyAPIService {
 	/**
 	 * Get trending gifs
 	 *
-	 * @param string $rating
 	 * @param int $offset
 	 * @param int $limit
 	 * @return array request result
 	 */
-	public function getTrendingGifs(string $rating = 'g', int $offset = 0, int $limit = 10): array {
+	public function getTrendingGifs(int $offset = 0, int $limit = 10): array {
+		$rating = $this->config->getAppValue(Application::APP_ID, 'rating', Application::DEFAULT_RATING) ?: Application::DEFAULT_RATING;
 		$params = [
 			'rating' => $rating,
 			'limit' => $limit,

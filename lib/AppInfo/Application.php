@@ -25,6 +25,7 @@ class Application extends App implements IBootstrap {
 	public const APP_ID = 'integration_giphy';
 	// this key belongs to the eneiluj+giphy@posteo.net acount on https://developers.giphy.com
 	public const DEFAULT_API_KEY = 'LebyjhpSc5GpX5xKSEtdxFIWMneLlrIF';
+	public const DEFAULT_RATING = 'g';
 
 	public function __construct(array $urlParams = []) {
 		parent::__construct(self::APP_ID, $urlParams);

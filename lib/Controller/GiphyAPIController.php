@@ -90,13 +90,12 @@ class GiphyAPIController extends OCSController {
 	/**
 	 * @NoAdminRequired
 	 *
-	 * @param string $rating
 	 * @param int $cursor
 	 * @param int $limit
 	 * @return DataResponse
 	 */
-	public function getTrendingGifs(string $rating = 'g', int $cursor = 0, int $limit = 10): DataResponse {
-		$gifs = $this->giphyAPIService->getTrendingGifs($rating, $cursor, $limit);
+	public function getTrendingGifs(int $cursor = 0, int $limit = 10): DataResponse {
+		$gifs = $this->giphyAPIService->getTrendingGifs($cursor, $limit);
 		if (isset($gifs['error'])) {
 			return new DataResponse($gifs, Http::STATUS_BAD_REQUEST);
 		}

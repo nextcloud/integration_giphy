@@ -25,11 +25,13 @@ class Admin implements ISettings {
 		$apiKey = $this->config->getAppValue(Application::APP_ID, 'api_key');
 		$linkPreviewEnabled = $this->config->getAppValue(Application::APP_ID, 'link_preview_enabled', '1') === '1';
 		$searchEnabled = $this->config->getAppValue(Application::APP_ID, 'search_gifs_enabled', '1') === '1';
+		$rating = $this->config->getAppValue(Application::APP_ID, 'rating', Application::DEFAULT_RATING) ?: Application::DEFAULT_RATING;
 
 		$adminConfig = [
 			'api_key' => $apiKey,
 			'link_preview_enabled' => $linkPreviewEnabled,
 			'search_gifs_enabled' => $searchEnabled,
+			'rating' => $rating,
 		];
 		$this->initialStateService->provideInitialState('admin-config', $adminConfig);
 

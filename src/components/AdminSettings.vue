@@ -18,6 +18,18 @@
 					@input="onInput"
 					@focus="readonly = false">
 			</div>
+			<div class="line">
+				<label for="giphy-rating-select">
+					<FilterCheckIcon :size="20" class="icon" />
+					{{ t('integration_giphy', 'Rating filter') }}
+				</label>
+				<NcSelect
+					:value="selectedRating"
+					class="rating-select"
+					:options="ratingOptions"
+					input-id="giphy-rating-select"
+					@input="onRatingChange" />
+			</div>
 			<NcCheckboxRadioSwitch
 				:checked="state.search_gifs_enabled"
 				@update:checked="onCheckboxChanged($event, 'search_gifs_enabled')">
@@ -34,6 +46,7 @@
 
 <script>
 import KeyIcon from 'vue-material-design-icons/Key.vue'
+import FilterCheckIcon from 'vue-material-design-icons/FilterCheck.vue'
 
 import GiphyIcon from './icons/GiphyIcon.vue'
 
@@ -44,6 +57,26 @@ import { delay } from '../utils.js'
 import { showSuccess, showError } from '@nextcloud/dialogs'
 
 import NcCheckboxRadioSwitch from '@nextcloud/vue/dist/Components/NcCheckboxRadioSwitch.js'
+import NcSelect from '@nextcloud/vue/dist/Components/NcSelect.js'
+
+const ratings = {
+	g: {
+		value: 'g',
+		label: t('integration_giphy', 'G - Level 1'),
+	},
+	pg: {
+		value: 'pg',
+		label: t('integration_giphy', 'PG - Level 2'),
+	},
+	'pg-13': {
+		value: 'pg-13',
+		label: t('integration_giphy', 'PG 13 - Level 3'),
+	},
+	r: {
+		value: 'r',
+		label: t('integration_giphy', 'R - Level 4'),
+	},
+}
 
 export default {
 	name: 'AdminSettings',
@@ -51,7 +84,9 @@ export default {
 	components: {
 		GiphyIcon,
 		NcCheckboxRadioSwitch,
+		NcSelect,
 		KeyIcon,
+		FilterCheckIcon,
 	},
 
 	props: [],
@@ -64,6 +99,29 @@ export default {
 		}
 	},
 
+	computed: {
+		ratingOptions() {
+			return Object.values(ratings).map(ra => {
+				return {
+					id: ra.value,
+					value: ra.value,
+					label: ra.label,
+				}
+			})
+		},
+		selectedRating() {
+			if (ratings[this.state.rating]) {
+				const ra = ratings[this.state.rating]
+				return {
+					id: ra.value,
+					value: ra.value,
+					label: ra.label,
+				}
+			}
+			return null
+		},
+	},
+
 	watch: {
 	},
 
@@ -74,6 +132,11 @@ export default {
 		onCheckboxChanged(newValue, key) {
 			this.state[key] = newValue
 			this.saveOptions({ [key]: this.state[key] ? '1' : '0' })
+		},
+		onRatingChange(newRating) {
+			console.debug('rating change', newRating)
+			this.state.rating = newRating.value
+			this.saveOptions({ rating: this.state.rating })
 		},
 		onInput() {
 			delay(() => {
