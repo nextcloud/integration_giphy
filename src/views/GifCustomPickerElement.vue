@@ -238,7 +238,7 @@ export default {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	//padding: 16px;
+	padding: 12px 16px 0 16px;
 	overflow-y: auto;
 	max-height: 800px;
 
@@ -249,7 +249,7 @@ export default {
 
 	.attribution {
 		position: absolute;
-		bottom: 16px;
+		bottom: 4px;
 		left: 16px;
 		height: 30px;
 		border-radius: var(--border-radius);
