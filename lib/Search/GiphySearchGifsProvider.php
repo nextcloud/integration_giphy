@@ -95,9 +95,14 @@ class GiphySearchGifsProvider implements IProvider {
 		$offset = $query->getCursor();
 		$offset = $offset ? intval($offset) : 0;
 
-		$searchGifsEnabled = $this->config->getAppValue(Application::APP_ID, 'search_gifs_enabled', '1') === '1';
-		if (!$searchGifsEnabled) {
-			return SearchResult::paginated($this->getName(), [], 0);
+		$routeFrom = $query->getRoute();
+		$requestedFromSmartPicker = $routeFrom === '' || $routeFrom === 'smart-picker';
+
+		if (!$requestedFromSmartPicker) {
+			$searchGifsEnabled = $this->config->getAppValue(Application::APP_ID, 'search_gifs_enabled', '1') === '1';
+			if (!$searchGifsEnabled) {
+				return SearchResult::paginated($this->getName(), [], 0);
+			}
 		}
 
 		$searchResult = $this->giphyAPIService->searchGifs($term, $offset, $limit);
