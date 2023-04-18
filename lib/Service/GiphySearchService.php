@@ -67,7 +67,7 @@ class GiphySearchService {
 	 * @return string
 	 */
 	private function getIcon(array $entry): string {
-		return $this->giphyAPIService->getGifProxiedUrl($entry);
+		return '';
 	}
 
 	/**
