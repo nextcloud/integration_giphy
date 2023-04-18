@@ -115,13 +115,13 @@ class GiphyReferenceProvider extends ADiscoverableReferenceProvider {
 			$gifId = $this->getGifId($referenceText);
 			if ($gifId !== null) {
 				$gifInfo = $this->giphyAPIService->getGifInfo($gifId);
+				$reference = new Reference($referenceText);
 				if ($gifInfo !== null
 					&& isset(
 						$gifInfo['title'], $gifInfo['slug'], $gifInfo['images'],
 						$gifInfo['images']['original'], $gifInfo['images']['original']['url']
 					)
 				) {
-					$reference = new Reference($referenceText);
 					$reference->setTitle($gifInfo['title'] ?? 'Unknown title');
 					$reference->setDescription($gifInfo['username'] ?? $gifInfo['slug'] ?? $gifId);
 					$imageUrl = $this->giphyAPIService->getGifProxiedUrl($gifInfo);
@@ -132,8 +132,10 @@ class GiphyReferenceProvider extends ADiscoverableReferenceProvider {
 						self::RICH_OBJECT_TYPE,
 						$gifInfo,
 					);
-					return $reference;
+				} else {
+					$reference->setDescription($this->l10n->t('GIF not found'));
 				}
+				return $reference;
 			}
 			// fallback to opengraph
 			return $this->linkReferenceProvider->resolveReference($referenceText);
