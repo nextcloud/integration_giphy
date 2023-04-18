@@ -23,27 +23,19 @@ use Psr\Log\LoggerInterface;
 use OCP\Http\Client\IClientService;
 use Throwable;
 
+/**
+ * Service to make requests to the Giphy REST API
+ */
 class GiphyAPIService {
-	private LoggerInterface $logger;
-	private IL10N $l10n;
-	private IConfig $config;
-	private IURLGenerator $urlGenerator;
 	private IClient $client;
 
-	/**
-	 * Service to make requests to Giphy REST API
-	 */
 	public function __construct (string $appName,
-								LoggerInterface $logger,
-								IL10N $l10n,
-								IConfig $config,
-								IURLGenerator $urlGenerator,
+								private LoggerInterface $logger,
+								private IL10N $l10n,
+								private IConfig $config,
+								private IURLGenerator $urlGenerator,
 								IClientService $clientService) {
 		$this->client = $clientService->newClient();
-		$this->logger = $logger;
-		$this->l10n = $l10n;
-		$this->config = $config;
-		$this->urlGenerator = $urlGenerator;
 	}
 
 	/**

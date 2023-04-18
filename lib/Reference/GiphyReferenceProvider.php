@@ -38,28 +38,13 @@ class GiphyReferenceProvider extends ADiscoverableReferenceProvider {
 
 	private const RICH_OBJECT_TYPE = Application::APP_ID . '_gif';
 
-	private GiphyAPIService $giphyAPIService;
-	private ?string $userId;
-	private IConfig $config;
-	private ReferenceManager $referenceManager;
-	private IL10N $l10n;
-	private IURLGenerator $urlGenerator;
-	private LinkReferenceProvider $linkReferenceProvider;
-
-	public function __construct(GiphyAPIService $giphyAPIService,
-								IConfig $config,
-								IL10N $l10n,
-								IURLGenerator $urlGenerator,
-								ReferenceManager $referenceManager,
-								LinkReferenceProvider $linkReferenceProvider,
-								?string $userId) {
-		$this->giphyAPIService = $giphyAPIService;
-		$this->userId = $userId;
-		$this->config = $config;
-		$this->referenceManager = $referenceManager;
-		$this->l10n = $l10n;
-		$this->urlGenerator = $urlGenerator;
-		$this->linkReferenceProvider = $linkReferenceProvider;
+	public function __construct(private GiphyAPIService $giphyAPIService,
+								private IConfig $config,
+								private IL10N $l10n,
+								private IURLGenerator $urlGenerator,
+								private ReferenceManager $referenceManager,
+								private LinkReferenceProvider $linkReferenceProvider,
+								private ?string $userId) {
 	}
 
 	/**

@@ -23,17 +23,12 @@ use OCP\Search\SearchResultEntry;
 
 class GiphyAPIController extends OCSController {
 
-	private GiphyAPIService $giphyAPIService;
-	private GiphySearchService $giphySearchService;
-
 	public function __construct(string          $appName,
 								IRequest        $request,
-								GiphyAPIService $giphyAPIService,
-								GiphySearchService $giphySearchService,
+								private GiphyAPIService $giphyAPIService,
+								private GiphySearchService $giphySearchService,
 								?string         $userId) {
 		parent::__construct($appName, $request);
-		$this->giphyAPIService = $giphyAPIService;
-		$this->giphySearchService = $giphySearchService;
 	}
 
 	/**

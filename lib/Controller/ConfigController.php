@@ -20,14 +20,11 @@ use OCA\Giphy\AppInfo\Application;
 
 class ConfigController extends Controller {
 
-	private IConfig $config;
-
 	public function __construct(string   $appName,
 								IRequest $request,
-								IConfig  $config,
+								private IConfig  $config,
 								?string  $userId) {
 		parent::__construct($appName, $request);
-		$this->config = $config;
 	}
 
 	/**
