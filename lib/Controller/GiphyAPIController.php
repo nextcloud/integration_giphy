@@ -37,8 +37,7 @@ class GiphyAPIController extends OCSController {
 	}
 
 	/**
-	 * @NoAdminRequired
-	 * @NoCSRFRequired
+	 * @PublicPage
 	 *
 	 * Get gif content
 	 * @param string $gifId

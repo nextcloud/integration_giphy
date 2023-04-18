@@ -103,9 +103,10 @@ class GiphyAPIService {
 
 	/**
 	 * Request a gif image
+	 *
 	 * @param string $gifId
 	 * @param string $preferredVersion
-	 * @return array|null Avatar image data
+	 * @return array|null image data
 	 * @throws Exception
 	 */
 	public function getGifFromId(string $gifId, string $preferredVersion = 'original'): ?array {
@@ -126,6 +127,16 @@ class GiphyAPIService {
 		return null;
 	}
 
+	/**
+	 * @param string $gifId
+	 * @param string $domainPrefix
+	 * @param string $fileName
+	 * @param string $cid
+	 * @param string $rid
+	 * @param string $ct
+	 * @return array
+	 * @throws Exception
+	 */
 	public function getGifFromDirectUrl(string $gifId, string $domainPrefix, string $fileName, string $cid, string $rid, string $ct): array {
 		// example: https://media4.giphy.com/media/BaDsH4FpMBnqdK8J0g/giphy.gif?cid=ae23904804a21bf61bc9d904e66605c31a584d73c05db5ad&rid=giphy.gif&ct=g
 		$gifUrl = 'https://' . urlencode($domainPrefix) . '.giphy.com/media/' . urlencode($gifId) . '/' . urlencode($fileName)
