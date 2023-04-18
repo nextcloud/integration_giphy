@@ -29,7 +29,7 @@
 			</div>
 			<img v-show="isLoaded"
 				class="image"
-				:src="richObject.proxied_url"
+				:src="proxiedUrl"
 				@load="isLoaded = true">
 			<a v-show="isLoaded"
 				class="attribution"
@@ -47,6 +47,7 @@
 import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
 
 import { imagePath } from '@nextcloud/router'
+import { getRequestToken } from '@nextcloud/auth'
 
 export default {
 	name: 'GifReferenceWidget',
@@ -79,6 +80,11 @@ export default {
 	},
 
 	computed: {
+		proxiedUrl() {
+			return this.richObject.proxied_url
+				? this.richObject.proxied_url + '?requesttoken=' + encodeURIComponent(getRequestToken())
+				: ''
+		},
 	},
 
 	methods: {
