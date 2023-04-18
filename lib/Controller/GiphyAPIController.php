@@ -60,9 +60,12 @@ class GiphyAPIController extends OCSController {
 	}
 
 	/**
-	 * @PublicPage
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
 	 *
 	 * Get gif content
+	 * Used by the top-right unified search because we can't inject the request token to pass the CSRF check
+	 *
 	 * @param string $gifId
 	 * @param string $domainPrefix
 	 * @param string $fileName
@@ -70,6 +73,27 @@ class GiphyAPIController extends OCSController {
 	 * @param string $rid
 	 * @param string $ct
 	 * @return DataDisplayResponse The gif image content
+	 * @throws \Exception
+	 */
+	public function privateGetGifFromDirectUrl(string $gifId, string $domainPrefix, string $fileName, string $cid, string $rid, string $ct): DataDisplayResponse {
+		return $this->getGifFromDirectUrl($gifId, $domainPrefix, $fileName, $cid, $rid, $ct);
+	}
+
+	/**
+	 * @PublicPage
+	 *
+	 * Get gif content
+	 * Used by the reference widget and the picker component
+	 * Public because the picker can be used in public pages
+	 *
+	 * @param string $gifId
+	 * @param string $domainPrefix
+	 * @param string $fileName
+	 * @param string $cid
+	 * @param string $rid
+	 * @param string $ct
+	 * @return DataDisplayResponse The gif image content
+	 * @throws \Exception
 	 */
 	public function getGifFromDirectUrl(string $gifId, string $domainPrefix, string $fileName, string $cid, string $rid, string $ct): DataDisplayResponse {
 		$gif = $this->giphyAPIService->getGifFromDirectUrl($gifId, $domainPrefix, $fileName, $cid, $rid, $ct);

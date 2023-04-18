@@ -49,9 +49,10 @@ class GiphyAPIService {
 	/**
 	 * @param array $gifInfo
 	 * @param string $preferredVersion
+	 * @param bool $private
 	 * @return string
 	 */
-	public function getGifProxiedUrl(array $gifInfo, string $preferredVersion = 'original'): string {
+	public function getGifProxiedUrl(array $gifInfo, string $preferredVersion = 'original', bool $private = false): string {
 		if (!isset($gifInfo['images'][$preferredVersion])) {
 			if (!isset($gifInfo['images']['original'])) {
 				return '';
@@ -59,8 +60,11 @@ class GiphyAPIService {
 			$preferredVersion = 'original';
 		}
 		[$domainPrefix, $fileName, $cid, $rid, $ct] = self::getGifUrlInfo($gifInfo['images'][$preferredVersion]['url']);
+		$route = $private
+			? Application::APP_ID . '.giphyAPI.privateGetGifFromDirectUrl'
+			: Application::APP_ID . '.giphyAPI.getGifFromDirectUrl';
 		return $this->urlGenerator->linkToRoute(
-			Application::APP_ID . '.giphyAPI.getGifFromDirectUrl',
+			$route,
 			[
 				'gifId' => $gifInfo['id'],
 				'domainPrefix' => $domainPrefix,

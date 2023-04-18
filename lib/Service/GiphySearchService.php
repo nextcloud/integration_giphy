@@ -13,28 +13,27 @@ namespace OCA\Giphy\Service;
 
 use OCP\Search\SearchResultEntry;
 
+/**
+ * Service to make requests to Giphy REST API
+ */
 class GiphySearchService {
-	private GiphyAPIService $giphyAPIService;
 
-	/**
-	 * Service to make requests to Giphy REST API
-	 */
 	public function __construct (string $appName,
-								GiphyAPIService $giphyAPIService) {
-		$this->giphyAPIService = $giphyAPIService;
+								private GiphyAPIService $giphyAPIService) {
 	}
 
 	/**
 	 * @param array $entry
+	 * @param bool $private
 	 * @return SearchResultEntry
 	 */
-	public function getSearchResultFromAPIEntry(array $entry): SearchResultEntry {
+	public function getSearchResultFromAPIEntry(array $entry, bool $private = false): SearchResultEntry {
 		return new SearchResultEntry(
-			$this->getThumbnailUrl($entry),
+			$this->getThumbnailUrl($entry, $private),
 			$this->getMainText($entry),
 			$this->getSubline($entry),
 			$this->getLinkToGiphy($entry),
-			$this->getIconUrl($entry),
+			$this->getIcon($entry),
 			false
 		);
 	}
@@ -67,15 +66,16 @@ class GiphySearchService {
 	 * @param array $entry
 	 * @return string
 	 */
-	private function getIconUrl(array $entry): string {
+	private function getIcon(array $entry): string {
 		return $this->giphyAPIService->getGifProxiedUrl($entry);
 	}
 
 	/**
 	 * @param array $entry
+	 * @param bool $private
 	 * @return string
 	 */
-	private function getThumbnailUrl(array $entry): string {
-		return $this->giphyAPIService->getGifProxiedUrl($entry, 'fixed_width');
+	private function getThumbnailUrl(array $entry, bool $private): string {
+		return $this->giphyAPIService->getGifProxiedUrl($entry, 'fixed_width', $private);
 	}
 }

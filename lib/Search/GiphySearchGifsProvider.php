@@ -38,22 +38,11 @@ use OCP\Search\SearchResultEntry;
 
 class GiphySearchGifsProvider implements IProvider {
 
-	private IAppManager $appManager;
-	private IL10N $l10n;
-	private IConfig $config;
-	private GiphyAPIService $giphyAPIService;
-	private GiphySearchService $giphySearchService;
-
-	public function __construct(IAppManager        $appManager,
-								IL10N              $l10n,
-								IConfig            $config,
-								GiphyAPIService    $giphyAPIService,
-								GiphySearchService $giphySearchService) {
-		$this->appManager = $appManager;
-		$this->l10n = $l10n;
-		$this->config = $config;
-		$this->giphyAPIService = $giphyAPIService;
-		$this->giphySearchService = $giphySearchService;
+	public function __construct(private IAppManager        $appManager,
+								private IL10N              $l10n,
+								private IConfig            $config,
+								private GiphyAPIService    $giphyAPIService,
+								private GiphySearchService $giphySearchService) {
 	}
 
 	/**
@@ -113,7 +102,7 @@ class GiphySearchGifsProvider implements IProvider {
 		}
 
 		$formattedResults = array_map(function (array $gif): SearchResultEntry {
-			return $this->giphySearchService->getSearchResultFromAPIEntry($gif);
+			return $this->giphySearchService->getSearchResultFromAPIEntry($gif, true);
 		}, $gifs);
 
 		return SearchResult::paginated(

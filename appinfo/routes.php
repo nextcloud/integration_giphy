@@ -20,6 +20,7 @@ return [
 		// not used for now
 		['name' => 'giphyAPI#getGifFromId', 'url' => '/gif/{gifId}', 'verb' => 'GET'],
 		['name' => 'giphyAPI#getGifFromDirectUrl', 'url' => '/gif/direct/{gifId}/{domainPrefix}/{fileName}/{cid}/{rid}/{ct}', 'verb' => 'GET'],
+		['name' => 'giphyAPI#privateGetGifFromDirectUrl', 'url' => '/private/gif/direct/{gifId}/{domainPrefix}/{fileName}/{cid}/{rid}/{ct}', 'verb' => 'GET'],
 	],
 	'ocs' => [
 		['name' => 'giphyAPI#getTrendingGifs', 'url' => '/api/{apiVersion}/gifs/trending', 'verb' => 'GET', 'requirements' => $requirements],
