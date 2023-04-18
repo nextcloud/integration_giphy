@@ -195,11 +195,11 @@ export default {
 					)
 				: this.cursor === null
 					? generateOcsUrl(
-						'search/providers/{searchProviderId}/search?term={term}&limit={limit}',
+						'apps/integration_giphy/api/v1/gifs/search?term={term}&limit={limit}',
 						{ searchProviderId, term: this.searchQuery, limit }
 					)
 					: generateOcsUrl(
-						'search/providers/{searchProviderId}/search?term={term}&cursor={cursor}&limit={limit}',
+						'apps/integration_giphy/api/v1/gifs/search?term={term}&cursor={cursor}&limit={limit}',
 						{ searchProviderId, term: this.searchQuery, cursor: this.cursor, limit }
 					)
 			return axios.get(url, {

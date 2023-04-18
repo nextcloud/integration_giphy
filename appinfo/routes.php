@@ -23,5 +23,6 @@ return [
 	],
 	'ocs' => [
 		['name' => 'giphyAPI#getTrendingGifs', 'url' => '/api/{apiVersion}/gifs/trending', 'verb' => 'GET', 'requirements' => $requirements],
+		['name' => 'giphyAPI#searchGifs', 'url' => '/api/{apiVersion}/gifs/search', 'verb' => 'GET', 'requirements' => $requirements],
 	],
 ];

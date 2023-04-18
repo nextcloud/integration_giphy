@@ -10,13 +10,14 @@
 		</div>
 		<img v-show="isLoaded"
 			class="gif-image"
-			:src="gif.thumbnailUrl"
+			:src="imgUrl"
 			@load="isLoaded = true">
 	</div>
 </template>
 
 <script>
 import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
+import { getRequestToken } from '@nextcloud/auth'
 
 export default {
 	name: 'PickerResult',
@@ -35,6 +36,7 @@ export default {
 	data() {
 		return {
 			isLoaded: false,
+			imgUrl: this.gif.thumbnailUrl + '?requesttoken=' + encodeURIComponent(getRequestToken()),
 		}
 	},
 

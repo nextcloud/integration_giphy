@@ -61,8 +61,7 @@ class GiphyAPIController extends OCSController {
 	}
 
 	/**
-	 * @NoAdminRequired
-	 * @NoCSRFRequired
+	 * @PublicPage
 	 *
 	 * Get gif content
 	 * @param string $gifId
@@ -88,7 +87,7 @@ class GiphyAPIController extends OCSController {
 	}
 
 	/**
-	 * @NoAdminRequired
+	 * @PublicPage
 	 *
 	 * @param int $cursor
 	 * @param int $limit
@@ -96,6 +95,32 @@ class GiphyAPIController extends OCSController {
 	 */
 	public function getTrendingGifs(int $cursor = 0, int $limit = 10): DataResponse {
 		$gifs = $this->giphyAPIService->getTrendingGifs($cursor, $limit);
+		if (isset($gifs['error'])) {
+			return new DataResponse($gifs, Http::STATUS_BAD_REQUEST);
+		}
+
+		$formattedEntries = array_map(function (array $gif): SearchResultEntry {
+			return $this->giphySearchService->getSearchResultFromAPIEntry($gif);
+		}, $gifs);
+		$responseData = [
+			'entries' => $formattedEntries,
+			'cursor' => $cursor + count($formattedEntries),
+		];
+		$response = new DataResponse($responseData);
+		$response->cacheFor(60 * 60 * 24, false, true);
+		return $response;
+	}
+
+	/**
+	 * @PublicPage
+	 *
+	 * @param string $term
+	 * @param int $cursor
+	 * @param int $limit
+	 * @return DataResponse
+	 */
+	public function searchGifs(string $term, int $cursor = 0, int $limit = 10): DataResponse {
+		$gifs = $this->giphyAPIService->searchGifs($term, $cursor, $limit);
 		if (isset($gifs['error'])) {
 			return new DataResponse($gifs, Http::STATUS_BAD_REQUEST);
 		}
