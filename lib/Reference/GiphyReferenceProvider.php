@@ -100,11 +100,7 @@ class GiphyReferenceProvider extends ADiscoverableReferenceProvider {
 		if (!$adminLinkPreviewEnabled) {
 			return false;
 		}
-		// 2 types of supported links:
-		// https://giphy.com/gifs/seal-sappy-seals-BaDsH4FpMBnqdK8J0g
-		// https://media.giphy.com/media/BaDsH4FpMBnqdK8J0g/giphy.gif
-		return preg_match('/^(?:https?:\/\/)?(?:www\.)?giphy\.com\/gifs\/[^\/?&]+$/i', $referenceText) === 1
-			|| preg_match('/^(?:https?:\/\/)?(?:www\.)?media\.giphy\.com\/media\/[^\/?&]+\/giphy\.gif$/i', $referenceText) === 1;
+		return $this->getGifId($referenceText) !== null;
 	}
 
 	/**
@@ -149,6 +145,8 @@ class GiphyReferenceProvider extends ADiscoverableReferenceProvider {
 	 * @return array|null
 	 */
 	private function getGifId(string $url): ?string {
+		// support 2 types of links:
+		// https://giphy.com/gifs/seal-sappy-seals-BaDsH4FpMBnqdK8J0g
 		preg_match('/^(?:https?:\/\/)?(?:www\.)?giphy\.com\/gifs\/([^\/?&]+)$/i', $url, $matches);
 		if (count($matches) > 1) {
 			$slug = $matches[1];
@@ -156,6 +154,7 @@ class GiphyReferenceProvider extends ADiscoverableReferenceProvider {
 			return end($parts);
 		}
 
+		// https://media.giphy.com/media/BaDsH4FpMBnqdK8J0g/giphy.gif
 		preg_match('/^(?:https?:\/\/)?(?:www\.)?media\.giphy\.com\/media\/([^\/?&]+)\/giphy\.gif$/i', $url, $matches);
 		if (count($matches) > 1) {
 			return $matches[1];
