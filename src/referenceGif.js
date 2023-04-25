@@ -19,9 +19,6 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-// TODO remove after fixing dependency issue in nc/vue https://github.com/nextcloud/nextcloud-vue/issues/3864
-import {} from '@nextcloud/vue-richtext'
-
 import {
 	registerWidget,
 	registerCustomPickerElement,
