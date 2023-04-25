@@ -18,7 +18,7 @@ class GiphyAPIServiceTest extends \PHPUnit\Framework\TestCase {
 			// mediaUrl => domainPrefix, fileName, cid, rid, ct
 			[
 				'https://media4.giphy.com/media/BaDsH4FpMBnqdK8J0g/giphy.gif?cid=ae23904804a21bf61bc9d904e66605c31a584d73c05db5ad&rid=giphy.gif&ct=g',
-				['media4', 'giphy.gif', 'ae23904804a21bf61bc9d904e66605c31a584d73c05db5ad', 'giphy.gif', 'g'],
+				['domainPrefix' => 'media4', 'fileName' => 'giphy.gif', 'cid' => 'ae23904804a21bf61bc9d904e66605c31a584d73c05db5ad', 'rid' => 'giphy.gif', 'ct' => 'g'],
 			],
 		];
 

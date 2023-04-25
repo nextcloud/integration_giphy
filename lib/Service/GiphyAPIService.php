@@ -51,7 +51,7 @@ class GiphyAPIService {
 			}
 			$preferredVersion = 'original';
 		}
-		[$domainPrefix, $fileName, $cid, $rid, $ct] = self::getGifUrlInfo($gifInfo['images'][$preferredVersion]['url']);
+		$gifUrlInfo = self::getGifUrlInfo($gifInfo['images'][$preferredVersion]['url']);
 		$route = $private
 			? Application::APP_ID . '.giphyAPI.privateGetGifFromDirectUrl'
 			: Application::APP_ID . '.giphyAPI.getGifFromDirectUrl';
@@ -59,11 +59,11 @@ class GiphyAPIService {
 			$route,
 			[
 				'gifId' => $gifInfo['id'],
-				'domainPrefix' => $domainPrefix,
-				'fileName' => $fileName,
-				'cid' => $cid,
-				'rid' => $rid,
-				'ct' => $ct,
+				'domainPrefix' => $gifUrlInfo['domainPrefix'],
+				'fileName' => $gifUrlInfo['fileName'],
+				'cid' => $gifUrlInfo['cid'],
+				'rid' => $gifUrlInfo['rid'],
+				'ct' => $gifUrlInfo['ct'],
 			]
 		);
 	}
@@ -73,15 +73,30 @@ class GiphyAPIService {
 	 * @return array
 	 */
 	public static function getGifUrlInfo(string $mediaUrl): array {
-		// example: https://media4.giphy.com/media/BaDsH4FpMBnqdK8J0g/giphy.gif?cid=ae23904804a21bf61bc9d904e66605c31a584d73c05db5ad&rid=giphy.gif&ct=g
-		preg_match(
-			'/^(?:https?:\/\/)?(?:www\.)?([A-Za-z0-9]+)\.giphy\.com\/media\/[^\/?&]+\/([^\/&?]+)\?cid=([a-z0-9]+)&rid=([^\/?&]+)&ct=([^\/?&]+)$/i',
-			$mediaUrl,
-			$matches
-		);
-		if ($matches !== null && count($matches) > 5) {
-			return [$matches[1], $matches[2], $matches[3], $matches[4], $matches[5]];
+		// examples:
+		// https://media4.giphy.com/media/BaDsH4FpMBnqdK8J0g/giphy.gif?cid=ae23904804a21bf61bc9d904e66605c31a584d73c05db5ad&rid=giphy.gif&ct=g
+		// https://media1.giphy.com/media/HCTfYH2Xk5yw/200w.gif?cid=ae239048qk2ahzc7vpjuagzbyava4073ygy3gj2owzyx3jtl&ep=v1_gifs_trending&rid=200w.gif&ct=g
+		$parsedUrl = parse_url($mediaUrl);
+		preg_match('/^(?:www\.)?([A-Za-z0-9]+)\.giphy\.com$/i', $parsedUrl['host'], $domainPrefixMatches);
+		if ($domainPrefixMatches !== null && count($domainPrefixMatches) > 1) {
+			$domainPrefix = $domainPrefixMatches[1];
+			preg_match('/^\/media\/[^\/?&]+\/([^\/&?]+)$/i', $parsedUrl['path'], $pathMatches);
+			if ($pathMatches !== null && count($pathMatches) > 1) {
+				$fileName = $pathMatches[1];
+				$query = $parsedUrl['query'];
+				parse_str($query, $parsedQuery);
+				if (isset($parsedQuery['cid'], $parsedQuery['rid'], $parsedQuery['ct'])) {
+					return [
+						'domainPrefix' => $domainPrefix,
+						'fileName' => $fileName,
+						'cid' => $parsedQuery['cid'],
+						'rid' => $parsedQuery['rid'],
+						'ct' => $parsedQuery['ct'],
+					];
+				}
+			}
 		}
+
 		return [];
 	}
 
