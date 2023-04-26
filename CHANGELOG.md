@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
-## 1.0.5 – 2023-04-26
+## 1.0.6 – 2023-04-26
 ### Fixed
 - keep CSRF check for image endpoint and fix CSRF in the widget
 - allow the picker to use the search provider even when it's disabled in the unified search menu
