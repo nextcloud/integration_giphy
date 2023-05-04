@@ -24,6 +24,7 @@ namespace OCA\Giphy\Reference;
 
 use OC\Collaboration\Reference\LinkReferenceProvider;
 use OCP\Collaboration\Reference\ADiscoverableReferenceProvider;
+use OCP\Collaboration\Reference\ISearchableReferenceProvider;
 use OCP\Collaboration\Reference\Reference;
 use OC\Collaboration\Reference\ReferenceManager;
 use OCA\Giphy\AppInfo\Application;
@@ -34,7 +35,7 @@ use OCP\IL10N;
 
 use OCP\IURLGenerator;
 
-class GiphyReferenceProvider extends ADiscoverableReferenceProvider {
+class GiphyReferenceProvider extends ADiscoverableReferenceProvider implements ISearchableReferenceProvider {
 
 	private const RICH_OBJECT_TYPE = Application::APP_ID . '_gif';
 
@@ -75,6 +76,13 @@ class GiphyReferenceProvider extends ADiscoverableReferenceProvider {
 		return $this->urlGenerator->getAbsoluteURL(
 			$this->urlGenerator->imagePath(Application::APP_ID, 'app-dark.svg')
 		);
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function getSupportedSearchProviderIds(): array {
+		return ['giphy-search-gifs'];
 	}
 
 	/**
