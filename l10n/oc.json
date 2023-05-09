@@ -1,0 +1,6 @@
+{ "translations": {
+    "Bad credentials" : "Marrits identificants",
+    "Connected accounts" : "Comptes connectats",
+    "No results" : "Cap de resultat"
+},"pluralForm" :"nplurals=2; plural=(n > 1);"
+}
