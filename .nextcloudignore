@@ -14,7 +14,11 @@
 /.pre-commit-config.yaml
 /babel.config.js
 /build
+/AUTHORS.md
+/CHANGELOG.md
 /CODE_OF_CONDUCT.md
+/README.md
+/SECURITY.md
 /composer.*
 /node_modules
 /screenshots
@@ -22,7 +26,6 @@
 /vendor
 /jest.config.js
 /Makefile
-/makefile
 /krankerl.toml
 /package-lock.json
 /package.json
@@ -31,6 +34,5 @@
 /pyproject.toml
 /renovate.json
 /stylelint.config.js
-/webpack.config.js
-/webpack.js
+/webpack.*
 tests

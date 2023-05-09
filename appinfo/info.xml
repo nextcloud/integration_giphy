@@ -10,14 +10,14 @@
     <author>Julien Veyssier</author>
     <namespace>Giphy</namespace>
     <documentation>
-        <developer>https://github.com/julien-nc/integration_giphy</developer>
+        <developer>https://github.com/nextcloud/integration_giphy</developer>
     </documentation>
     <category>integration</category>
-    <website>https://github.com/julien-nc/integration_giphy</website>
-    <bugs>https://github.com/julien-nc/integration_giphy/issues</bugs>
-    <screenshot>https://github.com/julien-nc/integration_giphy/raw/main/img/screenshot1.jpg</screenshot>
-    <screenshot>https://github.com/julien-nc/integration_giphy/raw/main/img/screenshot2.jpg</screenshot>
-    <screenshot>https://github.com/julien-nc/integration_giphy/raw/main/img/screenshot3.jpg</screenshot>
+    <website>https://github.com/nextcloud/integration_giphy</website>
+    <bugs>https://github.com/nextcloud/integration_giphy/issues</bugs>
+    <screenshot>https://raw.githubusercontent.com/nextcloud/integration_giphy/main/screenshots/screenshot1.jpg</screenshot>
+    <screenshot>https://raw.githubusercontent.com/nextcloud/integration_giphy/main/screenshots/screenshot2.jpg</screenshot>
+    <screenshot>https://raw.githubusercontent.com/nextcloud/integration_giphy/main/screenshots/screenshot3.jpg</screenshot>
     <dependencies>
         <nextcloud min-version="26" max-version="27"/>
     </dependencies>
