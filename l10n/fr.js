@@ -1,10 +1,32 @@
 OC.L10N.register(
     "integration_giphy",
     {
+    "GIF picker (by Giphy)" : "Selection de GIF (Par Giphy)",
+    "GIF not found" : "GIF introuvable",
+    "Giphy GIFs" : "GIFs Giphy",
     "Bad HTTP method" : "Mauvaise méthode HTTP",
     "Bad credentials" : "Identifiants incorrects",
     "Connected accounts" : "Comptes connectés",
+    "Giphy integration" : "Intégration Giphy<br><br>",
+    "Integration of Giphy" : "Intégration de Giphy",
+    "Giphy integration provides a unified search provider for GIFs. It also provides a link reference provider\n    to render links to GIFs and make it possible to search for GIFs in Talk, Text and potentially anywhere in Nextcloud." : "L'intégration de Giphy fournit un moteur de recherche unifié pour les GIFs. Il fournit également un référenceur de lien pour visualiser les liens vers les GIF et rendre possible la recherche de GIF dans Talk, Text et potentiellement n'importe où dans Nextcloud.",
+    "Giphy API key" : "Clé d'API Giphy",
+    "Leave empty to use the default API key" : "Laisser vide pour utiliser la clé API par défaut.",
+    "Rating filter" : "Filtre pour classement",
+    "Enable search provider for GIFs" : "Activer le moteur de recherche pour les GIFs",
+    "Enable Giphy link previews" : "Activer les aperçus des liens Giphy",
+    "G - Level 1" : "G - Niveau 1",
+    "PG - Level 2" : "PG - Niveau 2",
+    "PG 13 - Level 3" : "PG13 - Niveau 3",
+    "R - Level 4" : "R - Niveau 4",
+    "Giphy admin options saved" : "Options d'administration Giphy enregistrées",
+    "Failed to save Giphy admin options" : "Impossible d'enregistrer les options d'administration Giphy",
+    "Loading gif" : "Chargement du gif",
+    "Giphy GIF picker" : "Selection de GIF Giphy",
     "Searching..." : "Recherche...",
-    "No results" : "Aucun résultat"
+    "No results" : "Aucun résultat",
+    "No more GIFs" : "Fin de liste",
+    "Search GIFs" : "Rechercher des GIFs",
+    "Powered by Giphy" : "Propulsé par Giphy"
 },
 "nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

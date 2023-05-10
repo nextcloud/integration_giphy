@@ -1,10 +1,32 @@
 OC.L10N.register(
     "integration_giphy",
     {
+    "GIF picker (by Giphy)" : "Seleccionador de GIFs (por Giphy)",
+    "GIF not found" : "No se encontró el GIF",
+    "Giphy GIFs" : "GIFs de Giphy",
     "Bad HTTP method" : "Método HTTP erróneo",
     "Bad credentials" : "Credenciales erróneas",
     "Connected accounts" : "Cuentas conectadas",
+    "Giphy integration" : "Integración Giphy",
+    "Integration of Giphy" : "Integración de Giphy",
+    "Giphy integration provides a unified search provider for GIFs. It also provides a link reference provider\n    to render links to GIFs and make it possible to search for GIFs in Talk, Text and potentially anywhere in Nextcloud." : "La integración con Giphy proporciona un proveedor de búsqueda unificada de GIFs. Además proporciona un proveedor de referencias de enlaces\n   para generar enlaces a GIFs y posibilitar la búsqueda de GIFs en Talk, Text y potencialmente en cualquier lugar dentro de Nextcloud.",
+    "Giphy API key" : "Llave API de Giphy",
+    "Leave empty to use the default API key" : "Deje esto en blanco para utilizar la llave API por defecto",
+    "Rating filter" : "Filtro de calificación",
+    "Enable search provider for GIFs" : "Habilitar el proveedor de búsqueda para GIFs",
+    "Enable Giphy link previews" : "Habilitar la vista previa de los enlaces de Giphy",
+    "G - Level 1" : "G - Nivel 1",
+    "PG - Level 2" : "PG - Nivel 2",
+    "PG 13 - Level 3" : "PG 13 - Nivel 3",
+    "R - Level 4" : "R - Nivel 4",
+    "Giphy admin options saved" : "Las opciones de administrador Giphy fueron guardadas",
+    "Failed to save Giphy admin options" : "Fallo al guardar las opciones de administrador Giphy",
+    "Loading gif" : "Cargando gif",
+    "Giphy GIF picker" : "Selector GIF Giphy",
     "Searching..." : "Buscando ...",
-    "No results" : "Sin resultados"
+    "No results" : "Sin resultados",
+    "No more GIFs" : "No hay más GIFs",
+    "Search GIFs" : "Buscar GIFs",
+    "Powered by Giphy" : "Desarrollado por Giphy"
 },
 "nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");
