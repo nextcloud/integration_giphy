@@ -1,8 +1,30 @@
 { "translations": {
+    "GIF picker (by Giphy)" : "GIF-väljare (av Giphy)",
+    "GIF not found" : "GIF hittades inte",
+    "Giphy GIFs" : "Giphy GIF-bilder",
     "Bad HTTP method" : "Felaktig HTTP-metod",
     "Bad credentials" : "Ogiltiga inloggningsuppgifter",
     "Connected accounts" : "Anslutna konton",
+    "Giphy integration" : "Giphy-integration",
+    "Integration of Giphy" : "Integration av Giphy",
+    "Giphy integration provides a unified search provider for GIFs. It also provides a link reference provider\n    to render links to GIFs and make it possible to search for GIFs in Talk, Text and potentially anywhere in Nextcloud." : "Giphy-integration ger en enhetlig sökleverantör för GIF-filer. Den tillhandahåller också en länkreferensleverantör\n    för att rendera länkar till GIF:er och göra det möjligt att söka efter GIF:er i Talk, Text och eventuellt var som helst i Nextcloud.",
+    "Giphy API key" : "Giphy API-nyckel",
+    "Leave empty to use the default API key" : "Lämna tomt för att använda standard-API-nyckeln",
+    "Rating filter" : "Graderingsfilter",
+    "Enable search provider for GIFs" : "Aktivera sökleverantör för GIF-bilder",
+    "Enable Giphy link previews" : "Aktivera förhandsvisningar av Giphy-länkar",
+    "G - Level 1" : "G - Nivå 1",
+    "PG - Level 2" : "PG - Nivå 2",
+    "PG 13 - Level 3" : "PG 13 - Nivå 3",
+    "R - Level 4" : "R - Nivå 4",
+    "Giphy admin options saved" : "Giphy admin-alternativ har sparats",
+    "Failed to save Giphy admin options" : "Det gick inte att spara Giphy admin-alternativ",
+    "Loading gif" : "Laddar gif",
+    "Giphy GIF picker" : "Giphy GIF-väljare",
     "Searching..." : "Söker...",
-    "No results" : "Inga resultat"
+    "No results" : "Inga resultat",
+    "No more GIFs" : "Inga fler GIF-bilder",
+    "Search GIFs" : "Sök efter GIF-bilder",
+    "Powered by Giphy" : "Drivs av Giphy"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

@@ -1,13 +1,32 @@
 OC.L10N.register(
     "integration_giphy",
     {
+    "GIF picker (by Giphy)" : "GIF 挑選器（來自 Giphy）",
+    "GIF not found" : "找不到 GIF",
+    "Giphy GIFs" : "Giphy GIFs",
     "Bad HTTP method" : "不正確的 HTTP 方法",
     "Bad credentials" : "錯誤的憑證",
     "Connected accounts" : "已連線的賬號",
+    "Giphy integration" : "Giphy 整合",
+    "Integration of Giphy" : "Giphy 整合",
+    "Giphy integration provides a unified search provider for GIFs. It also provides a link reference provider\n    to render links to GIFs and make it possible to search for GIFs in Talk, Text and potentially anywhere in Nextcloud." : "Giphy 整合為 GIF 提供了一個統一的搜尋提供者。其也提供了用來表現 GIF 連結的連結參照提供者，並可以在 Talk、Text 與 Nextcloud 中的任何地方搜尋 GIF。",
+    "Giphy API key" : "Giphy API 密鑰",
+    "Leave empty to use the default API key" : "留空以使用默認 API 密鑰",
+    "Rating filter" : "評價過濾條件",
+    "Enable search provider for GIFs" : "啟用 GIF 搜尋提供者",
+    "Enable Giphy link previews" : "啟用 Giphy 連結預覽",
     "G - Level 1" : "G - 1 級",
     "PG - Level 2" : "PG - 2 級",
     "PG 13 - Level 3" : "PG 13 - 3 級",
     "R - Level 4" : "R - 4 級",
-    "No results" : "沒有結果"
+    "Giphy admin options saved" : "Giphy 管理選項已儲存",
+    "Failed to save Giphy admin options" : "儲存 Giphy 管理選項失敗",
+    "Loading gif" : "正在載入 GIF",
+    "Giphy GIF picker" : "Giphy GIF 選擇器",
+    "Searching..." : "正在搜尋 …",
+    "No results" : "沒有結果",
+    "No more GIFs" : "無更多 GIF",
+    "Search GIFs" : "搜尋 GIF",
+    "Powered by Giphy" : "由 Giphy 提供"
 },
 "nplurals=1; plural=0;");
