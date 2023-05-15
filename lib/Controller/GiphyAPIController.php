@@ -76,6 +76,7 @@ class GiphyAPIController extends OCSController {
 
 	/**
 	 * @PublicPage
+	 * @NoCSRFRequired
 	 *
 	 * Get gif content
 	 * Used by the reference widget and the picker component

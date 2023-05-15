@@ -55,7 +55,7 @@ class GiphyAPIService {
 		$route = $private
 			? Application::APP_ID . '.giphyAPI.privateGetGifFromDirectUrl'
 			: Application::APP_ID . '.giphyAPI.getGifFromDirectUrl';
-		return $this->urlGenerator->linkToRoute(
+		return $this->urlGenerator->linkToRouteAbsolute(
 			$route,
 			[
 				'gifId' => $gifInfo['id'],
