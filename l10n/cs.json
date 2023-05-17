@@ -1,13 +1,28 @@
 { "translations": {
     "GIF not found" : "GIF nenalezen",
+    "Giphy GIFs" : "GiFy z Gyphy",
     "Bad HTTP method" : "Nesprávná HTTP metoda",
     "Bad credentials" : "Nesprávné přihlašovací údaje",
     "Connected accounts" : "Propojené účty",
     "Giphy integration" : "Napojení na Giphy",
+    "Integration of Giphy" : "Napojení na Giphy",
+    "Giphy API key" : "Klíč k API Giphy",
+    "Leave empty to use the default API key" : "Pokud chcete využít výchozí klíč k API, nevyplňujte.",
     "Rating filter" : "Filtr hodnocení",
+    "Enable search provider for GIFs" : "Zapnout poskytovatele hledání pro GIF obrázky",
+    "Enable Giphy link previews" : "Zapnout náhledy odkazu do Giphy",
+    "G - Level 1" : "G - úroveň 1",
+    "PG - Level 2" : "PG - úroveň 2",
+    "PG 13 - Level 3" : "PG 13 - úroveň 3",
+    "R - Level 4" : "R - úroveň 4",
+    "Giphy admin options saved" : "Předvolby správy Giphy uloženy",
+    "Failed to save Giphy admin options" : "Nepodařilo se uložit předvolby správy Giphy",
     "Loading gif" : "Načítá se gif",
+    "Giphy GIF picker" : "Volič GIF obrázků ze služby Giphy",
     "Searching..." : "Hledání…",
     "No results" : "Žádné výsledky",
-    "No more GIFs" : "Žádné další GIFy"
+    "No more GIFs" : "Žádné další GIFy",
+    "Search GIFs" : "Hledat GIF obrázky",
+    "Powered by Giphy" : "Využívá Giphy"
 },"pluralForm" :"nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;"
 }
