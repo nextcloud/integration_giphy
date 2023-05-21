@@ -1,6 +1,7 @@
 OC.L10N.register(
     "integration_giphy",
     {
+    "GIF picker (by Giphy)" : "Nástroj pro výběr GIF obrázků (ze služby Giphy)",
     "GIF not found" : "GIF nenalezen",
     "Giphy GIFs" : "GiFy z Gyphy",
     "Bad HTTP method" : "Nesprávná HTTP metoda",
@@ -8,6 +9,7 @@ OC.L10N.register(
     "Connected accounts" : "Propojené účty",
     "Giphy integration" : "Napojení na Giphy",
     "Integration of Giphy" : "Napojení na Giphy",
+    "Giphy integration provides a unified search provider for GIFs. It also provides a link reference provider\n    to render links to GIFs and make it possible to search for GIFs in Talk, Text and potentially anywhere in Nextcloud." : "Napojení na Giphy poskytuje poskytovatele do sjednoceného vyhledávání pro GIF obrázky. Také\nposkytuje poskytovatele do referencí na odkazy pro vykreslování odkazů na GIF obrázky a umožňuje vyhledávat GIF obrázky v Talk, Text a potenciálně všude v Nextcloud.",
     "Giphy API key" : "Klíč k API Giphy",
     "Leave empty to use the default API key" : "Pokud chcete využít výchozí klíč k API, nevyplňujte.",
     "Rating filter" : "Filtr hodnocení",

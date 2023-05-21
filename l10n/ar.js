@@ -2,7 +2,7 @@ OC.L10N.register(
     "integration_giphy",
     {
     "Bad HTTP method" : "دالة HTTP  غير صحيحة",
-    "Bad credentials" : "رموز التعريف غير صحيحة",
+    "Bad credentials" : "معلومات تسجيل الدخول غير صحيحة",
     "Connected accounts" : "حسابات مترابطة",
     "No results" : "لا يوجد أي نتيجة"
 },
