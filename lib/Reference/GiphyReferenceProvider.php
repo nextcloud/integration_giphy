@@ -117,11 +117,7 @@ class GiphyReferenceProvider extends ADiscoverableReferenceProvider implements I
 					$reference->setImageUrl($imageUrl);
 
 					$gifInfo['proxied_url'] = $imageUrl;
-					$gifInfo['image_gif'] = [
-						'url' => $imageUrl,
-						'title' => $gifInfo['title'] ?? 'Unknown title',
-						'description' => $gifInfo['username'] ?? $gifInfo['slug'] ?? $gifId,
-					];
+					$gifInfo['image_gif'] = true;
 					$reference->setRichObject(
 						self::RICH_OBJECT_TYPE,
 						$gifInfo,
