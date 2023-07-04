@@ -54,23 +54,20 @@ export default {
 			this.state[key] = newValue
 			this.saveOptions({ [key]: this.state[key] ? '1' : '0' })
 		},
-		saveOptions(values) {
+		async saveOptions(values) {
 			const req = {
 				values,
 			}
 			const url = generateUrl('/apps/integration_giphy/config')
-			axios.put(url, req)
-				.then((response) => {
-					showSuccess(t('integration_giphy', 'Giphy options saved'))
-				})
-				.catch((error) => {
-					showError(
-						t('integration_giphy', 'Failed to save Giphy options')
-						+ ': ' + error.response?.request?.responseText
-					)
-				})
-				.then(() => {
-				})
+			try {
+				await axios.put(url, req)
+				showSuccess(t('integration_giphy', 'Giphy options saved'))
+			} catch (e) {
+				showError(
+					t('integration_giphy', 'Failed to save Giphy options')
+					+ ': ' + e.response?.data?.error
+				)
+			}
 		},
 	},
 }
