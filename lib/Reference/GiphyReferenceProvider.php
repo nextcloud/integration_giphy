@@ -39,13 +39,15 @@ class GiphyReferenceProvider extends ADiscoverableReferenceProvider implements I
 
 	private const RICH_OBJECT_TYPE = Application::APP_ID . '_gif';
 
-	public function __construct(private GiphyAPIService $giphyAPIService,
-								private IConfig $config,
-								private IL10N $l10n,
-								private IURLGenerator $urlGenerator,
-								private ReferenceManager $referenceManager,
-								private LinkReferenceProvider $linkReferenceProvider,
-								private ?string $userId) {
+	public function __construct(
+		private GiphyAPIService $giphyAPIService,
+		private IConfig $config,
+		private IL10N $l10n,
+		private IURLGenerator $urlGenerator,
+		private ReferenceManager $referenceManager,
+		private LinkReferenceProvider $linkReferenceProvider,
+		private ?string $userId
+	) {
 	}
 
 	/**
@@ -89,10 +91,6 @@ class GiphyReferenceProvider extends ADiscoverableReferenceProvider implements I
 	 * @inheritDoc
 	 */
 	public function matchReference(string $referenceText): bool {
-		$adminLinkPreviewEnabled = $this->config->getAppValue(Application::APP_ID, 'link_preview_enabled', '1') === '1';
-		if (!$adminLinkPreviewEnabled) {
-			return false;
-		}
 		return $this->getGifId($referenceText) !== null;
 	}
 
@@ -100,38 +98,48 @@ class GiphyReferenceProvider extends ADiscoverableReferenceProvider implements I
 	 * @inheritDoc
 	 */
 	public function resolveReference(string $referenceText): ?IReference {
-		if ($this->matchReference($referenceText)) {
-			$gifId = $this->getGifId($referenceText);
-			if ($gifId !== null) {
-				$gifInfo = $this->giphyAPIService->getGifInfo($gifId);
-				$reference = new Reference($referenceText);
-				if ($gifInfo !== null
-					&& isset(
-						$gifInfo['title'], $gifInfo['slug'], $gifInfo['images'],
-						$gifInfo['images']['original'], $gifInfo['images']['original']['url']
-					)
-				) {
-					$reference->setTitle($gifInfo['title'] ?? 'Unknown title');
-					$reference->setDescription($gifInfo['username'] ?? $gifInfo['slug'] ?? $gifId);
-					$imageUrl = $this->giphyAPIService->getGifProxiedUrl($gifInfo);
-					$reference->setImageUrl($imageUrl);
-
-					$gifInfo['proxied_url'] = $imageUrl;
-					$gifInfo['image_gif'] = true;
-					$reference->setRichObject(
-						self::RICH_OBJECT_TYPE,
-						$gifInfo,
-					);
-				} else {
-					$reference->setDescription($this->l10n->t('GIF not found'));
-				}
-				return $reference;
+		if (!$this->matchReference($referenceText)) {
+			return null;
+		}
+		$adminLinkPreviewEnabled = $this->config->getAppValue(Application::APP_ID, 'link_preview_enabled', '1') === '1';
+		if (!$adminLinkPreviewEnabled) {
+			return null;
+		}
+		if ($this->userId !== null) {
+			$userLinkPreviewEnabled = $this->config->getUserValue($this->userId, Application::APP_ID, 'link_preview_enabled', '1') === '1';
+			if (!$userLinkPreviewEnabled) {
+				return null;
 			}
-			// fallback to opengraph
-			return $this->linkReferenceProvider->resolveReference($referenceText);
 		}
 
-		return null;
+		$gifId = $this->getGifId($referenceText);
+		if ($gifId !== null) {
+			$gifInfo = $this->giphyAPIService->getGifInfo($gifId);
+			$reference = new Reference($referenceText);
+			if ($gifInfo !== null
+				&& isset(
+					$gifInfo['title'], $gifInfo['slug'], $gifInfo['images'],
+					$gifInfo['images']['original'], $gifInfo['images']['original']['url']
+				)
+			) {
+				$reference->setTitle($gifInfo['title'] ?? 'Unknown title');
+				$reference->setDescription($gifInfo['username'] ?? $gifInfo['slug'] ?? $gifId);
+				$imageUrl = $this->giphyAPIService->getGifProxiedUrl($gifInfo);
+				$reference->setImageUrl($imageUrl);
+
+				$gifInfo['proxied_url'] = $imageUrl;
+				$gifInfo['image_gif'] = true;
+				$reference->setRichObject(
+					self::RICH_OBJECT_TYPE,
+					$gifInfo,
+				);
+			} else {
+				$reference->setDescription($this->l10n->t('GIF not found'));
+			}
+			return $reference;
+		}
+		// fallback to opengraph
+		return $this->linkReferenceProvider->resolveReference($referenceText);
 	}
 
 	/**
