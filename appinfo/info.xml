@@ -19,10 +19,12 @@
     <screenshot>https://raw.githubusercontent.com/nextcloud/integration_giphy/main/screenshots/screenshot2.jpg</screenshot>
     <screenshot>https://raw.githubusercontent.com/nextcloud/integration_giphy/main/screenshots/screenshot3.jpg</screenshot>
     <dependencies>
-        <nextcloud min-version="26" max-version="28"/>
+        <nextcloud min-version="27" max-version="28"/>
     </dependencies>
     <settings>
         <admin>OCA\Giphy\Settings\Admin</admin>
         <admin-section>OCA\Giphy\Settings\AdminSection</admin-section>
+        <personal>OCA\Giphy\Settings\Personal</personal>
+        <personal-section>OCA\Giphy\Settings\PersonalSection</personal-section>
     </settings>
 </info>
