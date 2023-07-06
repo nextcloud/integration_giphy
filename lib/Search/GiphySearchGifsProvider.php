@@ -88,8 +88,9 @@ class GiphySearchGifsProvider implements IProvider {
 		$requestedFromSmartPicker = $routeFrom === '' || $routeFrom === 'smart-picker';
 
 		if (!$requestedFromSmartPicker) {
-			$searchGifsEnabled = $this->config->getAppValue(Application::APP_ID, 'search_gifs_enabled', '1') === '1';
-			if (!$searchGifsEnabled) {
+			$adminSearchGifsEnabled = $this->config->getAppValue(Application::APP_ID, 'search_gifs_enabled', '1') === '1';
+			$userSearchGifsEnabled = $this->config->getUserValue($user->getUID(), Application::APP_ID, 'search_gifs_enabled', '1') === '1';
+			if (!$adminSearchGifsEnabled || !$userSearchGifsEnabled) {
 				return SearchResult::paginated($this->getName(), [], 0);
 			}
 		}
