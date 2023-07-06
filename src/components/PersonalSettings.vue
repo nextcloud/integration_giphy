@@ -6,15 +6,32 @@
 		</h2>
 		<div id="giphy-content">
 			<NcCheckboxRadioSwitch
-				:checked="state.link_preview_enabled"
+				:checked="state.admin_search_gifs_enabled && state.search_gifs_enabled"
+				:disabled="!state.admin_search_gifs_enabled"
+				@update:checked="onCheckboxChanged($event, 'search_gifs_enabled')">
+				{{ t('integration_giphy', 'Enable search provider for GIFs') }}
+			</NcCheckboxRadioSwitch>
+			<p v-if="!state.admin_search_gifs_enabled" class="settings-hint">
+				<InformationOutlineIcon :size="20" class="icon" />
+				{{ t('integration_giphy', 'Disabled by your administrator') }}
+			</p>
+			<NcCheckboxRadioSwitch
+				:checked="state.admin_link_preview_enabled && state.link_preview_enabled"
+				:disabled="!state.admin_link_preview_enabled"
 				@update:checked="onCheckboxChanged($event, 'link_preview_enabled')">
 				{{ t('integration_giphy', 'Enable Giphy link previews') }}
 			</NcCheckboxRadioSwitch>
+			<p v-if="!state.admin_link_preview_enabled" class="settings-hint">
+				<InformationOutlineIcon :size="20" class="icon" />
+				{{ t('integration_giphy', 'Disabled by your administrator') }}
+			</p>
 		</div>
 	</div>
 </template>
 
 <script>
+import InformationOutlineIcon from 'vue-material-design-icons/InformationOutline.vue'
+
 import GiphyIcon from './icons/GiphyIcon.vue'
 
 import { loadState } from '@nextcloud/initial-state'
@@ -30,6 +47,7 @@ export default {
 	components: {
 		GiphyIcon,
 		NcCheckboxRadioSwitch,
+		InformationOutlineIcon,
 	},
 
 	props: [],
@@ -78,12 +96,17 @@ export default {
 	#giphy-content {
 		margin-left: 40px;
 	}
+
+	.settings-hint,
 	h2 {
 		display: flex;
 		align-items: center;
 		.icon {
 			margin-right: 8px;
 		}
+	}
+	.settings-hint .icon {
+		margin-right: 4px;
 	}
 }
 </style>

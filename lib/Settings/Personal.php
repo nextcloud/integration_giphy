@@ -20,10 +20,17 @@ class Personal implements ISettings {
 	 * @return TemplateResponse
 	 */
 	public function getForm(): TemplateResponse {
+		$adminLinkPreviewEnabled = $this->config->getAppValue(Application::APP_ID, 'link_preview_enabled', '1') === '1';
 		$linkPreviewEnabled = $this->config->getUserValue($this->userId, Application::APP_ID, 'link_preview_enabled', '1') === '1';
 
+		$adminSearchEnabled = $this->config->getAppValue(Application::APP_ID, 'search_gifs_enabled', '1') === '1';
+		$userSearchEnabled = $this->config->getUserValue($this->userId, Application::APP_ID, 'search_gifs_enabled', '0') === '1';
+
 		$userConfig = [
+			'admin_link_preview_enabled' => $adminLinkPreviewEnabled,
 			'link_preview_enabled' => $linkPreviewEnabled,
+			'search_gifs_enabled' => $userSearchEnabled,
+			'admin_search_gifs_enabled' => $adminSearchEnabled,
 		];
 		$this->initialStateService->provideInitialState('user-config', $userConfig);
 		return new TemplateResponse(Application::APP_ID, 'personalSettings');
