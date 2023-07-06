@@ -21,6 +21,8 @@ OC.L10N.register(
     "R - Level 4" : "R - Level 4",
     "Giphy admin options saved" : "Giphy-Administrations-Einstellungen gespeichert",
     "Failed to save Giphy admin options" : "Fehler beim Speichern der Giphy-Administrations-Einstellungen",
+    "Giphy options saved" : "Giphy-Einstellungen gespeichert",
+    "Failed to save Giphy options" : "Fehler beim Speichern der Giphy-Einstellungen",
     "Loading gif" : "Lade GIF",
     "Giphy GIF picker" : "Giphy GIF-Auswahl",
     "Searching..." : "Suche…",

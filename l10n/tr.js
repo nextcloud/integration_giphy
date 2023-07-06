@@ -21,6 +21,8 @@ OC.L10N.register(
     "R - Level 4" : "R - 4. düzey",
     "Giphy admin options saved" : "Giphy yönetici ayarları kaydedildi",
     "Failed to save Giphy admin options" : "Giphy yönetici ayarları kaydedilemedi",
+    "Giphy options saved" : "Giphy ayarları kaydedildi",
+    "Failed to save Giphy options" : "Giphy ayarları kaydedilemedi",
     "Loading gif" : "GIF yükleniyor",
     "Giphy GIF picker" : "Giphy GIF seçici",
     "Searching..." : "Aranıyor...",
