@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## 1.0.7 - 2023-07-06
+### Added
+- Allow users to avoid Giphy GIF links to be resolved and rendered by the Giphy integration [#9](https://github.com/nextcloud/integration_giphy/pull/9) @julien-nc
+- Add user setting to toggle unified search (opt-in) [#12](https://github.com/nextcloud/integration_giphy/pull/12) @julien-nc
+
 ## 1.0.6 – 2023-04-26
 ### Fixed
 - keep CSRF check for image endpoint and fix CSRF in the widget
