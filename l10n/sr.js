@@ -21,6 +21,7 @@ OC.L10N.register(
     "R - Level 4" : "R - Ниво 4",
     "Giphy admin options saved" : "Сачуване су Giphy админ опције",
     "Failed to save Giphy admin options" : "Није успело чување Giphy админ опција",
+    "Disabled by your administrator" : "Искључио је ваш администратор",
     "Giphy options saved" : "Сачуване су Giphy опције",
     "Failed to save Giphy options" : "Није успело чување Giphy опција",
     "Loading gif" : "GIF се учитава",

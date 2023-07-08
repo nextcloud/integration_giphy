@@ -21,6 +21,7 @@ OC.L10N.register(
     "R - Level 4" : "R - Level 4",
     "Giphy admin options saved" : "Giphy admin options saved",
     "Failed to save Giphy admin options" : "Failed to save Giphy admin options",
+    "Disabled by your administrator" : "Disabled by your administrator",
     "Giphy options saved" : "Giphy options saved",
     "Failed to save Giphy options" : "Failed to save Giphy options",
     "Loading gif" : "Loading gif",

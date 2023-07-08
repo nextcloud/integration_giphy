@@ -21,6 +21,7 @@ OC.L10N.register(
     "R - Level 4" : "R - úroveň 4",
     "Giphy admin options saved" : "Předvolby správy Giphy uloženy",
     "Failed to save Giphy admin options" : "Nepodařilo se uložit předvolby správy Giphy",
+    "Disabled by your administrator" : "Vypnuto vaším správcem",
     "Giphy options saved" : "Předvolby pro Giphy uloženy",
     "Failed to save Giphy options" : "Nepodařilo se uložit předvolby pro Giphy",
     "Loading gif" : "Načítá se gif",
