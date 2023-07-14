@@ -6,7 +6,7 @@
 		<div v-if="!isLoaded" class="loading-icon">
 			<NcLoadingIcon
 				:size="44"
-				:title="t('integration_giphy', 'Loading gif')" />
+				:title="t('integration_giphy', 'Loading GIF')" />
 		</div>
 		<img v-show="isLoaded"
 			class="gif-image"
