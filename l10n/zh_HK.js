@@ -24,7 +24,6 @@ OC.L10N.register(
     "Disabled by your administrator" : "已被管理員停用",
     "Giphy options saved" : "已儲存 Giphy 選項",
     "Failed to save Giphy options" : "儲存 Giphy 選項失敗",
-    "Loading gif" : "正在載入 GIF",
     "Giphy GIF picker" : "Giphy GIF 選擇器",
     "Searching..." : "正在搜尋 …",
     "No results" : "沒有結果",

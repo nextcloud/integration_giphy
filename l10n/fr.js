@@ -21,7 +21,6 @@ OC.L10N.register(
     "R - Level 4" : "R - Niveau 4",
     "Giphy admin options saved" : "Options d'administration Giphy enregistrées",
     "Failed to save Giphy admin options" : "Impossible d'enregistrer les options d'administration Giphy",
-    "Loading gif" : "Chargement du gif",
     "Giphy GIF picker" : "Selection de GIF Giphy",
     "Searching..." : "Recherche...",
     "No results" : "Aucun résultat",

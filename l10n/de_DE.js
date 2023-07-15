@@ -24,7 +24,6 @@ OC.L10N.register(
     "Disabled by your administrator" : "Von Ihrer Administration deaktiviert",
     "Giphy options saved" : "Giphy-Einstellungen gespeichert",
     "Failed to save Giphy options" : "Fehler beim Speichern der Giphy-Einstellungen",
-    "Loading gif" : "Lade GIF",
     "Giphy GIF picker" : "Giphy GIF-Auswahl",
     "Searching..." : "Suche…",
     "No results" : "Keine Ergebnisse",

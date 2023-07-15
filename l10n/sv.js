@@ -24,7 +24,6 @@ OC.L10N.register(
     "Disabled by your administrator" : "Inaktiverad av din administratör",
     "Giphy options saved" : "Giphy-alternativ sparade",
     "Failed to save Giphy options" : "Det gick inte att spara Giphy-alternativ",
-    "Loading gif" : "Laddar gif",
     "Giphy GIF picker" : "Giphy GIF-väljare",
     "Searching..." : "Söker...",
     "No results" : "Inga resultat",

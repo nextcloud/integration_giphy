@@ -7,7 +7,6 @@ OC.L10N.register(
     "Disabled by your administrator" : "Desactivado pola administración desta instancia.",
     "Giphy options saved" : "Gardáronse as opcións de Giphy",
     "Failed to save Giphy options" : "Produciuse un fallo ao gardar as opcións de Giphy.",
-    "Loading gif" : "Cargando GIF",
     "Searching..." : "Buscando…",
     "No results" : "Sen resultados"
 },

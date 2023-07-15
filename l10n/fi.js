@@ -12,7 +12,6 @@ OC.L10N.register(
     "Giphy admin options saved" : "Giphyn ylläpitoasetukset tallennettu",
     "Disabled by your administrator" : "Poistettu käytöstä ylläpidon toimesta",
     "Giphy options saved" : "Giphy-asetukset tallennettu",
-    "Loading gif" : "Ladataan gif-kuvaa",
     "Giphy GIF picker" : "Giphyn GIF-valitsin",
     "Searching..." : "Etsitään...",
     "No results" : "Ei tuloksia",

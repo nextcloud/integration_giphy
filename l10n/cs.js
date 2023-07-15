@@ -24,7 +24,6 @@ OC.L10N.register(
     "Disabled by your administrator" : "Vypnuto vaším správcem",
     "Giphy options saved" : "Předvolby pro Giphy uloženy",
     "Failed to save Giphy options" : "Nepodařilo se uložit předvolby pro Giphy",
-    "Loading gif" : "Načítá se gif",
     "Giphy GIF picker" : "Volič GIF obrázků ze služby Giphy",
     "Searching..." : "Hledání…",
     "No results" : "Žádné výsledky",

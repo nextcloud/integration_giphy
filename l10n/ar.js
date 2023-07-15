@@ -24,7 +24,6 @@ OC.L10N.register(
     "Disabled by your administrator" : "مُعطّلة من قِبَل مُشرِفك",
     "Giphy options saved" : "تمّ حفظ خيارات Giphy",
     "Failed to save Giphy options" : "تعذّر حفظ خيارات مشرف Giphy",
-    "Loading gif" : "تحميل صورة gif ",
     "Giphy GIF picker" : "لاقط صور GIF من Giphy",
     "Searching..." : "بحث ...",
     "No results" : "لا نتائج",
