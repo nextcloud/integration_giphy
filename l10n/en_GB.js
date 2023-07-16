@@ -24,6 +24,7 @@ OC.L10N.register(
     "Disabled by your administrator" : "Disabled by your administrator",
     "Giphy options saved" : "Giphy options saved",
     "Failed to save Giphy options" : "Failed to save Giphy options",
+    "Loading GIF" : "Loading GIF",
     "Giphy GIF picker" : "Giphy GIF picker",
     "Searching..." : "Searching...",
     "No results" : "No results",
