@@ -24,6 +24,7 @@ OC.L10N.register(
     "Disabled by your administrator" : "Yöneticiniz tarafından devre dışı bırakılmış",
     "Giphy options saved" : "Giphy ayarları kaydedildi",
     "Failed to save Giphy options" : "Giphy ayarları kaydedilemedi",
+    "Loading GIF" : "GIF yükleniyor",
     "Giphy GIF picker" : "Giphy GIF seçici",
     "Searching..." : "Aranıyor...",
     "No results" : "Herhangi bir sonuç bulunamadı",
