@@ -1,9 +1,11 @@
 OC.L10N.register(
     "integration_giphy",
     {
+    "GIF picker (by Giphy)" : "Вибір GIF (від Giphy)",
     "Bad HTTP method" : "Поганий метод HTTP",
     "Bad credentials" : "Погані облікові дані",
     "Connected accounts" : "Підключені облікові записи",
+    "Giphy GIF picker" : "Вибір GIF від Giphy",
     "Searching..." : "Пошук...",
     "No results" : "Немає результатів"
 },
