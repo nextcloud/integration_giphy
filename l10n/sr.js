@@ -24,6 +24,7 @@ OC.L10N.register(
     "Disabled by your administrator" : "Искључио је ваш администратор",
     "Giphy options saved" : "Сачуване су Giphy опције",
     "Failed to save Giphy options" : "Није успело чување Giphy опција",
+    "Loading GIF" : "GIF се учитава",
     "Giphy GIF picker" : "Бирач Giphy GIF-a",
     "Searching..." : "Претражујем...",
     "No results" : "Нема резултата",
