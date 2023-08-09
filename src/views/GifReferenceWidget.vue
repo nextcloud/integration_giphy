@@ -27,7 +27,7 @@
 					:size="44"
 					:title="t('integration_giphy', 'Loading GIF')" />
 			</div>
-			<NcButton :pressed.sync="gifsEnabled"
+			<NcButton
 				class="toggle-gifs-button"
 				:type="gifsEnabled ? 'secondary' : 'primary'"
 				:title="hideButtonTitle"
@@ -148,6 +148,7 @@ export default {
 
 		.gifs-disabled {
 			margin: 12px !important;
+			white-space: initial;
 		}
 
 		.image {
