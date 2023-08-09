@@ -30,8 +30,7 @@
 			<NcButton :pressed.sync="gifsEnabled"
 				class="toggle-gifs-button"
 				:type="gifsEnabled ? 'secondary' : 'primary'"
-				:aria-label="ariaLabel"
-				:title="ariaLabel"
+				:title="hideButtonTitle"
 				@click="handleGifsBtn">
 				<template #icon>
 					<EyeOffIcon :size="24" />
@@ -105,10 +104,10 @@ export default {
 				? this.richObject.proxied_url + '?requesttoken=' + encodeURIComponent(getRequestToken())
 				: ''
 		},
-		ariaLabel() {
+		hideButtonTitle() {
 			return this.gifsEnabled
-				? t('integration_giphy', 'Wrap all GIF elements')
-				: t('integration_giphy', 'Unwrap all GIF elements')
+				? t('integration_giphy', 'Fold all Giphy GIFs')
+				: t('integration_giphy', 'Unfold all Giphy GIFs')
 		},
 	},
 
