@@ -22,38 +22,56 @@
 <template>
 	<div class="gif-reference">
 		<div class="gif-wrapper">
-			<div v-if="!isLoaded" class="loading-icon">
+			<div v-if="!isLoaded && gifsEnabled" class="loading-icon">
 				<NcLoadingIcon
 					:size="44"
 					:title="t('integration_giphy', 'Loading GIF')" />
 			</div>
-			<img v-show="isLoaded"
-				class="image"
-				:src="proxiedUrl"
-				@load="isLoaded = true">
-			<a v-show="isLoaded"
-				class="attribution"
-				target="_blank"
-				:title="poweredByTitle"
-				href="https://giphy.com">
-				<img :src="poweredByImgSrc"
-					:alt="poweredByTitle">
-			</a>
+			<NcButton
+				class="toggle-gifs-button"
+				:type="gifsEnabled ? 'secondary' : 'primary'"
+				:title="hideButtonTitle"
+				@click="handleGifsBtn">
+				<template #icon>
+					<EyeOffIcon :size="24" />
+				</template>
+			</NcButton>
+			<p v-show="!gifsEnabled" class="gifs-disabled">
+				{{ t('integration_giphy', 'GIFs are disabled') }}
+			</p>
+			<div v-show="gifsEnabled">
+				<img v-show="isLoaded"
+					class="image"
+					:src="proxiedUrl"
+					@load="isLoaded = true">
+				<a v-show="isLoaded"
+					class="attribution"
+					target="_blank"
+					:title="poweredByTitle"
+					href="https://giphy.com">
+					<img :src="poweredByImgSrc" :alt="poweredByTitle">
+				</a>
+			</div>
 		</div>
 	</div>
 </template>
 
 <script>
 import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
+import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
+import EyeOffIcon from 'vue-material-design-icons/EyeOff.vue'
 
 import { imagePath } from '@nextcloud/router'
 import { getRequestToken } from '@nextcloud/auth'
+import { emit, subscribe } from '@nextcloud/event-bus'
 
 export default {
 	name: 'GifReferenceWidget',
 
 	components: {
 		NcLoadingIcon,
+		NcButton,
+		EyeOffIcon,
 	},
 
 	props: {
@@ -73,6 +91,7 @@ export default {
 
 	data() {
 		return {
+			gifsEnabled: true,
 			isLoaded: false,
 			poweredByImgSrc: imagePath('integration_giphy', 'powered-by-giphy-badge.gif'),
 			poweredByTitle: t('integration_giphy', 'Powered by Giphy'),
@@ -85,9 +104,24 @@ export default {
 				? this.richObject.proxied_url + '?requesttoken=' + encodeURIComponent(getRequestToken())
 				: ''
 		},
+		hideButtonTitle() {
+			return this.gifsEnabled
+				? t('integration_giphy', 'Fold all Giphy GIFs')
+				: t('integration_giphy', 'Unfold all Giphy GIFs')
+		},
+	},
+
+	mounted() {
+		subscribe('integration_giphy:gifs:enabled', (state) => {
+			this.gifsEnabled = !!state
+		})
 	},
 
 	methods: {
+		handleGifsBtn() {
+			this.gifsEnabled = !this.gifsEnabled
+			emit('integration_giphy:gifs:enabled', this.gifsEnabled)
+		},
 	},
 }
 </script>
@@ -103,6 +137,19 @@ export default {
 		align-items: center;
 		justify-content: center;
 		position: relative;
+
+		.toggle-gifs-button {
+			position: absolute;
+			top: 0;
+			right: 0;
+			padding: 0;
+			border-radius: 50%;
+		}
+
+		.gifs-disabled {
+			margin: 12px !important;
+			white-space: initial;
+		}
 
 		.image {
 			max-height: 300px;
