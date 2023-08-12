@@ -30,6 +30,9 @@ OC.L10N.register(
     "No results" : "لا نتائج",
     "No more GIFs" : "لا مزيد من صور GIF",
     "Search GIFs" : "البحث عن صور GIF",
-    "Powered by Giphy" : "مدعومٌ من Giphy"
+    "Powered by Giphy" : "مدعومٌ من Giphy",
+    "GIFs are disabled" : "صِوَر GIF مُعطّلة ",
+    "Fold all Giphy GIFs" : "قُم بطَي جميع صور GIF من Giphy",
+    "Unfold all Giphy GIFs" : "قم بفتح جميع صور GIF من Giphy"
 },
 "nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;");

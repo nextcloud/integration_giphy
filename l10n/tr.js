@@ -30,6 +30,9 @@ OC.L10N.register(
     "No results" : "Herhangi bir sonuç bulunamadı",
     "No more GIFs" : "Başka bir GIF yok",
     "Search GIFs" : "GIF arama",
-    "Powered by Giphy" : "Giphy tarafından sağlanır"
+    "Powered by Giphy" : "Giphy tarafından sağlanır",
+    "GIFs are disabled" : "GIF kullanımı devre dışı",
+    "Fold all Giphy GIFs" : "Tüm Giphy GIF görsellerini daralt",
+    "Unfold all Giphy GIFs" : "Tüm Giphy GIF görsellerini genişlet"
 },
 "nplurals=2; plural=(n > 1);");

@@ -28,6 +28,9 @@
     "No results" : "沒有結果",
     "No more GIFs" : "無更多 GIF",
     "Search GIFs" : "搜尋 GIF",
-    "Powered by Giphy" : "由 Giphy 提供"
+    "Powered by Giphy" : "由 Giphy 提供",
+    "GIFs are disabled" : "已停用 GIF",
+    "Fold all Giphy GIFs" : "折疊所有 Giphy GIF",
+    "Unfold all Giphy GIFs" : "取消折疊所有 Giphy GIF"
 },"pluralForm" :"nplurals=1; plural=0;"
 }

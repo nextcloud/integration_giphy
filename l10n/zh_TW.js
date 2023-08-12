@@ -30,6 +30,9 @@ OC.L10N.register(
     "No results" : "無結果",
     "No more GIFs" : "無更多 GIF",
     "Search GIFs" : "搜尋 GIF",
-    "Powered by Giphy" : "威力本源 Giphy"
+    "Powered by Giphy" : "威力本源 Giphy",
+    "GIFs are disabled" : "已停用 GIF",
+    "Fold all Giphy GIFs" : "折疊所有 Giphy GIF",
+    "Unfold all Giphy GIFs" : "取消折疊所有 Giphy GIF"
 },
 "nplurals=1; plural=0;");

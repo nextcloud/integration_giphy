@@ -30,6 +30,7 @@ OC.L10N.register(
     "No results" : "Keine Ergebnisse",
     "No more GIFs" : "Keine weiteren GIFs",
     "Search GIFs" : "GIFs suchen",
-    "Powered by Giphy" : "Unterstützt von Giphy"
+    "Powered by Giphy" : "Unterstützt von Giphy",
+    "GIFs are disabled" : "GIFs sind deaktiviert"
 },
 "nplurals=2; plural=(n != 1);");
