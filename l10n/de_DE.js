@@ -31,6 +31,8 @@ OC.L10N.register(
     "No more GIFs" : "Keine weiteren GIFs",
     "Search GIFs" : "GIFs suchen",
     "Powered by Giphy" : "Unterstützt von Giphy",
-    "GIFs are disabled" : "GIFs sind deaktiviert"
+    "GIFs are disabled" : "GIFs sind deaktiviert",
+    "Fold all Giphy GIFs" : "Einklappen aller Giphy-GIFs",
+    "Unfold all Giphy GIFs" : "Aufklappen aller Giphy-GIFs"
 },
 "nplurals=2; plural=(n != 1);");
