@@ -30,6 +30,9 @@ OC.L10N.register(
     "No results" : "Нема резултата",
     "No more GIFs" : "Нема више GIF-ова",
     "Search GIFs" : "Претражи GIF-ове",
-    "Powered by Giphy" : "Обезбеђује Giphy"
+    "Powered by Giphy" : "Обезбеђује Giphy",
+    "GIFs are disabled" : "GIF сличице су искључене",
+    "Fold all Giphy GIFs" : "Подвиј све Giphy GIF сличице",
+    "Unfold all Giphy GIFs" : "Развиј све Giphy GIF сличице"
 },
 "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);");
