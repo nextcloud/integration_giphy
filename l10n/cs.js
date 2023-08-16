@@ -30,6 +30,9 @@ OC.L10N.register(
     "No results" : "Žádné výsledky",
     "No more GIFs" : "Žádné další GIFy",
     "Search GIFs" : "Hledat GIF obrázky",
-    "Powered by Giphy" : "Využívá Giphy"
+    "Powered by Giphy" : "Využívá Giphy",
+    "GIFs are disabled" : "GIF obrázky jsou vypnuté",
+    "Fold all Giphy GIFs" : "Sbalit veškeré GIF obrázky z Giphy",
+    "Unfold all Giphy GIFs" : "Rozbalit veškeré GIF obrázky z Giphy"
 },
 "nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;");
