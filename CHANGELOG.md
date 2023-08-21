@@ -6,6 +6,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## 1.0.8 - 2023-08-21
+
+### Added
+
+- Add button to disable all GIFs in the current context [#15](https://github.com/nextcloud/integration_giphy/pull/15) @kyteinsky
+
+### Fixed
+
+- Fix casing of 'GIF' in translated text [#13](https://github.com/nextcloud/integration_giphy/pull/13) @rakekniven
+
 ## 1.0.7 - 2023-07-06
 ### Added
 - Allow users to avoid Giphy GIF links to be resolved and rendered by the Giphy integration [#9](https://github.com/nextcloud/integration_giphy/pull/9) @julien-nc
