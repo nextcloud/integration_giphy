@@ -28,6 +28,9 @@
     "No results" : "Sin resultados",
     "No more GIFs" : "No hay más GIFs",
     "Search GIFs" : "Buscar GIFs",
-    "Powered by Giphy" : "Desarrollado por Giphy"
+    "Powered by Giphy" : "Desarrollado por Giphy",
+    "GIFs are disabled" : "Los GIFs están deshabilitados",
+    "Fold all Giphy GIFs" : "Doblar todos los GIFs de Giphy",
+    "Unfold all Giphy GIFs" : "Desdoblar todos los GIFs de Giphy"
 },"pluralForm" :"nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"
 }
