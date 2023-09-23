@@ -1,7 +1,7 @@
 OC.L10N.register(
     "integration_giphy",
     {
-    "GIF picker (by Giphy)" : "Selection de GIF (Par Giphy)",
+    "GIF picker (by Giphy)" : "Sélecteur de GIF (par Giphy)",
     "GIF not found" : "GIF introuvable",
     "Giphy GIFs" : "GIFs Giphy",
     "Bad HTTP method" : "Mauvaise méthode HTTP",
@@ -21,11 +21,18 @@ OC.L10N.register(
     "R - Level 4" : "R - Niveau 4",
     "Giphy admin options saved" : "Options d'administration Giphy enregistrées",
     "Failed to save Giphy admin options" : "Impossible d'enregistrer les options d'administration Giphy",
+    "Disabled by your administrator" : "Désactivé par votre administrateur",
+    "Giphy options saved" : "Options de Giphy sauvegardées",
+    "Failed to save Giphy options" : "Échec de la sauvegarde des options de Giphy",
+    "Loading GIF" : "Chargement du GIF",
     "Giphy GIF picker" : "Selection de GIF Giphy",
     "Searching..." : "Recherche...",
     "No results" : "Aucun résultat",
     "No more GIFs" : "Fin de liste",
     "Search GIFs" : "Rechercher des GIFs",
-    "Powered by Giphy" : "Propulsé par Giphy"
+    "Powered by Giphy" : "Propulsé par Giphy",
+    "GIFs are disabled" : "Les GIFs sont désactivés",
+    "Fold all Giphy GIFs" : "Replier tous les Giphy GIFs",
+    "Unfold all Giphy GIFs" : "Déplier tous les GIFs de Giphy"
 },
 "nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");
