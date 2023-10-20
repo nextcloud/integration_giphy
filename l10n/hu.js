@@ -10,6 +10,7 @@ OC.L10N.register(
     "Giphy integration" : "Giphy integráció",
     "Integration of Giphy" : "Giphy integráció",
     "Giphy API key" : "Giphy API kulcs",
+    "Leave empty to use the default API key" : "Hagyja üresen az alapértelmezett API kulcs használatához.",
     "Rating filter" : "Értékelés szűrő",
     "Enable search provider for GIFs" : "GIF kereső szolgáltató engedélyezése",
     "Enable Giphy link previews" : "Giphy hivatkozások előnézetének engedélyezése",
