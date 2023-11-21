@@ -231,6 +231,13 @@ export default {
 }
 </script>
 
+<style lang="scss">
+// TODO fix this in nc/vue
+.reference-picker-modal--content {
+	height: 100%;
+}
+</style>
+
 <style scoped lang="scss">
 .gif-picker-content {
 	width: 100%;
