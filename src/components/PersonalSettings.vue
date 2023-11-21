@@ -83,7 +83,7 @@ export default {
 			} catch (e) {
 				showError(
 					t('integration_giphy', 'Failed to save Giphy options')
-					+ ': ' + e.response?.data?.error
+					+ ': ' + e.response?.data?.error,
 				)
 			}
 		},

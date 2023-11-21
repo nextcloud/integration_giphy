@@ -187,20 +187,20 @@ export default {
 				? this.cursor === null
 					? generateOcsUrl(
 						'apps/integration_giphy/api/v1/gifs/trending?limit={limit}',
-						{ limit }
+						{ limit },
 					)
 					: generateOcsUrl(
 						'apps/integration_giphy/api/v1/gifs/trending?cursor={cursor}&limit={limit}',
-						{ cursor: this.cursor, limit }
+						{ cursor: this.cursor, limit },
 					)
 				: this.cursor === null
 					? generateOcsUrl(
 						'apps/integration_giphy/api/v1/gifs/search?term={term}&limit={limit}',
-						{ searchProviderId, term: this.searchQuery, limit }
+						{ searchProviderId, term: this.searchQuery, limit },
 					)
 					: generateOcsUrl(
 						'apps/integration_giphy/api/v1/gifs/search?term={term}&cursor={cursor}&limit={limit}',
-						{ searchProviderId, term: this.searchQuery, cursor: this.cursor, limit }
+						{ searchProviderId, term: this.searchQuery, cursor: this.cursor, limit },
 					)
 			return axios.get(url, {
 				signal: this.abortController.signal,

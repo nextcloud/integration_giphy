@@ -157,7 +157,7 @@ export default {
 				.catch((error) => {
 					showError(
 						t('integration_giphy', 'Failed to save Giphy admin options')
-						+ ': ' + error.response?.request?.responseText
+						+ ': ' + error.response?.request?.responseText,
 					)
 				})
 				.then(() => {
