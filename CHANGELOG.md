@@ -6,6 +6,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## 1.0.9 - 2023-11-21
+
+### Changed
+
+- update npm pkgs
+
+### Fixed
+
+- fix picker modal height for 28
+
 ## 1.0.8 - 2023-08-21
 
 ### Added
