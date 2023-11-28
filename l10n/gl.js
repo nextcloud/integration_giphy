@@ -26,7 +26,7 @@ OC.L10N.register(
     "Failed to save Giphy options" : "Produciuse un fallo ao gardar as opcións de Giphy.",
     "Loading GIF" : "Cargando GIF",
     "Giphy GIF picker" : "Selector de GIF Giphy",
-    "Searching..." : "Buscando…",
+    "Searching..." : "Buscando...",
     "No results" : "Sen resultados",
     "No more GIFs" : "Non máis GIF",
     "Search GIFs" : "Buscar GIF",
