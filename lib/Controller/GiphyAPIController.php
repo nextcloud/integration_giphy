@@ -11,23 +11,23 @@
 
 namespace OCA\Giphy\Controller;
 
+use OCA\Giphy\Service\GiphyAPIService;
 use OCA\Giphy\Service\GiphySearchService;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\DataDisplayResponse;
 use OCP\AppFramework\Http\DataResponse;
 use OCP\AppFramework\OCSController;
-use OCP\IRequest;
 
-use OCA\Giphy\Service\GiphyAPIService;
+use OCP\IRequest;
 use OCP\Search\SearchResultEntry;
 
 class GiphyAPIController extends OCSController {
 
 	public function __construct(string          $appName,
-								IRequest        $request,
-								private GiphyAPIService $giphyAPIService,
-								private GiphySearchService $giphySearchService,
-								?string         $userId) {
+		IRequest        $request,
+		private GiphyAPIService $giphyAPIService,
+		private GiphySearchService $giphySearchService,
+		?string         $userId) {
 		parent::__construct($appName, $request);
 	}
 

@@ -11,14 +11,14 @@ namespace OCA\Giphy\AppInfo;
 
 use OCA\Giphy\Listener\GiphyReferenceListener;
 use OCA\Giphy\Reference\GiphyReferenceProvider;
-use OCP\Collaboration\Reference\RenderReferenceEvent;
+use OCA\Giphy\Search\GiphySearchGifsProvider;
 
 use OCP\AppFramework\App;
-use OCP\AppFramework\Bootstrap\IRegistrationContext;
 use OCP\AppFramework\Bootstrap\IBootContext;
 use OCP\AppFramework\Bootstrap\IBootstrap;
+use OCP\AppFramework\Bootstrap\IRegistrationContext;
 
-use OCA\Giphy\Search\GiphySearchGifsProvider;
+use OCP\Collaboration\Reference\RenderReferenceEvent;
 
 class Application extends App implements IBootstrap {
 
@@ -41,4 +41,3 @@ class Application extends App implements IBootstrap {
 	public function boot(IBootContext $context): void {
 	}
 }
-

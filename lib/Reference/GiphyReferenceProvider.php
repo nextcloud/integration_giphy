@@ -23,13 +23,13 @@
 namespace OCA\Giphy\Reference;
 
 use OC\Collaboration\Reference\LinkReferenceProvider;
-use OCP\Collaboration\Reference\ADiscoverableReferenceProvider;
-use OCP\Collaboration\Reference\ISearchableReferenceProvider;
-use OCP\Collaboration\Reference\Reference;
 use OC\Collaboration\Reference\ReferenceManager;
 use OCA\Giphy\AppInfo\Application;
 use OCA\Giphy\Service\GiphyAPIService;
+use OCP\Collaboration\Reference\ADiscoverableReferenceProvider;
 use OCP\Collaboration\Reference\IReference;
+use OCP\Collaboration\Reference\ISearchableReferenceProvider;
+use OCP\Collaboration\Reference\Reference;
 use OCP\IConfig;
 use OCP\IL10N;
 
@@ -53,7 +53,7 @@ class GiphyReferenceProvider extends ADiscoverableReferenceProvider implements I
 	/**
 	 * @inheritDoc
 	 */
-	public function getId(): string	{
+	public function getId(): string {
 		return 'giphy-gif';
 	}
 
@@ -67,7 +67,7 @@ class GiphyReferenceProvider extends ADiscoverableReferenceProvider implements I
 	/**
 	 * @inheritDoc
 	 */
-	public function getOrder(): int	{
+	public function getOrder(): int {
 		return 10;
 	}
 

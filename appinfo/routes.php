@@ -11,7 +11,7 @@
 
 $requirements = [
 	'apiVersion' => 'v1',
-//	'token' => '^[a-z0-9]{4,30}$',
+	//	'token' => '^[a-z0-9]{4,30}$',
 ];
 
 return [
