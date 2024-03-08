@@ -24,12 +24,12 @@ declare(strict_types=1);
  */
 namespace OCA\Giphy\Search;
 
-use OCA\Giphy\Service\GiphyAPIService;
 use OCA\Giphy\AppInfo\Application;
+use OCA\Giphy\Service\GiphyAPIService;
 use OCA\Giphy\Service\GiphySearchService;
 use OCP\App\IAppManager;
-use OCP\IL10N;
 use OCP\IConfig;
+use OCP\IL10N;
 use OCP\IUser;
 use OCP\Search\IProvider;
 use OCP\Search\ISearchQuery;
@@ -39,10 +39,10 @@ use OCP\Search\SearchResultEntry;
 class GiphySearchGifsProvider implements IProvider {
 
 	public function __construct(private IAppManager        $appManager,
-								private IL10N              $l10n,
-								private IConfig            $config,
-								private GiphyAPIService    $giphyAPIService,
-								private GiphySearchService $giphySearchService) {
+		private IL10N              $l10n,
+		private IConfig            $config,
+		private GiphyAPIService    $giphyAPIService,
+		private GiphySearchService $giphySearchService) {
 	}
 
 	/**

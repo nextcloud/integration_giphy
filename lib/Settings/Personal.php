@@ -1,11 +1,12 @@
 <?php
+
 namespace OCA\Giphy\Settings;
 
+use OCA\Giphy\AppInfo\Application;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\AppFramework\Services\IInitialState;
 use OCP\IConfig;
 use OCP\Settings\ISettings;
-use OCA\Giphy\AppInfo\Application;
 
 class Personal implements ISettings {
 

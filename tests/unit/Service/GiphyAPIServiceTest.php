@@ -2,7 +2,6 @@
 
 namespace OCA\Giphy\Tests;
 
-
 use OCA\Giphy\AppInfo\Application;
 use OCA\Giphy\Service\GiphyAPIService;
 
