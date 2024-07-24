@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## 1.0.11 - 2024-07-24
+
+### Changed
+
+- update npm pkgs
+- added NC 30 support
+
 ## 1.0.10 - 2023-11-30
 
 ### Fixed
