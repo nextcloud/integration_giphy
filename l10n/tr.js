@@ -9,7 +9,7 @@ OC.L10N.register(
     "Connected accounts" : "Bağlı hesaplar",
     "Giphy integration" : "Giphy bütünleştirmesi",
     "Integration of Giphy" : "Giphy bütünleştirmesi",
-    "Giphy integration provides a unified search provider for GIFs. It also provides a link reference provider\n    to render links to GIFs and make it possible to search for GIFs in Talk, Text and potentially anywhere in Nextcloud." : "Giphy bütünleştirmesi, GIF görselleri için bütünleşik bir arama hizmeti sağlar. Ayrıca, GIF görsellerine \nbağlantılar oluşturmak ve Talk, Metin ve potansiyel olarak Nextcloud üzerinde herhangi bir yerde GIF araması için bağlantı referansları sağlar.",
+    "Giphy integration provides a unified search provider for GIFs. It also provides a link reference provider\n    to render links to GIFs and make it possible to search for GIFs in Talk, Text and potentially anywhere in Nextcloud." : "Giphy bütünleştirmesi, GIF görselleri için bütünleşik bir arama hizmeti sağlar. Ayrıca, GIF görsellerine \nbağlantılar oluşturmak ve Konuş, Metin ve potansiyel olarak Nextcloud üzerinde herhangi bir yerde GIF araması için bağlantı referansları sağlar.",
     "Giphy API key" : "Giphy API anahtarı",
     "Leave empty to use the default API key" : "Varsayılan API anahtarının kullanılması için bu alanı boş bırakın.",
     "Rating filter" : "Değerlendirme süzgeci",
