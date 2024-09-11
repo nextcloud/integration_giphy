@@ -4,6 +4,8 @@ OC.L10N.register(
     "Bad HTTP method" : "Неверный метод HTTP",
     "Bad credentials" : "Неверные учетные данные",
     "Connected accounts" : "Подключённые учётные записи",
+    "Giphy integration provides a unified search provider for GIFs. It also provides a link reference provider\n    to render links to GIFs and make it possible to search for GIFs in Talk, Text and potentially anywhere in Nextcloud." : "Интеграция Giphy обеспечивает унифицированного поставщика поиска для GIF-файлов. Он также предоставляет поставщика ссылок на ссылки\nдля отображения ссылок на GIF-файлы и позволяет искать GIF-файлы в Talk, Text и, возможно, где угодно в Nextcloud.",
+    "Enable search provider for GIFs" : "Включить поисковую систему для GIF-файлов",
     "Searching..." : "Поиск...",
     "No results" : "Нет результатов"
 },
