@@ -1,3 +1,7 @@
+/**
+ * SPDX-FileCopyrightText: 2023 Nextcloud GmbH and Nextcloud contributors
+ * SPDX-License-Identifier: AGPL-3.0-or-later
+ */
 const path = require('path')
 const webpackConfig = require('@nextcloud/webpack-vue-config')
 const ESLintPlugin = require('eslint-webpack-plugin')
@@ -25,7 +29,7 @@ webpackConfig.plugins.push(
 		extensions: ['js', 'vue'],
 		files: 'src',
 		failOnError: !isDev,
-	})
+	}),
 )
 webpackConfig.plugins.push(
 	new StyleLintPlugin({
