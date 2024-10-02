@@ -39,10 +39,10 @@ jobs:
       fail-fast: false
       matrix:
         ocp-version: ['28', '29', '30', 'dev-master']
-        php-version: ['8.0', '8.1', '8.2', '8.3']
+        php-version: ['8.1', '8.2', '8.3']
 
 
-    name: Psalm check on PHP ${{ matrix.php-version }} and OCP ${{ matrix.ocp-version }}
+    name: Psalm, PHP ${{ matrix.php-version }}, OCP ${{ matrix.ocp-version }}
     steps:
       - name: Checkout
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1

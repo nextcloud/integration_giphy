@@ -6,13 +6,13 @@
 
 namespace OCA\Giphy\Reference;
 
+use OC\Collaboration\Reference\LinkReferenceProvider;
 use OCA\Giphy\AppInfo\Application;
 use OCA\Giphy\Service\GiphyAPIService;
 use OCP\Collaboration\Reference\ADiscoverableReferenceProvider;
 use OCP\Collaboration\Reference\IReference;
 use OCP\Collaboration\Reference\IReferenceManager;
 use OCP\Collaboration\Reference\ISearchableReferenceProvider;
-use OCP\Collaboration\Reference\LinkReferenceProvider;
 use OCP\Collaboration\Reference\Reference;
 use OCP\IConfig;
 use OCP\IL10N;
@@ -29,6 +29,7 @@ class GiphyReferenceProvider extends ADiscoverableReferenceProvider implements I
 		private IL10N $l10n,
 		private IURLGenerator $urlGenerator,
 		private IReferenceManager $referenceManager,
+		// TODO replace with OCP\Collaboration\Reference\LinkReferenceProvider when we drop support for NC 28
 		private LinkReferenceProvider $linkReferenceProvider,
 		private ?string $userId,
 	) {
