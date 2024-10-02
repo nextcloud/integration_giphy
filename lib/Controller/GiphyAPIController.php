@@ -21,11 +21,13 @@ use OCP\Search\SearchResultEntry;
 
 class GiphyAPIController extends OCSController {
 
-	public function __construct(string          $appName,
+	public function __construct(
+		string          $appName,
 		IRequest        $request,
 		private GiphyAPIService $giphyAPIService,
 		private GiphySearchService $giphySearchService,
-		?string         $userId) {
+		?string         $userId,
+	) {
 		parent::__construct($appName, $request);
 	}
 

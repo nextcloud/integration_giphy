@@ -30,7 +30,7 @@ class GiphyReferenceProvider extends ADiscoverableReferenceProvider implements I
 		private IURLGenerator $urlGenerator,
 		private ReferenceManager $referenceManager,
 		private LinkReferenceProvider $linkReferenceProvider,
-		private ?string $userId
+		private ?string $userId,
 	) {
 	}
 

@@ -9,7 +9,7 @@
 	},
 	"minimum-stability": "stable",
 	"require-dev": {
-		"nextcloud/ocp": "^28.0",
+		"nextcloud/ocp": "dev-master",
 		"nextcloud/coding-standard": "^1.1",
 		"phpunit/phpunit": "^10"
 	},
