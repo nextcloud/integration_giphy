@@ -76,10 +76,10 @@ class GiphyAPIService {
 		// https://media1.giphy.com/media/HCTfYH2Xk5yw/200w.gif?cid=ae239048qk2ahzc7vpjuagzbyava4073ygy3gj2owzyx3jtl&ep=v1_gifs_trending&rid=200w.gif&ct=g
 		$parsedUrl = parse_url($mediaUrl);
 		preg_match('/^(?:www\.)?([A-Za-z0-9]+)\.giphy\.com$/i', $parsedUrl['host'], $domainPrefixMatches);
-		if ($domainPrefixMatches !== null && count($domainPrefixMatches) > 1) {
+		if (count($domainPrefixMatches) > 1) {
 			$domainPrefix = $domainPrefixMatches[1];
 			preg_match('/^\/media\/[^\/?&]+\/([^\/&?]+)$/i', $parsedUrl['path'], $pathMatches);
-			if ($pathMatches !== null && count($pathMatches) > 1) {
+			if (count($pathMatches) > 1) {
 				$fileName = $pathMatches[1];
 				$query = $parsedUrl['query'];
 				parse_str($query, $parsedQuery);

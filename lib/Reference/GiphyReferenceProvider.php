@@ -6,11 +6,11 @@
 
 namespace OCA\Giphy\Reference;
 
-use OC\Collaboration\Reference\ReferenceManager;
 use OCA\Giphy\AppInfo\Application;
 use OCA\Giphy\Service\GiphyAPIService;
 use OCP\Collaboration\Reference\ADiscoverableReferenceProvider;
 use OCP\Collaboration\Reference\IReference;
+use OCP\Collaboration\Reference\IReferenceManager;
 use OCP\Collaboration\Reference\ISearchableReferenceProvider;
 use OCP\Collaboration\Reference\LinkReferenceProvider;
 use OCP\Collaboration\Reference\Reference;
@@ -28,7 +28,7 @@ class GiphyReferenceProvider extends ADiscoverableReferenceProvider implements I
 		private IConfig $config,
 		private IL10N $l10n,
 		private IURLGenerator $urlGenerator,
-		private ReferenceManager $referenceManager,
+		private IReferenceManager $referenceManager,
 		private LinkReferenceProvider $linkReferenceProvider,
 		private ?string $userId,
 	) {
@@ -100,10 +100,10 @@ class GiphyReferenceProvider extends ADiscoverableReferenceProvider implements I
 		if ($gifId !== null) {
 			$gifInfo = $this->giphyAPIService->getGifInfo($gifId);
 			$reference = new Reference($referenceText);
-			if ($gifInfo !== null
-				&& isset(
+			if (
+				isset(
 					$gifInfo['title'], $gifInfo['slug'], $gifInfo['images'],
-					$gifInfo['images']['original'], $gifInfo['images']['original']['url']
+					$gifInfo['images']['original'], $gifInfo['images']['original']['url'],
 				)
 			) {
 				$reference->setTitle($gifInfo['title'] ?? 'Unknown title');
@@ -128,7 +128,7 @@ class GiphyReferenceProvider extends ADiscoverableReferenceProvider implements I
 
 	/**
 	 * @param string $url
-	 * @return array|null
+	 * @return string|null
 	 */
 	private function getGifId(string $url): ?string {
 		// support 2 types of links:
