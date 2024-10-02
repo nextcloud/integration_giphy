@@ -15,6 +15,7 @@ use OCP\Http\Client\IClientService;
 use OCP\IConfig;
 use OCP\IL10N;
 use OCP\IURLGenerator;
+use OCP\Security\ICrypto;
 use Psr\Log\LoggerInterface;
 use Throwable;
 
@@ -24,12 +25,14 @@ use Throwable;
 class GiphyAPIService {
 	private IClient $client;
 
-	public function __construct(string $appName,
+	public function __construct(
 		private LoggerInterface $logger,
 		private IL10N $l10n,
 		private IConfig $config,
 		private IURLGenerator $urlGenerator,
-		IClientService $clientService) {
+		private ICrypto $crypto,
+		IClientService $clientService,
+	) {
 		$this->client = $clientService->newClient();
 	}
 
@@ -216,7 +219,8 @@ class GiphyAPIService {
 				],
 			];
 
-			$apiKey = $this->config->getAppValue(Application::APP_ID, 'api_key', Application::DEFAULT_API_KEY) ?: Application::DEFAULT_API_KEY;
+			$apiKey = $this->config->getAppValue(Application::APP_ID, 'api_key');
+			$apiKey = $this->crypto->decrypt($apiKey);
 			$params['api_key'] = $apiKey;
 
 			if (count($params) > 0) {
