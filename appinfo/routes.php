@@ -12,6 +12,7 @@ $requirements = [
 return [
 	'routes' => [
 		['name' => 'config#setAdminConfig', 'url' => '/admin-config', 'verb' => 'PUT'],
+		['name' => 'config#setSensitiveAdminConfig', 'url' => '/admin-config/sensitive', 'verb' => 'PUT'],
 		['name' => 'config#setUserConfig', 'url' => '/config', 'verb' => 'PUT'],
 		// not used for now
 		['name' => 'giphyAPI#getGifFromId', 'url' => '/gif/{gifId}', 'verb' => 'GET'],

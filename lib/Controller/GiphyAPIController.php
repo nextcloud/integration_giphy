@@ -21,11 +21,13 @@ use OCP\Search\SearchResultEntry;
 
 class GiphyAPIController extends OCSController {
 
-	public function __construct(string          $appName,
-		IRequest        $request,
+	public function __construct(
+		string $appName,
+		IRequest $request,
 		private GiphyAPIService $giphyAPIService,
 		private GiphySearchService $giphySearchService,
-		?string         $userId) {
+		?string $userId,
+	) {
 		parent::__construct($appName, $request);
 	}
 
@@ -88,7 +90,7 @@ class GiphyAPIController extends OCSController {
 	#[NoCSRFRequired]
 	public function getGifFromDirectUrl(string $gifId, string $domainPrefix, string $fileName, string $cid, string $rid, string $ct): DataDisplayResponse {
 		$gif = $this->giphyAPIService->getGifFromDirectUrl($gifId, $domainPrefix, $fileName, $cid, $rid, $ct);
-		if ($gif !== null && isset($gif['body'], $gif['headers'])) {
+		if (isset($gif['body'], $gif['headers'])) {
 			$response = new DataDisplayResponse(
 				$gif['body'],
 				Http::STATUS_OK,

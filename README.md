@@ -13,8 +13,8 @@ This app adds:
 
 ### Admin settings
 
-There is a "Connected accounts" **admin** settings section if you want to set your own Giphy API key instead of the default one.
-The default one has a very large quota and should be fine.
+There is a "Connected accounts" **admin** settings section to set your Giphy API key.
+You can create a Giphy API key at https://developers.giphy.com/dashboard
 
 ## 🛠️ State of maintenance
 
