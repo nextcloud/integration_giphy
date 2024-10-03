@@ -55,7 +55,7 @@ class ConfigController extends Controller {
 	#[PasswordConfirmationRequired]
 	public function setSensitiveAdminConfig(array $values): DataResponse {
 		foreach ($values as $key => $value) {
-			if ($key === 'api_key') {
+			if ($key === 'api_key' && $value !== '') {
 				$encryptedValue = $this->crypto->encrypt($value);
 				$this->config->setAppValue(Application::APP_ID, $key, $encryptedValue);
 			} else {
