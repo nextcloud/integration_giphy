@@ -16,23 +16,35 @@ use OCP\AppFramework\Bootstrap\IBootstrap;
 use OCP\AppFramework\Bootstrap\IRegistrationContext;
 
 use OCP\Collaboration\Reference\RenderReferenceEvent;
+use OCP\IConfig;
 
 class Application extends App implements IBootstrap {
 
 	public const APP_ID = 'integration_giphy';
-	// this key belongs to the eneiluj+giphy@posteo.net acount on https://developers.giphy.com
-	public const DEFAULT_API_KEY = 'LebyjhpSc5GpX5xKSEtdxFIWMneLlrIF';
 	public const DEFAULT_RATING = 'g';
+
+	private IConfig $config;
 
 	public function __construct(array $urlParams = []) {
 		parent::__construct(self::APP_ID, $urlParams);
+
+		$container = $this->getContainer();
+		$this->config = $container->query(IConfig::class);
 	}
 
 	public function register(IRegistrationContext $context): void {
-		$context->registerSearchProvider(GiphySearchGifsProvider::class);
+		$adminSearchGifsEnabled = $this->config->getAppValue(Application::APP_ID, 'search_gifs_enabled', '1') === '1';
+		$adminLinkPreviewEnabled = $this->config->getAppValue(Application::APP_ID, 'link_preview_enabled', '1') === '1';
+		$apiKey = $this->config->getAppValue(Application::APP_ID, 'api_key');
 
-		$context->registerReferenceProvider(GiphyReferenceProvider::class);
-		$context->registerEventListener(RenderReferenceEvent::class, GiphyReferenceListener::class);
+		if ($adminSearchGifsEnabled && $apiKey !== '') {
+			$context->registerSearchProvider(GiphySearchGifsProvider::class);
+		}
+
+		if ($adminLinkPreviewEnabled && $apiKey !== '') {
+			$context->registerReferenceProvider(GiphyReferenceProvider::class);
+			$context->registerEventListener(RenderReferenceEvent::class, GiphyReferenceListener::class);
+		}
 	}
 
 	public function boot(IBootContext $context): void {

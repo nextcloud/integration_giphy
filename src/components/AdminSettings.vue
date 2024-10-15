@@ -11,26 +11,31 @@
 		</h2>
 		<div id="giphy-content">
 			<div class="line">
-				<label for="giphy-api-key">
-					<KeyIcon :size="20" class="icon" />
-					{{ t('integration_giphy', 'Giphy API key') }}
-				</label>
-				<input id="giphy-api-key"
-					v-model="state.api_key"
+				<NcTextField
+					class="input"
+					:value.sync="state.api_key"
 					type="password"
-					:readonly="readonly"
-					:placeholder="t('integration_giphy', 'Leave empty to use the default API key')"
-					@input="onInput"
-					@focus="readonly = false">
+					:label="t('integration_giphy', 'Giphy API key')"
+					:show-trailing-button="!!state.api_key"
+					@update:value="onInput"
+					@trailing-button-click="state.api_key = '' ; onInput()">
+					<KeyIcon />
+				</NcTextField>
 			</div>
+			<NcNoteCard v-if="state.api_key === ''"
+				type="info">
+				<p>
+					{{ t('integration_giphy', 'You can create a Giphy API key in your Giphy developer settings.') }}
+				</p>
+				<a href="https://developers.giphy.com/dashboard/" target="_blank" class="external">
+					{{ t('integration_giphy', 'Giphy developer settings') }}
+				</a>
+			</NcNoteCard>
 			<div class="line">
-				<label for="giphy-rating-select">
-					<FilterCheckIcon :size="20" class="icon" />
-					{{ t('integration_giphy', 'Rating filter') }}
-				</label>
 				<NcSelect
 					:value="selectedRating"
 					class="rating-select"
+					:input-label="t('integration_giphy', 'Rating filter')"
 					:options="ratingOptions"
 					input-id="giphy-rating-select"
 					@input="onRatingChange" />
@@ -51,7 +56,6 @@
 
 <script>
 import KeyIcon from 'vue-material-design-icons/Key.vue'
-import FilterCheckIcon from 'vue-material-design-icons/FilterCheck.vue'
 
 import GiphyIcon from './icons/GiphyIcon.vue'
 
@@ -60,9 +64,12 @@ import { generateUrl } from '@nextcloud/router'
 import axios from '@nextcloud/axios'
 import { delay } from '../utils.js'
 import { showSuccess, showError } from '@nextcloud/dialogs'
+import { confirmPassword } from '@nextcloud/password-confirmation'
 
 import NcCheckboxRadioSwitch from '@nextcloud/vue/dist/Components/NcCheckboxRadioSwitch.js'
 import NcSelect from '@nextcloud/vue/dist/Components/NcSelect.js'
+import NcNoteCard from '@nextcloud/vue/dist/Components/NcNoteCard.js'
+import NcTextField from '@nextcloud/vue/dist/Components/NcTextField.js'
 
 const ratings = {
 	g: {
@@ -90,8 +97,9 @@ export default {
 		GiphyIcon,
 		NcCheckboxRadioSwitch,
 		NcSelect,
+		NcNoteCard,
+		NcTextField,
 		KeyIcon,
-		FilterCheckIcon,
 	},
 
 	props: [],
@@ -147,25 +155,27 @@ export default {
 			delay(() => {
 				this.saveOptions({
 					api_key: this.state.api_key,
-				})
+				}, true)
 			}, 2000)()
 		},
-		saveOptions(values) {
+		async saveOptions(values, sensitive = false) {
+			if (sensitive) {
+				await confirmPassword()
+			}
+
 			const req = {
 				values,
 			}
-			const url = generateUrl('/apps/integration_giphy/admin-config')
+			const url = sensitive
+				? generateUrl('/apps/integration_giphy/admin-config/sensitive')
+				: generateUrl('/apps/integration_giphy/admin-config')
 			axios.put(url, req)
 				.then((response) => {
 					showSuccess(t('integration_giphy', 'Giphy admin options saved'))
 				})
 				.catch((error) => {
-					showError(
-						t('integration_giphy', 'Failed to save Giphy admin options')
-						+ ': ' + error.response?.request?.responseText,
-					)
-				})
-				.then(() => {
+					showError(t('integration_giphy', 'Failed to save Giphy admin options'))
+					console.error(error)
 				})
 		},
 	},
@@ -197,9 +207,15 @@ export default {
 			display: flex;
 			align-items: center;
 		}
-		> input {
-			width: 300px;
+		> input, .input {
+			width: 350px;
+			margin-top: 0;
 		}
+	}
+
+	.rating-select {
+		min-width: 350px;
+		margin: 0 !important;
 	}
 }
 </style>

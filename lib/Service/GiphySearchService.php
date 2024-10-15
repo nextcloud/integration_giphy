@@ -13,8 +13,10 @@ use OCP\Search\SearchResultEntry;
  */
 class GiphySearchService {
 
-	public function __construct(string $appName,
-		private GiphyAPIService $giphyAPIService) {
+	public function __construct(
+		string $appName,
+		private GiphyAPIService $giphyAPIService,
+	) {
 	}
 
 	/**

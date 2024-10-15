@@ -7,11 +7,11 @@
 namespace OCA\Giphy\Reference;
 
 use OC\Collaboration\Reference\LinkReferenceProvider;
-use OC\Collaboration\Reference\ReferenceManager;
 use OCA\Giphy\AppInfo\Application;
 use OCA\Giphy\Service\GiphyAPIService;
 use OCP\Collaboration\Reference\ADiscoverableReferenceProvider;
 use OCP\Collaboration\Reference\IReference;
+use OCP\Collaboration\Reference\IReferenceManager;
 use OCP\Collaboration\Reference\ISearchableReferenceProvider;
 use OCP\Collaboration\Reference\Reference;
 use OCP\IConfig;
@@ -28,9 +28,10 @@ class GiphyReferenceProvider extends ADiscoverableReferenceProvider implements I
 		private IConfig $config,
 		private IL10N $l10n,
 		private IURLGenerator $urlGenerator,
-		private ReferenceManager $referenceManager,
+		private IReferenceManager $referenceManager,
+		// TODO replace with OCP\Collaboration\Reference\LinkReferenceProvider when we drop support for NC 28
 		private LinkReferenceProvider $linkReferenceProvider,
-		private ?string $userId
+		private ?string $userId,
 	) {
 	}
 
@@ -75,6 +76,16 @@ class GiphyReferenceProvider extends ADiscoverableReferenceProvider implements I
 	 * @inheritDoc
 	 */
 	public function matchReference(string $referenceText): bool {
+		$adminLinkPreviewEnabled = $this->config->getAppValue(Application::APP_ID, 'link_preview_enabled', '1') === '1';
+		if (!$adminLinkPreviewEnabled) {
+			return false;
+		}
+		if ($this->userId !== null) {
+			$userLinkPreviewEnabled = $this->config->getUserValue($this->userId, Application::APP_ID, 'link_preview_enabled', '1') === '1';
+			if (!$userLinkPreviewEnabled) {
+				return false;
+			}
+		}
 		return $this->getGifId($referenceText) !== null;
 	}
 
@@ -85,25 +96,15 @@ class GiphyReferenceProvider extends ADiscoverableReferenceProvider implements I
 		if (!$this->matchReference($referenceText)) {
 			return null;
 		}
-		$adminLinkPreviewEnabled = $this->config->getAppValue(Application::APP_ID, 'link_preview_enabled', '1') === '1';
-		if (!$adminLinkPreviewEnabled) {
-			return null;
-		}
-		if ($this->userId !== null) {
-			$userLinkPreviewEnabled = $this->config->getUserValue($this->userId, Application::APP_ID, 'link_preview_enabled', '1') === '1';
-			if (!$userLinkPreviewEnabled) {
-				return null;
-			}
-		}
 
 		$gifId = $this->getGifId($referenceText);
 		if ($gifId !== null) {
 			$gifInfo = $this->giphyAPIService->getGifInfo($gifId);
 			$reference = new Reference($referenceText);
-			if ($gifInfo !== null
-				&& isset(
+			if (
+				isset(
 					$gifInfo['title'], $gifInfo['slug'], $gifInfo['images'],
-					$gifInfo['images']['original'], $gifInfo['images']['original']['url']
+					$gifInfo['images']['original'], $gifInfo['images']['original']['url'],
 				)
 			) {
 				$reference->setTitle($gifInfo['title'] ?? 'Unknown title');
@@ -128,7 +129,7 @@ class GiphyReferenceProvider extends ADiscoverableReferenceProvider implements I
 
 	/**
 	 * @param string $url
-	 * @return array|null
+	 * @return string|null
 	 */
 	private function getGifId(string $url): ?string {
 		// support 2 types of links:

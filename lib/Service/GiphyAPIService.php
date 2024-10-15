@@ -15,6 +15,7 @@ use OCP\Http\Client\IClientService;
 use OCP\IConfig;
 use OCP\IL10N;
 use OCP\IURLGenerator;
+use OCP\Security\ICrypto;
 use Psr\Log\LoggerInterface;
 use Throwable;
 
@@ -24,12 +25,14 @@ use Throwable;
 class GiphyAPIService {
 	private IClient $client;
 
-	public function __construct(string $appName,
+	public function __construct(
 		private LoggerInterface $logger,
 		private IL10N $l10n,
 		private IConfig $config,
 		private IURLGenerator $urlGenerator,
-		IClientService $clientService) {
+		private ICrypto $crypto,
+		IClientService $clientService,
+	) {
 		$this->client = $clientService->newClient();
 	}
 
@@ -73,10 +76,10 @@ class GiphyAPIService {
 		// https://media1.giphy.com/media/HCTfYH2Xk5yw/200w.gif?cid=ae239048qk2ahzc7vpjuagzbyava4073ygy3gj2owzyx3jtl&ep=v1_gifs_trending&rid=200w.gif&ct=g
 		$parsedUrl = parse_url($mediaUrl);
 		preg_match('/^(?:www\.)?([A-Za-z0-9]+)\.giphy\.com$/i', $parsedUrl['host'], $domainPrefixMatches);
-		if ($domainPrefixMatches !== null && count($domainPrefixMatches) > 1) {
+		if (count($domainPrefixMatches) > 1) {
 			$domainPrefix = $domainPrefixMatches[1];
 			preg_match('/^\/media\/[^\/?&]+\/([^\/&?]+)$/i', $parsedUrl['path'], $pathMatches);
-			if ($pathMatches !== null && count($pathMatches) > 1) {
+			if (count($pathMatches) > 1) {
 				$fileName = $pathMatches[1];
 				$query = $parsedUrl['query'];
 				parse_str($query, $parsedQuery);
@@ -216,7 +219,8 @@ class GiphyAPIService {
 				],
 			];
 
-			$apiKey = $this->config->getAppValue(Application::APP_ID, 'api_key', Application::DEFAULT_API_KEY) ?: Application::DEFAULT_API_KEY;
+			$apiKey = $this->config->getAppValue(Application::APP_ID, 'api_key');
+			$apiKey = $this->crypto->decrypt($apiKey);
 			$params['api_key'] = $apiKey;
 
 			if (count($params) > 0) {
@@ -247,7 +251,7 @@ class GiphyAPIService {
 			} else {
 				return json_decode($body, true) ?: [];
 			}
-		} catch (ClientException | ServerException $e) {
+		} catch (ClientException|ServerException $e) {
 			$responseBody = $e->getResponse()->getBody();
 			$parsedResponseBody = json_decode($responseBody, true);
 			if ($e->getResponse()->getStatusCode() === 404) {
@@ -260,7 +264,7 @@ class GiphyAPIService {
 				'error' => $e->getMessage(),
 				'body' => $parsedResponseBody,
 			];
-		} catch (Exception | Throwable $e) {
+		} catch (Exception|Throwable $e) {
 			$this->logger->warning('Giphy API error : ' . $e->getMessage(), ['app' => Application::APP_ID]);
 			return ['error' => $e->getMessage()];
 		}
