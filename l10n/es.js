@@ -11,7 +11,6 @@ OC.L10N.register(
     "Integration of Giphy" : "Integración de Giphy",
     "Giphy integration provides a unified search provider for GIFs. It also provides a link reference provider\n    to render links to GIFs and make it possible to search for GIFs in Talk, Text and potentially anywhere in Nextcloud." : "La integración con Giphy proporciona un proveedor de búsqueda unificada de GIFs. Además proporciona un proveedor de referencias de enlaces\n   para generar enlaces a GIFs y posibilitar la búsqueda de GIFs en Talk, Text y potencialmente en cualquier lugar dentro de Nextcloud.",
     "Giphy API key" : "Llave API de Giphy",
-    "Leave empty to use the default API key" : "Deje esto en blanco para utilizar la llave API por defecto",
     "Rating filter" : "Filtro de calificación",
     "Enable search provider for GIFs" : "Habilitar el proveedor de búsqueda para GIFs",
     "Enable Giphy link previews" : "Habilitar la vista previa de los enlaces de Giphy",

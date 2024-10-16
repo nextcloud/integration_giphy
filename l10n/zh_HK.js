@@ -11,7 +11,6 @@ OC.L10N.register(
     "Integration of Giphy" : "Giphy 整合",
     "Giphy integration provides a unified search provider for GIFs. It also provides a link reference provider\n    to render links to GIFs and make it possible to search for GIFs in Talk, Text and potentially anywhere in Nextcloud." : "Giphy 整合為 GIF 提供了一個統一的搜尋提供者。其也提供了用來表現 GIF 連結的連結參照提供者，並可以在 Talk、Text 與 Nextcloud 中的任何地方搜尋 GIF。",
     "Giphy API key" : "Giphy API 密鑰",
-    "Leave empty to use the default API key" : "留空以使用默認 API 密鑰",
     "Rating filter" : "評價過濾條件",
     "Enable search provider for GIFs" : "啟用 GIF 搜尋提供者",
     "Enable Giphy link previews" : "啟用 Giphy 連結預覽",
