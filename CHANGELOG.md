@@ -10,6 +10,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## 2.0.0 - 2024-10-16
+
+### Changed
+
+- SPDX headers for licencing
+- switched to Vite
+- update npm pkgs
+
+### Fixed
+
+- removed default API key
+- encryption of stored api key, encrypting only non-empty API key
+- added password confirmation for sensitive value
+
 ## 1.0.11 - 2024-07-24
 
 ### Changed
