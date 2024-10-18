@@ -5,7 +5,7 @@ OC.L10N.register(
     "GIF not found" : "لاتوجد أي صور GIF",
     "Giphy GIFs" : "صور GIF من Giphy",
     "Bad HTTP method" : "دالة HTTP  غير صحيحة",
-    "Bad credentials" : "حيثيّات الدخول credentials غير صحيحة",
+    "Bad credentials" : "بيانات تسجيل الدخول غير صحيحة",
     "Connected accounts" : "حسابات مترابطة",
     "Giphy integration" : "مُكاملة Giphy",
     "Integration of Giphy" : "مُكاملة Giphy",
