@@ -220,7 +220,7 @@ class GiphyAPIService {
 			];
 
 			$apiKey = $this->config->getAppValue(Application::APP_ID, 'api_key');
-			$apiKey = $this->crypto->decrypt($apiKey);
+			$apiKey = $apiKey === '' ? '' : $this->crypto->decrypt($apiKey);
 			$params['api_key'] = $apiKey;
 
 			if (count($params) > 0) {
