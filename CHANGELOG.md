@@ -10,6 +10,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## 2.0.1 - 2024-10-18
+
+### Fixed
+
+- Crash when decrypting empty strings
+
 ## 2.0.0 - 2024-10-16
 
 ### Changed
