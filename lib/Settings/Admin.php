@@ -27,7 +27,7 @@ class Admin implements ISettings {
 	 */
 	public function getForm(): TemplateResponse {
 		$apiKey = $this->config->getAppValue(Application::APP_ID, 'api_key');
-		$apiKey = $this->crypto->decrypt($apiKey);
+		$apiKey = $apiKey === '' ? '' : $this->crypto->decrypt($apiKey);
 
 		$linkPreviewEnabled = $this->config->getAppValue(Application::APP_ID, 'link_preview_enabled', '1') === '1';
 		$searchEnabled = $this->config->getAppValue(Application::APP_ID, 'search_gifs_enabled', '1') === '1';
