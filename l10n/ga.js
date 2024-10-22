@@ -11,6 +11,8 @@ OC.L10N.register(
     "Integration of Giphy" : "Comhtháthú Giphy",
     "Giphy integration provides a unified search provider for GIFs. It also provides a link reference provider\n    to render links to GIFs and make it possible to search for GIFs in Talk, Text and potentially anywhere in Nextcloud." : "Soláthraíonn comhtháthú Giphy soláthraí cuardaigh aontaithe do GIFanna. Soláthraíonn sé soláthraí tagartha naisc freisin\nchun naisc le GIFanna a sholáthar agus gur féidir cuardach a dhéanamh do GIFanna in Talk, Text agus b’fhéidir áit ar bith in Nextcloud.",
     "Giphy API key" : "Giphy API eochair",
+    "You can create a Giphy API key in your Giphy developer settings." : "Is féidir leat eochair Giphy API a chruthú i do shocruithe forbróra Giphy.",
+    "Giphy developer settings" : "Socruithe forbróir Giphy",
     "Rating filter" : "Scagaire rátála",
     "Enable search provider for GIFs" : "Cumasaigh soláthraí cuardaigh GIFanna",
     "Enable Giphy link previews" : "Cumasaigh réamhamhairc naisc Giphy",
