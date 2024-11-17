@@ -1,6 +1,9 @@
 OC.L10N.register(
     "integration_giphy",
     {
+    "Bad HTTP method" : "Nederīgs HTTP pieprasījuma veids",
+    "Bad credentials" : "Nederīgi pieteikšanās dati",
+    "Connected accounts" : "Savienotie konti",
     "Searching..." : "Meklē...",
     "No results" : "Nav rezultātu"
 },
