@@ -9,12 +9,16 @@ This app adds:
 * A link reference provider to render links to GIFs in Talk and Text
 * A custom link picker to get GIF links
 
+> **Note:** To use SmartPicker, start typing with `/giphy`.
+
 ## 🔧 Configuration
 
 ### Admin settings
 
 There is a "Connected accounts" **admin** settings section to set your Giphy API key.
 You can create a Giphy API key at https://developers.giphy.com/dashboard
+
+> **Note:** When creating a Giphy API, select the "SDK" type.
 
 ## 🛠️ State of maintenance
 
