@@ -9,7 +9,6 @@ OC.L10N.register(
     "Connected accounts" : "حساب‌های متصل",
     "Giphy integration" : "Giphy integration",
     "Integration of Giphy" : "Integration of Giphy",
-    "Giphy integration provides a unified search provider for GIFs. It also provides a link reference provider\n    to render links to GIFs and make it possible to search for GIFs in Talk, Text and potentially anywhere in Nextcloud." : "Giphy integration provides a unified search provider for GIFs. It also provides a link reference provider\n    to render links to GIFs and make it possible to search for GIFs in Talk, Text and potentially anywhere in Nextcloud.",
     "Giphy API key" : "Giphy API key",
     "Rating filter" : "Rating filter",
     "Enable search provider for GIFs" : "Enable search provider for GIFs",

@@ -9,7 +9,6 @@ OC.L10N.register(
     "Connected accounts" : "حسابات مترابطة",
     "Giphy integration" : "مُكاملة Giphy",
     "Integration of Giphy" : "مُكاملة Giphy",
-    "Giphy integration provides a unified search provider for GIFs. It also provides a link reference provider\n    to render links to GIFs and make it possible to search for GIFs in Talk, Text and potentially anywhere in Nextcloud." : "يوفر تكامل Giphy مُزوّد بحث موحد لملفات GIF. كما يوفر أيضًا مُزوّداً مرجعياً للرابط - لتقديم روابط إلى ملفات GIF وإتاحة البحث عن صور GIF في Talk و Text وربما في أي مكان من نكست كلاود.",
     "Giphy API key" : "مفتاح Giphy API",
     "You can create a Giphy API key in your Giphy developer settings." : "يمكنك توليد مفتاح لواجهة التطبيق Gipghy في إعدادات المطور في Giphy.",
     "Giphy developer settings" : "إعدادات مطور Giphy",

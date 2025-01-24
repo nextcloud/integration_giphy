@@ -9,7 +9,6 @@ OC.L10N.register(
     "Connected accounts" : "Anslutna konton",
     "Giphy integration" : "Giphy-integration",
     "Integration of Giphy" : "Integration av Giphy",
-    "Giphy integration provides a unified search provider for GIFs. It also provides a link reference provider\n    to render links to GIFs and make it possible to search for GIFs in Talk, Text and potentially anywhere in Nextcloud." : "Giphy-integration ger en enhetlig sökleverantör för GIF-filer. Den tillhandahåller också en länkreferensleverantör\n    för att rendera länkar till GIF:er och göra det möjligt att söka efter GIF:er i Talk, Text och eventuellt var som helst i Nextcloud.",
     "Giphy API key" : "Giphy API-nyckel",
     "Rating filter" : "Graderingsfilter",
     "Enable search provider for GIFs" : "Aktivera sökleverantör för GIF-bilder",
