@@ -9,6 +9,7 @@ OC.L10N.register(
     "Connected accounts" : "Cuntais nasctha",
     "Giphy integration" : "Comhtháthú Giphy",
     "Integration of Giphy" : "Comhtháthú Giphy",
+    "Giphy integration provides a unified search provider for GIFs.\n\nIt also provides a link reference provider to render links to GIFs and make it possible to search for GIFs in Talk, Text and potentially anywhere in Nextcloud.\n\nTo use SmartPicker, start typing with `/giphy`." : "Soláthraíonn comhtháthú Giphy soláthraí cuardaigh aontaithe do GIFanna.\n\nSoláthraíonn sé soláthraí tagartha naisc freisin chun naisc le GIFanna a sholáthar agus chun cuardach a dhéanamh ar GIFanna in Talk, Text agus b'fhéidir áit ar bith in Nextcloud.\n\nChun Smart Picker a úsáid, cuir tús le clóscríobh le `/giphy`.",
     "Giphy API key" : "Giphy API eochair",
     "You can create a Giphy API key in your Giphy developer settings." : "Is féidir leat eochair Giphy API a chruthú i do shocruithe forbróra Giphy.",
     "Giphy developer settings" : "Socruithe forbróir Giphy",

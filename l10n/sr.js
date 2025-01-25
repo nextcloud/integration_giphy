@@ -9,6 +9,7 @@ OC.L10N.register(
     "Connected accounts" : "Повезани налози",
     "Giphy integration" : "Giphy интеграција",
     "Integration of Giphy" : "Интеграција Giphy сервиса",
+    "Giphy integration provides a unified search provider for GIFs.\n\nIt also provides a link reference provider to render links to GIFs and make it possible to search for GIFs in Talk, Text and potentially anywhere in Nextcloud.\n\nTo use SmartPicker, start typing with `/giphy`." : "Giphy интеграција обезбеђује пружаоца услуге обједињене претраге за GIF-ове.\n\nТакође обезбеђује пружаоца референце на линк за приказ GIF-ова и омогућава претрагу GIF-ова у Talk, Текст и потенцијално било где у Nextcloud.\n\nАко желите да користите ПаметниБирач, почните да куцате `/giphy`.",
     "Giphy API key" : "Giphy API кључ",
     "You can create a Giphy API key in your Giphy developer settings." : "Giphy API кључ можете да креирате у Giphy програмерским подешавањима.",
     "Giphy developer settings" : "Giphy програмерска подешавања",
