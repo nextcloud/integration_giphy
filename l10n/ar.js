@@ -9,6 +9,7 @@ OC.L10N.register(
     "Connected accounts" : "حسابات مترابطة",
     "Giphy integration" : "مُكاملة Giphy",
     "Integration of Giphy" : "مُكاملة Giphy",
+    "Giphy integration provides a unified search provider for GIFs.\n\nIt also provides a link reference provider to render links to GIFs and make it possible to search for GIFs in Talk, Text and potentially anywhere in Nextcloud.\n\nTo use SmartPicker, start typing with `/giphy`." : "يوفر تكامل Giphy مُزوِّد بحث موحد لملفات GIF. \n\nكما يوفر مُزوِّد مرجع ارتباط لعرض الروابط لملفات GIF وتمكين البحث عن ملفات GIF في تطبيق \"المحادثة\" Talk و \"الكتابة\" Text و ربما في أي مكان آخر في نكست كلاود. \n\nلاستخدام اللاقط الذكي، إبدأ الكتابة باستخدام `/giphy`.",
     "Giphy API key" : "مفتاح Giphy API",
     "You can create a Giphy API key in your Giphy developer settings." : "يمكنك توليد مفتاح لواجهة التطبيق Gipghy في إعدادات المطور في Giphy.",
     "Giphy developer settings" : "إعدادات مطور Giphy",
