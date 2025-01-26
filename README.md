@@ -9,7 +9,7 @@ This app adds:
 * A link reference provider to render links to GIFs in Talk and Text
 * A custom link picker to get GIF links
 
-> **Note:** To use SmartPicker, start typing with `/giphy`.
+> **Note:** To use Smart Picker, start typing with `/giphy`.
 
 ## 🔧 Configuration
 
