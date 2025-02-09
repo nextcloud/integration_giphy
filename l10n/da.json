@@ -1,4 +1,5 @@
 { "translations": {
+    "Bad credentials" : "Forkerte legitimationsoplysninger",
     "Connected accounts" : "Forbundne konti",
     "Searching..." : "Søger...",
     "No results" : "Ingen resultater"
