@@ -9,7 +9,7 @@ OC.L10N.register(
     "Connected accounts" : "Contas conectadas",
     "Giphy integration" : "Integración de Giphy",
     "Integration of Giphy" : "Integración de Giphy",
-    "Giphy integration provides a unified search provider for GIFs.\n\nIt also provides a link reference provider to render links to GIFs and make it possible to search for GIFs in Talk, Text and potentially anywhere in Nextcloud.\n\nTo use SmartPicker, start typing with `/giphy`." : "A integración de GIPHY fornece un provedor de busca unificada para GIFS.\n\nTamén fornece un provedor de referencia de ligazóns para representar ligazóns a GIF e facer posíbel a busca de GIF en Parlar, Texto e potencialmente en calquera lugar de NextCloud.\n\nPara usar SmartPicker, comece a escribir con `/giphy`.",
+    "Giphy integration provides a unified search provider for GIFs.\n\nIt also provides a link reference provider to render links to GIFs and make it possible to search for GIFs in Talk, Text and potentially anywhere in Nextcloud.\n\nTo use SmartPicker, start typing with `/giphy`." : "A integración de GIPHY fornece un provedor de busca unificada para GIFS.\n\nTamén fornece un provedor de referencia de ligazóns para representar ligazóns a GIF e facer posíbel a busca de GIF en Parladoiro, Texto e potencialmente en calquera lugar de NextCloud.\n\nPara usar SmartPicker, comece a escribir con `/giphy`.",
     "Giphy API key" : "Chave da API do Giphy",
     "You can create a Giphy API key in your Giphy developer settings." : "Pode crear unha chave da API de Giphy nos seus axustes de desenvolvedor de Giphy.",
     "Giphy developer settings" : "Axustes para desenvolvedores de Giphy",
