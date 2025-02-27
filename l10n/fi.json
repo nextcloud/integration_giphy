@@ -5,16 +5,16 @@
     "Connected accounts" : "Yhdistetyt tilit",
     "Giphy integration" : "Giphy-integraatio",
     "Integration of Giphy" : "Giphyn integraatio",
+    "Giphy admin options saved" : "Giphyn ylläpitoasetukset tallennettu",
     "Giphy API key" : "Giphyn API-avain",
     "Enable Giphy link previews" : "Ota käyttöön Giphy-linkkien esikatselut",
-    "Giphy admin options saved" : "Giphyn ylläpitoasetukset tallennettu",
-    "Disabled by your administrator" : "Poistettu käytöstä ylläpidon toimesta",
     "Giphy options saved" : "Giphy-asetukset tallennettu",
+    "Disabled by your administrator" : "Poistettu käytöstä ylläpidon toimesta",
+    "Search GIFs" : "Etsi GIF-kuvia",
+    "Powered by Giphy" : "Taustavoimana Giphy",
     "Giphy GIF picker" : "Giphyn GIF-valitsin",
     "Searching..." : "Etsitään...",
     "No results" : "Ei tuloksia",
-    "No more GIFs" : "Ei enempää GIF-kuvia",
-    "Search GIFs" : "Etsi GIF-kuvia",
-    "Powered by Giphy" : "Taustavoimana Giphy"
+    "No more GIFs" : "Ei enempää GIF-kuvia"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

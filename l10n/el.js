@@ -7,9 +7,9 @@ OC.L10N.register(
     "Bad credentials" : "Εσφαλμένα διαπιστευτήρια",
     "Connected accounts" : "Συνδεδεμένοι λογαριασμοί",
     "Giphy integration" : "Ενσωμάτωση Giphy",
+    "Search GIFs" : "Αναζήτηση GIF",
     "Searching..." : "Γίνεται αναζήτηση...",
     "No results" : "Κανένα αποτέλεσμα",
-    "No more GIFs" : "Όχι άλλα GIF",
-    "Search GIFs" : "Αναζήτηση GIF"
+    "No more GIFs" : "Όχι άλλα GIF"
 },
 "nplurals=2; plural=(n != 1);");
