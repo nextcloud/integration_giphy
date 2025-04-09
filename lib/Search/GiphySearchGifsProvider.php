@@ -24,10 +24,10 @@ use OCP\Search\SearchResultEntry;
 class GiphySearchGifsProvider implements IProvider {
 
 	public function __construct(
-		private IAppManager        $appManager,
-		private IL10N              $l10n,
-		private IConfig            $config,
-		private GiphyAPIService    $giphyAPIService,
+		private IAppManager $appManager,
+		private IL10N $l10n,
+		private IConfig $config,
+		private GiphyAPIService $giphyAPIService,
 		private GiphySearchService $giphySearchService,
 	) {
 	}
