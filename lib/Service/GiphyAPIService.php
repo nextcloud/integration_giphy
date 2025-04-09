@@ -49,7 +49,14 @@ class GiphyAPIService {
 			}
 			$preferredVersion = 'original';
 		}
-		$gifUrlInfo = self::getGifUrlInfo($gifInfo['images'][$preferredVersion]['url']);
+		try {
+			$gifUrlInfo = self::getGifUrlInfo($gifInfo['images'][$preferredVersion]['url']);
+		} catch (\Exception|\Throwable $e) {
+			return '';
+		}
+		if ($gifUrlInfo === null) {
+			return '';
+		}
 		$route = $private
 			? Application::APP_ID . '.giphyAPI.privateGetGifFromDirectUrl'
 			: Application::APP_ID . '.giphyAPI.getGifFromDirectUrl';
@@ -68,9 +75,9 @@ class GiphyAPIService {
 
 	/**
 	 * @param string $mediaUrl
-	 * @return array
+	 * @return array|null
 	 */
-	public static function getGifUrlInfo(string $mediaUrl): array {
+	public static function getGifUrlInfo(string $mediaUrl): ?array {
 		// examples:
 		// https://media4.giphy.com/media/BaDsH4FpMBnqdK8J0g/giphy.gif?cid=ae23904804a21bf61bc9d904e66605c31a584d73c05db5ad&rid=giphy.gif&ct=g
 		// https://media1.giphy.com/media/HCTfYH2Xk5yw/200w.gif?cid=ae239048qk2ahzc7vpjuagzbyava4073ygy3gj2owzyx3jtl&ep=v1_gifs_trending&rid=200w.gif&ct=g
@@ -92,10 +99,21 @@ class GiphyAPIService {
 						'ct' => $parsedQuery['ct'],
 					];
 				}
+			} elseif (!isset($parsedUrl['query'])) {
+				// https://media1.giphy.com/media/v1.Y2lkPWFlMjM5MDQ4bmdwenl0bnpqbHdxZXpnejJvbWk4d21kd21lZ241OGUxMjF1a2U4eCZlcD12MV9naWZzX3RyZW5kaW5nJmN0PWc/CKqTAwtMSLl0lz4cUM/200w.gif
+				preg_match('/^\/media\/[^\/?&]+\/[^\/?&]+\/([^\/&?]+)$/i', $parsedUrl['path'], $pathMatches);
+				$fileName = $pathMatches[1];
+				return [
+					'domainPrefix' => $domainPrefix,
+					'fileName' => $fileName,
+					'cid' => 'cid',
+					'rid' => $fileName,
+					'ct' => 'g',
+				];
 			}
 		}
 
-		return [];
+		return null;
 	}
 
 	/**
