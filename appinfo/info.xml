@@ -16,7 +16,7 @@ It also provides a link reference provider to render links to GIFs and make it p
 To use SmartPicker, start typing with `/giphy`.
 	]]>
 	</description>
-    <version>2.0.1</version>
+    <version>2.0.2</version>
     <licence>agpl</licence>
     <author>Julien Veyssier</author>
     <namespace>Giphy</namespace>

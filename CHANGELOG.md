@@ -10,6 +10,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## 2.0.2 - 2025-05-21
+
+### Changed
+
+- readme and info.xml adjustments @oleksandr-nc [#34](https://github.com/nextcloud/integration_giphy/pull/34)
+
+### Fixed
+
+- Use product name "Smart Picker" @rakekniven [#35](https://github.com/nextcloud/integration_giphy/pull/35)
+- Make getGifProxiedUrl safer @julien-nc [#38](https://github.com/nextcloud/integration_giphy/pull/38)
+
 ## 2.0.1 - 2024-10-18
 
 ### Fixed
