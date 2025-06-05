@@ -24,7 +24,7 @@ OC.L10N.register(
     "Enable Giphy link previews" : "Giphy bağlantıları ön izlenebilsin",
     "Giphy options saved" : "Giphy ayarları kaydedildi",
     "Failed to save Giphy options" : "Giphy ayarları kaydedilemedi",
-    "Disabled by your administrator" : "Yöneticiniz tarafından kullanımdan kaldırılmış",
+    "Disabled by your administrator" : "Yöneticiniz tarafından devre dışı bırakılmış",
     "Loading GIF" : "GIF yükleniyor",
     "Search GIFs" : "GIF arama",
     "Powered by Giphy" : "Giphy tarafından sağlanır",
@@ -34,6 +34,6 @@ OC.L10N.register(
     "No more GIFs" : "Başka bir GIF yok",
     "Fold all Giphy GIFs" : "Tüm Giphy GIF görsellerini daralt",
     "Unfold all Giphy GIFs" : "Tüm Giphy GIF görsellerini genişlet",
-    "GIFs are disabled" : "GIF dosyaları kullanımdan kaldırılmış"
+    "GIFs are disabled" : "GIF dosyaları devre dışı bırakılmış"
 },
 "nplurals=2; plural=(n > 1);");
