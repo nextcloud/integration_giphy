@@ -9,7 +9,7 @@ OC.L10N.register(
     "Connected accounts" : "Bağlı hesaplar",
     "Giphy integration" : "Giphy bütünleştirmesi",
     "Integration of Giphy" : "Giphy bütünleştirmesi",
-    "Giphy integration provides a unified search provider for GIFs.\n\nIt also provides a link reference provider to render links to GIFs and make it possible to search for GIFs in Talk, Text and potentially anywhere in Nextcloud.\n\nTo use SmartPicker, start typing with `/giphy`." : "Giphy bütünleştirmesi, GIF görselleri için bütünleşik bir arama hizmeti sağlar.\n\nAyrıca GIF görsellerine bağlantılar sunmak ve GIF görsellerini Talk, Yazı ve diğer potansiyel Nextcloud uygulamalarında arayabilmek için bir bağlantı başvuru sağlayıcısı da sunar.\n\nAkıllı seçiciyi kullanmak için `/giphy` yazmaya başlayın.",
+    "Giphy integration provides a unified search provider for GIFs.\n\nIt also provides a link reference provider to render links to GIFs and make it possible to search for GIFs in Talk, Text and potentially anywhere in Nextcloud.\n\nTo use SmartPicker, start typing with `/giphy`." : "Giphy bütünleştirmesi, GIF görselleri için bütünleşik bir arama hizmeti sağlar.\n\nAyrıca GIF görsellerine bağlantılar sunmak ve GIF görsellerini Konuş, Metin ve diğer potansiyel Nextcloud uygulamalarında arayabilmek için bir bağlantı başvuru sağlayıcısı da sunar.\n\nAkıllı seçiciyi kullanmak için `/giphy` yazmaya başlayın.",
     "G - Level 1" : "G - 1. düzey",
     "PG - Level 2" : "PG - 2. düzey",
     "PG 13 - Level 3" : "PG 13 - 3. düzey",
@@ -24,7 +24,7 @@ OC.L10N.register(
     "Enable Giphy link previews" : "Giphy bağlantıları ön izlenebilsin",
     "Giphy options saved" : "Giphy ayarları kaydedildi",
     "Failed to save Giphy options" : "Giphy ayarları kaydedilemedi",
-    "Disabled by your administrator" : "Yöneticiniz tarafından devre dışı bırakılmış",
+    "Disabled by your administrator" : "Yöneticiniz tarafından kullanımdan kaldırılmış",
     "Loading GIF" : "GIF yükleniyor",
     "Search GIFs" : "GIF arama",
     "Powered by Giphy" : "Giphy tarafından sağlanır",
@@ -34,6 +34,6 @@ OC.L10N.register(
     "No more GIFs" : "Başka bir GIF yok",
     "Fold all Giphy GIFs" : "Tüm Giphy GIF görsellerini daralt",
     "Unfold all Giphy GIFs" : "Tüm Giphy GIF görsellerini genişlet",
-    "GIFs are disabled" : "GIF dosyaları devre dışı bırakılmış"
+    "GIFs are disabled" : "GIF dosyaları kullanımdan kaldırılmış"
 },
 "nplurals=2; plural=(n > 1);");
