@@ -10,6 +10,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## 2.1.0 - 2025-07-10
+
+### Changed
+
+- Added support for NC 32, removed support for NC 28/29 [#41](https://github.com/nextcloud/integration_giphy/pull/41)
+
 ## 2.0.2 - 2025-05-21
 
 ### Changed
