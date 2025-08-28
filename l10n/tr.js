@@ -9,7 +9,7 @@ OC.L10N.register(
     "Connected accounts" : "Bağlı hesaplar",
     "Giphy integration" : "Giphy bütünleştirmesi",
     "Integration of Giphy" : "Giphy bütünleştirmesi",
-    "Giphy integration provides a unified search provider for GIFs.\n\nIt also provides a link reference provider to render links to GIFs and make it possible to search for GIFs in Talk, Text and potentially anywhere in Nextcloud.\n\nTo use SmartPicker, start typing with `/giphy`." : "Giphy bütünleştirmesi, GIF görselleri için bütünleşik bir arama hizmeti sağlar.\n\nAyrıca GIF görsellerine bağlantılar sunmak ve GIF görsellerini Konuş, Metin ve diğer potansiyel Nextcloud uygulamalarında arayabilmek için bir bağlantı başvuru sağlayıcısı da sunar.\n\nAkıllı seçiciyi kullanmak için `/giphy` yazmaya başlayın.",
+    "Giphy integration provides a unified search provider for GIFs.\n\nIt also provides a link reference provider to render links to GIFs and make it possible to search for GIFs in Talk, Text and potentially anywhere in Nextcloud.\n\nTo use SmartPicker, start typing with `/giphy`." : "Giphy bütünleştirmesi, GIF görselleri için bütünleşik bir arama hizmeti sağlar.\n\nAyrıca GIF görsellerine bağlantılar sunmak ve GIF görsellerini Konuş, Yazı ve diğer potansiyel Nextcloud uygulamalarında arayabilmek için bir bağlantı başvuru sağlayıcısı da sunar.\n\nAkıllı seçiciyi kullanmak için `/giphy` yazmaya başlayın.",
     "G - Level 1" : "G - 1. düzey",
     "PG - Level 2" : "PG - 2. düzey",
     "PG 13 - Level 3" : "PG 13 - 3. düzey",
