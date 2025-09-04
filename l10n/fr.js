@@ -9,6 +9,7 @@ OC.L10N.register(
     "Connected accounts" : "Comptes connectés",
     "Giphy integration" : "Intégration de Giphy",
     "Integration of Giphy" : "Intégration de Giphy",
+    "Giphy integration provides a unified search provider for GIFs.\n\nIt also provides a link reference provider to render links to GIFs and make it possible to search for GIFs in Talk, Text and potentially anywhere in Nextcloud.\n\nTo use SmartPicker, start typing with `/giphy`." : "L'intégration Giphy fournit un moteur de recherche unifié pour les GIF.\n\nElle fournit également un fournisseur de références de liens pour afficher les liens vers les GIF et permettre la recherche de GIF dans Talk, Text et potentiellement partout dans Nextcloud.\n\nPour utiliser SmartPicker, commencez à taper `/giphy`.",
     "G - Level 1" : "G - Niveau 1",
     "PG - Level 2" : "PG - Niveau 2",
     "PG 13 - Level 3" : "PG13 - Niveau 3",
