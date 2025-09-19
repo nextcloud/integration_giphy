@@ -6,6 +6,7 @@ OC.L10N.register(
     "Bad credentials" : "不正な資格情報",
     "Connected accounts" : "接続済みアカウント",
     "Search GIFs" : "GIFをさがす",
+    "Searching..." : "検索中",
     "No results" : "該当なし"
 },
 "nplurals=1; plural=0;");
