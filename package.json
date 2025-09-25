@@ -38,7 +38,7 @@
 		"npm": "^7.0.0 || ^8.0.0 || ^9.0.0"
 	},
 	"dependencies": {
-    "@codog/vue3-infinite-loading": "^0.0.9",
+		"@codog/vue3-infinite-loading": "^0.0.9",
 		"@nextcloud/auth": "^2.2.1",
 		"@nextcloud/axios": "^2.4.0",
 		"@nextcloud/dialogs": "^7.0.0-rc.3",
@@ -49,6 +49,7 @@
 		"@nextcloud/password-confirmation": "^6.0.0-rc.0",
 		"@nextcloud/router": "^3.0.0",
 		"@nextcloud/vue": "^9.0.0",
+		"tiny-emitter": "^2.1.0",
 		"v-click-outside": "^3.2.0",
 		"vue": "^3.5.22",
 		"vue-material-design-icons": "^5.1.2"
