@@ -7,34 +7,39 @@ import {
 	registerWidget,
 	registerCustomPickerElement,
 	NcCustomPickerRenderResult,
-} from '@nextcloud/vue/dist/Components/NcRichText.js'
+} from '@nextcloud/vue/components/NcRichText'
 
 registerWidget('integration_giphy_gif', async (el, { richObjectType, richObject, accessible }) => {
-	const { default: Vue } = await import('vue')
-	Vue.mixin({ methods: { t, n } })
+	const { createApp } = await import('vue')
 	const { default: GifReferenceWidget } = await import('./views/GifReferenceWidget.vue')
-	const Widget = Vue.extend(GifReferenceWidget)
-	new Widget({
-		propsData: {
+
+	const app = createApp(
+		GifReferenceWidget,
+		{
 			richObjectType,
 			richObject,
 			accessible,
 		},
-	}).$mount(el)
-})
+	)
+	app.mixin({ methods: { t, n } })
+	app.mount(el)
+}, () => {}, { hasInteractiveView: false })
 
 registerCustomPickerElement('giphy-gif', async (el, { providerId, accessible }) => {
-	const { default: Vue } = await import('vue')
-	Vue.mixin({ methods: { t, n } })
+	const { createApp } = await import('vue')
 	const { default: GifCustomPickerElement } = await import('./views/GifCustomPickerElement.vue')
-	const Element = Vue.extend(GifCustomPickerElement)
-	const vueElement = new Element({
-		propsData: {
+
+	const app = createApp(
+		GifCustomPickerElement,
+		{
 			providerId,
 			accessible,
 		},
-	}).$mount(el)
-	return new NcCustomPickerRenderResult(vueElement.$el, vueElement)
+	)
+	app.mixin({ methods: { t, n } })
+	app.mount(el)
+
+	return new NcCustomPickerRenderResult(el, app)
 }, (el, renderResult) => {
-	renderResult.object.$destroy()
+	renderResult.object.unmount()
 })

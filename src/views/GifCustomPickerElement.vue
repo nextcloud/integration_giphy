@@ -11,11 +11,11 @@
 		<div class="input-wrapper">
 			<NcTextField
 				ref="giphy-search-input"
-				:value.sync="searchQuery"
+				v-model="searchQuery"
 				:show-trailing-button="searchQuery !== ''"
 				:label="inputPlaceholder"
 				@trailing-button-click="onClear"
-				@update:value="onInput">
+				@update:model-value="onInput">
 				<template #trailing-button-icon>
 					<CloseIcon :size="16" />
 				</template>
@@ -76,9 +76,9 @@
 import MagnifyIcon from 'vue-material-design-icons/Magnify.vue'
 import CloseIcon from 'vue-material-design-icons/Close.vue'
 
-import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
-import NcEmptyContent from '@nextcloud/vue/dist/Components/NcEmptyContent.js'
-import NcTextField from '@nextcloud/vue/dist/Components/NcTextField.js'
+import NcLoadingIcon from '@nextcloud/vue/components/NcLoadingIcon'
+import NcEmptyContent from '@nextcloud/vue/components/NcEmptyContent'
+import NcTextField from '@nextcloud/vue/components/NcTextField'
 
 import PickerResult from '../components/PickerResult.vue'
 
@@ -86,10 +86,7 @@ import axios from '@nextcloud/axios'
 import { generateOcsUrl, imagePath } from '@nextcloud/router'
 import { delay } from '../utils.js'
 
-import InfiniteLoading from 'vue-infinite-loading'
-import Tooltip from '@nextcloud/vue/dist/Directives/Tooltip.js'
-import Vue from 'vue'
-Vue.directive('tooltip', Tooltip)
+import InfiniteLoading from '@codog/vue3-infinite-loading'
 
 const searchProviderId = 'giphy-search-gifs'
 const LIMIT = 20
@@ -144,7 +141,7 @@ export default {
 		this.focusOnInput()
 	},
 
-	beforeDestroy() {
+	beforeUnmount() {
 		this.cancelSearchRequests()
 	},
 
@@ -157,7 +154,7 @@ export default {
 		},
 		onSubmit(gif) {
 			this.cancelSearchRequests()
-			this.$emit('submit', gif.resourceUrl)
+			this.$el.dispatchEvent(new CustomEvent('submit', { detail: gif.resourceUrl, bubbles: true }))
 		},
 		onInput() {
 			delay(() => {

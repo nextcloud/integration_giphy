@@ -38,19 +38,20 @@
 		"npm": "^7.0.0 || ^8.0.0 || ^9.0.0"
 	},
 	"dependencies": {
+		"@codog/vue3-infinite-loading": "^0.0.9",
 		"@nextcloud/auth": "^2.2.1",
 		"@nextcloud/axios": "^2.4.0",
-		"@nextcloud/dialogs": "^5.1.2",
+		"@nextcloud/dialogs": "^7.0.0-rc.3",
 		"@nextcloud/event-bus": "^3.1.0",
-		"@nextcloud/initial-state": "^2.1.0",
+		"@nextcloud/initial-state": "^3.0.0",
 		"@nextcloud/l10n": "^3.1.0",
 		"@nextcloud/moment": "^1.3.1",
-		"@nextcloud/password-confirmation": "^5.1.1",
+		"@nextcloud/password-confirmation": "^6.0.0-rc.0",
 		"@nextcloud/router": "^3.0.0",
-		"@nextcloud/vue": "^8.8.1",
+		"@nextcloud/vue": "^9.0.0",
+		"tiny-emitter": "^2.1.0",
 		"v-click-outside": "^3.2.0",
-		"vue": "^2.7.12",
-		"vue-infinite-loading": "^2.4.5",
+		"vue": "^3.5.22",
 		"vue-material-design-icons": "^5.1.2"
 	},
 	"devDependencies": {
@@ -58,8 +59,8 @@
 		"@nextcloud/browserslist-config": "^3.0.0",
 		"@nextcloud/eslint-config": "^8.0.0",
 		"@nextcloud/stylelint-config": "^3.0.1",
-		"@nextcloud/vite-config": "^1.4.2",
+		"@nextcloud/vite-config": "^2.5.0",
 		"vite-plugin-eslint": "^1.8.1",
-		"vite-plugin-stylelint": "^5.3.1"
+		"vite-plugin-stylelint": "^6.0.2"
 	}
 }

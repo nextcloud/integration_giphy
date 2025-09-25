@@ -4,7 +4,7 @@
 -->
 
 <template>
-	<div v-tooltip.top="{ content: gif.title }"
+	<div :title="gif.title"
 		class="result"
 		@keydown.enter="$emit('click')"
 		@click="$emit('click')">
@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
+import NcLoadingIcon from '@nextcloud/vue/components/NcLoadingIcon'
 import { getRequestToken } from '@nextcloud/auth'
 
 export default {
@@ -37,6 +37,8 @@ export default {
 			required: true,
 		},
 	},
+
+	emits: ['click'],
 
 	data() {
 		return {

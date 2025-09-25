@@ -11,9 +11,9 @@
 		</h2>
 		<div id="giphy-content">
 			<NcCheckboxRadioSwitch
-				:checked="state.admin_search_gifs_enabled && state.search_gifs_enabled"
+				:model-value="state.admin_search_gifs_enabled && state.search_gifs_enabled"
 				:disabled="!state.admin_search_gifs_enabled"
-				@update:checked="onCheckboxChanged($event, 'search_gifs_enabled')">
+				@update:model-value="onCheckboxChanged($event, 'search_gifs_enabled')">
 				{{ t('integration_giphy', 'Enable search provider for GIFs') }}
 			</NcCheckboxRadioSwitch>
 			<p v-if="!state.admin_search_gifs_enabled" class="settings-hint">
@@ -21,9 +21,9 @@
 				{{ t('integration_giphy', 'Disabled by your administrator') }}
 			</p>
 			<NcCheckboxRadioSwitch
-				:checked="state.admin_link_preview_enabled && state.link_preview_enabled"
+				:model-value="state.admin_link_preview_enabled && state.link_preview_enabled"
 				:disabled="!state.admin_link_preview_enabled"
-				@update:checked="onCheckboxChanged($event, 'link_preview_enabled')">
+				@update:model-value="onCheckboxChanged($event, 'link_preview_enabled')">
 				{{ t('integration_giphy', 'Enable Giphy link previews') }}
 			</NcCheckboxRadioSwitch>
 			<p v-if="!state.admin_link_preview_enabled" class="settings-hint">
@@ -44,7 +44,7 @@ import { generateUrl } from '@nextcloud/router'
 import axios from '@nextcloud/axios'
 import { showSuccess, showError } from '@nextcloud/dialogs'
 
-import NcCheckboxRadioSwitch from '@nextcloud/vue/dist/Components/NcCheckboxRadioSwitch.js'
+import NcCheckboxRadioSwitch from '@nextcloud/vue/components/NcCheckboxRadioSwitch'
 
 export default {
 	name: 'PersonalSettings',
