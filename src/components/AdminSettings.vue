@@ -12,12 +12,12 @@
 		<div id="giphy-content">
 			<div class="line">
 				<NcTextField
+					v-model="state.api_key"
 					class="input"
-					:value.sync="state.api_key"
 					type="password"
 					:label="t('integration_giphy', 'Giphy API key')"
 					:show-trailing-button="!!state.api_key"
-					@update:value="onInput"
+					@update:model-value="onInput"
 					@trailing-button-click="state.api_key = '' ; onInput()">
 					<KeyIcon />
 				</NcTextField>
@@ -33,21 +33,22 @@
 			</NcNoteCard>
 			<div class="line">
 				<NcSelect
-					:value="selectedRating"
+					:model-value="selectedRating"
 					class="rating-select"
 					:input-label="t('integration_giphy', 'Rating filter')"
+					label="label"
 					:options="ratingOptions"
 					input-id="giphy-rating-select"
-					@input="onRatingChange" />
+					@update:model-value="onRatingChange" />
 			</div>
 			<NcCheckboxRadioSwitch
-				:checked="state.search_gifs_enabled"
-				@update:checked="onCheckboxChanged($event, 'search_gifs_enabled')">
+				:model-value="state.search_gifs_enabled"
+				@update:model-value="onCheckboxChanged($event, 'search_gifs_enabled')">
 				{{ t('integration_giphy', 'Enable search provider for GIFs') }}
 			</NcCheckboxRadioSwitch>
 			<NcCheckboxRadioSwitch
-				:checked="state.link_preview_enabled"
-				@update:checked="onCheckboxChanged($event, 'link_preview_enabled')">
+				:model-value="state.link_preview_enabled"
+				@update:model-value="onCheckboxChanged($event, 'link_preview_enabled')">
 				{{ t('integration_giphy', 'Enable Giphy link previews') }}
 			</NcCheckboxRadioSwitch>
 		</div>
@@ -66,10 +67,10 @@ import { delay } from '../utils.js'
 import { showSuccess, showError } from '@nextcloud/dialogs'
 import { confirmPassword } from '@nextcloud/password-confirmation'
 
-import NcCheckboxRadioSwitch from '@nextcloud/vue/dist/Components/NcCheckboxRadioSwitch.js'
-import NcSelect from '@nextcloud/vue/dist/Components/NcSelect.js'
-import NcNoteCard from '@nextcloud/vue/dist/Components/NcNoteCard.js'
-import NcTextField from '@nextcloud/vue/dist/Components/NcTextField.js'
+import NcCheckboxRadioSwitch from '@nextcloud/vue/components/NcCheckboxRadioSwitch'
+import NcSelect from '@nextcloud/vue/components/NcSelect'
+import NcNoteCard from '@nextcloud/vue/components/NcNoteCard'
+import NcTextField from '@nextcloud/vue/components/NcTextField'
 
 const ratings = {
 	g: {

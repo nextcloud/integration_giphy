@@ -13,7 +13,7 @@
 			</div>
 			<NcButton
 				class="toggle-gifs-button"
-				:type="gifsEnabled ? 'secondary' : 'primary'"
+				:variant="gifsEnabled ? 'secondary' : 'primary'"
 				:title="hideButtonTitle"
 				@click="handleGifsBtn">
 				<template #icon>
@@ -41,8 +41,8 @@
 </template>
 
 <script>
-import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
-import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
+import NcLoadingIcon from '@nextcloud/vue/components/NcLoadingIcon'
+import NcButton from '@nextcloud/vue/components/NcButton'
 import EyeOffIcon from 'vue-material-design-icons/EyeOff.vue'
 
 import { imagePath } from '@nextcloud/router'
