@@ -10,6 +10,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## 2.2.0 - 2025-11-13
+
+### Added
+
+- Added support for Nextcloud 33
+
+### Changed
+
+- Migrate to Vue 3 and nc/vue 9 [#53](https://github.com/nextcloud/integration_giphy/pull/53)
+- Use new IExternalProvider in the search provider [#54](https://github.com/nextcloud/integration_giphy/pull/54)
+- Update dependencies & translations
+
 ## 2.1.0 - 2025-07-10
 
 ### Changed
