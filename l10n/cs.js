@@ -29,7 +29,7 @@ OC.L10N.register(
     "Search GIFs" : "Hledat GIF obrázky",
     "Powered by Giphy" : "Využívá Giphy",
     "Giphy GIF picker" : "Volič GIF obrázků ze služby Giphy",
-    "Searching..." : "Hledání…",
+    "Searching..." : "Hledání …",
     "No results" : "Žádné výsledky",
     "No more GIFs" : "Žádné další GIFy",
     "Fold all Giphy GIFs" : "Sbalit veškeré GIF obrázky z Giphy",
