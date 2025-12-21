@@ -9,6 +9,7 @@ OC.L10N.register(
     "Connected accounts" : "ئۇلانغان ھېساباتلار",
     "Giphy integration" : "Giphy بىرلەشتۈرۈش",
     "Integration of Giphy" : "Giphy نىڭ بىرىكىشى",
+    "Giphy integration provides a unified search provider for GIFs.\n\nIt also provides a link reference provider to render links to GIFs and make it possible to search for GIFs in Talk, Text and potentially anywhere in Nextcloud.\n\nTo use SmartPicker, start typing with `/giphy`." : "Giphy بىر گەۋدىلەشكەن GIF لار ئۈچۈن بىرلىككە كەلگەن ئىزدەش مۇلازىمىتى بىلەن تەمىنلەيدۇ.ئۇ يەنە GIF لارغا ئۇلىنىشلارنى كۆرسىتىش ۋە Talk، Text ۋە Nextcloud نىڭ ھەر قانداق يېرىدە GIF لارنى ئىزدەشنى مۇمكىن قىلىش ئۈچۈن ئۇلىنىش پايدىلىنىش مۇلازىمىتى بىلەن تەمىنلەيدۇ.SmartPicker نى ئىشلىتىش ئۈچۈن، `/giphy` بىلەن يېزىشقا باشلاڭ.",
     "G - Level 1" : "G - Level 1",
     "PG - Level 2" : "PG - 2-دەرىجە",
     "PG 13 - Level 3" : "PG 13 - 3-دەرىجە",
