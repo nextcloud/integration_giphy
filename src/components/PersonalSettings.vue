@@ -6,37 +6,37 @@
 <template>
 	<div id="giphy_prefs" class="section">
 		<h2>
-			<GiphyIcon class="icon" />
+			<GiphyIcon />
 			{{ t('integration_giphy', 'Giphy integration') }}
 		</h2>
 		<div id="giphy-content">
-			<NcCheckboxRadioSwitch
-				:model-value="state.admin_search_gifs_enabled && state.search_gifs_enabled"
-				:disabled="!state.admin_search_gifs_enabled"
-				@update:model-value="onCheckboxChanged($event, 'search_gifs_enabled')">
-				{{ t('integration_giphy', 'Enable search provider for GIFs') }}
-			</NcCheckboxRadioSwitch>
-			<p v-if="!state.admin_search_gifs_enabled" class="settings-hint">
-				<InformationOutlineIcon :size="20" class="icon" />
-				{{ t('integration_giphy', 'Disabled by your administrator') }}
-			</p>
-			<NcCheckboxRadioSwitch
-				:model-value="state.admin_link_preview_enabled && state.link_preview_enabled"
-				:disabled="!state.admin_link_preview_enabled"
-				@update:model-value="onCheckboxChanged($event, 'link_preview_enabled')">
-				{{ t('integration_giphy', 'Enable Giphy link previews') }}
-			</NcCheckboxRadioSwitch>
-			<p v-if="!state.admin_link_preview_enabled" class="settings-hint">
-				<InformationOutlineIcon :size="20" class="icon" />
-				{{ t('integration_giphy', 'Disabled by your administrator') }}
-			</p>
+			<div>
+				<NcNoteCard v-if="!state.admin_search_gifs_enabled" type="info">
+					{{ t('integration_giphy', 'Searching gifs has been disabled by your administrator') }}
+				</NcNoteCard>
+				<NcNoteCard v-if="!state.admin_link_preview_enabled" type="info">
+					{{ t('integration_giphy', 'Gif link previews have been disabled by your administrator') }}
+				</NcNoteCard>
+			</div>
+			<NcFormBox>
+				<NcFormBoxSwitch
+					:model-value="state.admin_search_gifs_enabled && state.search_gifs_enabled"
+					:disabled="!state.admin_search_gifs_enabled"
+					@update:model-value="onCheckboxChanged($event, 'search_gifs_enabled')">
+					{{ t('integration_giphy', 'Enable search provider for GIFs') }}
+				</NcFormBoxSwitch>
+				<NcFormBoxSwitch
+					:model-value="state.admin_link_preview_enabled && state.link_preview_enabled"
+					:disabled="!state.admin_link_preview_enabled"
+					@update:model-value="onCheckboxChanged($event, 'link_preview_enabled')">
+					{{ t('integration_giphy', 'Enable Giphy link previews') }}
+				</NcFormBoxSwitch>
+			</NcFormBox>
 		</div>
 	</div>
 </template>
 
 <script>
-import InformationOutlineIcon from 'vue-material-design-icons/InformationOutline.vue'
-
 import GiphyIcon from './icons/GiphyIcon.vue'
 
 import { loadState } from '@nextcloud/initial-state'
@@ -44,15 +44,18 @@ import { generateUrl } from '@nextcloud/router'
 import axios from '@nextcloud/axios'
 import { showSuccess, showError } from '@nextcloud/dialogs'
 
-import NcCheckboxRadioSwitch from '@nextcloud/vue/components/NcCheckboxRadioSwitch'
+import NcFormBox from '@nextcloud/vue/components/NcFormBox'
+import NcFormBoxSwitch from '@nextcloud/vue/components/NcFormBoxSwitch'
+import NcNoteCard from '@nextcloud/vue/components/NcNoteCard'
 
 export default {
 	name: 'PersonalSettings',
 
 	components: {
 		GiphyIcon,
-		NcCheckboxRadioSwitch,
-		InformationOutlineIcon,
+		NcFormBox,
+		NcFormBoxSwitch,
+		NcNoteCard,
 	},
 
 	props: [],
@@ -100,18 +103,17 @@ export default {
 #giphy_prefs {
 	#giphy-content {
 		margin-left: 40px;
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		max-width: 800px;
 	}
 
-	.settings-hint,
 	h2 {
 		display: flex;
+		gap: 8px;
 		align-items: center;
-		.icon {
-			margin-right: 8px;
-		}
-	}
-	.settings-hint .icon {
-		margin-right: 4px;
+		justify-content: start;
 	}
 }
 </style>

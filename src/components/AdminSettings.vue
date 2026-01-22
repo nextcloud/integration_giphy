@@ -6,22 +6,22 @@
 <template>
 	<div id="giphy_prefs" class="section">
 		<h2>
-			<GiphyIcon class="icon" />
+			<GiphyIcon />
 			{{ t('integration_giphy', 'Giphy integration') }}
 		</h2>
 		<div id="giphy-content">
-			<div class="line">
-				<NcTextField
-					v-model="state.api_key"
-					class="input"
-					type="password"
-					:label="t('integration_giphy', 'Giphy API key')"
-					:show-trailing-button="!!state.api_key"
-					@update:model-value="onInput"
-					@trailing-button-click="state.api_key = '' ; onInput()">
-					<KeyIcon />
-				</NcTextField>
-			</div>
+			<NcTextField
+				v-model="state.api_key"
+				class="input"
+				type="password"
+				:label="t('integration_giphy', 'Giphy API key')"
+				:show-trailing-button="!!state.api_key"
+				@update:model-value="onInput"
+				@trailing-button-click="state.api_key = '' ; onInput()">
+				<template #icon>
+					<KeyOutlineIcon :size="20" />
+				</template>
+			</NcTextField>
 			<NcNoteCard v-if="state.api_key === ''"
 				type="info">
 				<p>
@@ -31,32 +31,32 @@
 					{{ t('integration_giphy', 'Giphy developer settings') }}
 				</a>
 			</NcNoteCard>
-			<div class="line">
-				<NcSelect
-					:model-value="selectedRating"
-					class="rating-select"
-					:input-label="t('integration_giphy', 'Rating filter')"
-					label="label"
-					:options="ratingOptions"
-					input-id="giphy-rating-select"
-					@update:model-value="onRatingChange" />
-			</div>
-			<NcCheckboxRadioSwitch
-				:model-value="state.search_gifs_enabled"
-				@update:model-value="onCheckboxChanged($event, 'search_gifs_enabled')">
-				{{ t('integration_giphy', 'Enable search provider for GIFs') }}
-			</NcCheckboxRadioSwitch>
-			<NcCheckboxRadioSwitch
-				:model-value="state.link_preview_enabled"
-				@update:model-value="onCheckboxChanged($event, 'link_preview_enabled')">
-				{{ t('integration_giphy', 'Enable Giphy link previews') }}
-			</NcCheckboxRadioSwitch>
+			<NcSelect
+				:model-value="selectedRating"
+				class="rating-select"
+				:input-label="t('integration_giphy', 'Rating filter')"
+				label="label"
+				:options="ratingOptions"
+				input-id="giphy-rating-select"
+				@update:model-value="onRatingChange" />
+			<NcFormBox>
+				<NcFormBoxSwitch
+					:model-value="state.search_gifs_enabled"
+					@update:model-value="onCheckboxChanged($event, 'search_gifs_enabled')">
+					{{ t('integration_giphy', 'Enable search provider for GIFs') }}
+				</NcFormBoxSwitch>
+				<NcFormBoxSwitch
+					:model-value="state.link_preview_enabled"
+					@update:model-value="onCheckboxChanged($event, 'link_preview_enabled')">
+					{{ t('integration_giphy', 'Enable Giphy link previews') }}
+				</NcFormBoxSwitch>
+			</NcFormBox>
 		</div>
 	</div>
 </template>
 
 <script>
-import KeyIcon from 'vue-material-design-icons/Key.vue'
+import KeyOutlineIcon from 'vue-material-design-icons/KeyOutline.vue'
 
 import GiphyIcon from './icons/GiphyIcon.vue'
 
@@ -67,7 +67,8 @@ import { delay } from '../utils.js'
 import { showSuccess, showError } from '@nextcloud/dialogs'
 import { confirmPassword } from '@nextcloud/password-confirmation'
 
-import NcCheckboxRadioSwitch from '@nextcloud/vue/components/NcCheckboxRadioSwitch'
+import NcFormBox from '@nextcloud/vue/components/NcFormBox'
+import NcFormBoxSwitch from '@nextcloud/vue/components/NcFormBoxSwitch'
 import NcSelect from '@nextcloud/vue/components/NcSelect'
 import NcNoteCard from '@nextcloud/vue/components/NcNoteCard'
 import NcTextField from '@nextcloud/vue/components/NcTextField'
@@ -96,11 +97,12 @@ export default {
 
 	components: {
 		GiphyIcon,
-		NcCheckboxRadioSwitch,
+		NcFormBox,
+		NcFormBoxSwitch,
 		NcSelect,
 		NcNoteCard,
 		NcTextField,
-		KeyIcon,
+		KeyOutlineIcon,
 	},
 
 	props: [],
@@ -187,31 +189,17 @@ export default {
 #giphy_prefs {
 	#giphy-content {
 		margin-left: 40px;
-	}
-	h2,
-	.line,
-	.settings-hint {
 		display: flex;
+		flex-direction: column;
+		max-width: 800px;
+		gap: 8px;
+	}
+
+	h2 {
+		display: flex;
+		gap: 8px;
 		align-items: center;
-		.icon {
-			margin-right: 4px;
-		}
-	}
-
-	h2 .icon {
-		margin-right: 8px;
-	}
-
-	.line {
-		> label {
-			width: 300px;
-			display: flex;
-			align-items: center;
-		}
-		> input, .input {
-			width: 350px;
-			margin-top: 0;
-		}
+		justify-content: start;
 	}
 
 	.rating-select {

@@ -17,9 +17,11 @@
 				@trailing-button-click="onClear"
 				@update:model-value="onInput">
 				<template #trailing-button-icon>
-					<CloseIcon :size="16" />
+					<CloseIcon :size="20" />
 				</template>
-				<MagnifyIcon :size="16" />
+				<template #icon>
+					<MagnifyIcon :size="20" />
+				</template>
 			</NcTextField>
 		</div>
 		<div v-if="gifs.length === 0"
@@ -31,7 +33,7 @@
 				</template>
 			</NcEmptyContent>
 			<NcEmptyContent v-else
-				:title="t('integration_giphy', 'No results')">
+				:name="t('integration_giphy', 'No results')">
 				<template #icon>
 					<img class="empty-content-img"
 						:src="sadGifUrl">
@@ -254,6 +256,7 @@ export default {
 	h2 {
 		display: flex;
 		align-items: center;
+		margin-top: 0;
 	}
 
 	.attribution {
