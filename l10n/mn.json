@@ -1,0 +1,6 @@
+{ "translations": {
+    "Bad HTTP method" : "Буруу HTTP арга",
+    "Bad credentials" : "Буруу нэвтрэх мэдээлэл",
+    "No results" : "Үр дүн байхгүй"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}
