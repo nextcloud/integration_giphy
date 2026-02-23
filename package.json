@@ -14,7 +14,10 @@
 		"lint": "eslint --ext .js,.vue src",
 		"lint:fix": "eslint --ext .js,.vue src --fix",
 		"stylelint": "stylelint src/**/*.vue src/**/*.scss src/**/*.css",
-		"stylelint:fix": "stylelint src/**/*.vue src/**/*.scss src/**/*.css --fix"
+		"stylelint:fix": "stylelint src/**/*.vue src/**/*.scss src/**/*.css --fix",
+		"test": "vitest run",
+		"test:watch": "vitest",
+		"test:coverage": "vitest run --coverage"
 	},
 	"repository": {
 		"type": "git",
@@ -60,7 +63,11 @@
 		"@nextcloud/eslint-config": "^8.0.0",
 		"@nextcloud/stylelint-config": "^3.0.1",
 		"@nextcloud/vite-config": "^2.5.0",
+		"@vitejs/plugin-vue": "^6.0.4",
+		"@vue/test-utils": "^2.4.6",
+		"jsdom": "^28.1.0",
 		"vite-plugin-eslint": "^1.8.1",
-		"vite-plugin-stylelint": "^6.0.2"
+		"vite-plugin-stylelint": "^6.0.2",
+		"vitest": "^4.0.18"
 	}
 }
