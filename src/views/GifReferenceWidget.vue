@@ -17,7 +17,8 @@
 				:title="hideButtonTitle"
 				@click="handleGifsBtn">
 				<template #icon>
-					<EyeOffIcon :size="24" />
+					<EyeOffOutlineIcon v-if="!gifsEnabled" :size="24" />
+					<EyeIcon v-else :size="24" />
 				</template>
 			</NcButton>
 			<p v-show="!gifsEnabled" class="gifs-disabled">
@@ -43,7 +44,8 @@
 <script>
 import NcLoadingIcon from '@nextcloud/vue/components/NcLoadingIcon'
 import NcButton from '@nextcloud/vue/components/NcButton'
-import EyeOffIcon from 'vue-material-design-icons/EyeOff.vue'
+import EyeIcon from 'vue-material-design-icons/Eye.vue'
+import EyeOffOutlineIcon from 'vue-material-design-icons/EyeOffOutline.vue'
 
 import { imagePath } from '@nextcloud/router'
 import { getRequestToken } from '@nextcloud/auth'
@@ -55,7 +57,8 @@ export default {
 	components: {
 		NcLoadingIcon,
 		NcButton,
-		EyeOffIcon,
+		EyeOffOutlineIcon,
+		EyeIcon,
 	},
 
 	props: {
