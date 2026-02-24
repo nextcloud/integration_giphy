@@ -24,7 +24,6 @@ OC.L10N.register(
     "Enable Giphy link previews" : "Giphy-Linkvorschauen aktivieren",
     "Giphy options saved" : "Giphy-Einstellungen gespeichert",
     "Failed to save Giphy options" : "Giphy-Einstellungen konnten nicht gespeichert werden",
-    "Disabled by your administrator" : "Von deiner Administration deaktiviert",
     "Loading GIF" : "Lade GIF",
     "Search GIFs" : "Suche GIFs",
     "Powered by Giphy" : "Unterstützt von Giphy",

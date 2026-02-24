@@ -24,7 +24,6 @@ OC.L10N.register(
     "Enable Giphy link previews" : "啟用 Giphy 連結預覽",
     "Giphy options saved" : "已儲存 Giphy 選項",
     "Failed to save Giphy options" : "儲存 Giphy 選項失敗",
-    "Disabled by your administrator" : "已被管理員停用",
     "Loading GIF" : "正在載入 GIF",
     "Search GIFs" : "搜尋 GIF",
     "Powered by Giphy" : "由 Giphy 提供",

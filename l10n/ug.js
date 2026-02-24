@@ -24,7 +24,6 @@ OC.L10N.register(
     "Enable Giphy link previews" : "Giphy ئۇلانمىسىنى كۆرۈشنى قوزغىتىڭ",
     "Giphy options saved" : "Giphy تاللانمىلىرى ساقلاندى",
     "Failed to save Giphy options" : "Giphy تاللانمىلىرىنى ساقلاش مەغلۇب بولدى",
-    "Disabled by your administrator" : "باشقۇرغۇچىڭىز تەرىپىدىن چەكلەنگەن",
     "Loading GIF" : "GIF نى يۈكلەۋاتىدۇ",
     "Search GIFs" : "GIF نى ئىزدەڭ",
     "Powered by Giphy" : "Giphy تەرىپىدىن ئىشلەنگەن",

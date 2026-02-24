@@ -24,7 +24,6 @@ OC.L10N.register(
     "Enable Giphy link previews" : "Укључи прегледе Giphy линкова",
     "Giphy options saved" : "Сачуване су Giphy опције",
     "Failed to save Giphy options" : "Није успело чување Giphy опција",
-    "Disabled by your administrator" : "Искључио је ваш администратор",
     "Loading GIF" : "GIF се учитава",
     "Search GIFs" : "Претражи GIF-ове",
     "Powered by Giphy" : "Обезбеђује Giphy",

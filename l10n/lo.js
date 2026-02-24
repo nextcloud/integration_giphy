@@ -24,7 +24,6 @@ OC.L10N.register(
     "Enable Giphy link previews" : "ເປີດໃຊ້ງານການສະແດງຕົວຢ່າງລິ້ງ Giphy",
     "Giphy options saved" : "ບັນທຶກການຕັ້ງຄ່າ Giphy ແລ້ວ",
     "Failed to save Giphy options" : "ການບັນທຶກການຕັ້ງຄ່າ Giphy ບໍ່ສຳເລັດ",
-    "Disabled by your administrator" : "ຖືກປິດໃຊ້ງານໂດຍຜູ້ເບິ່ງແຍງລະບົບຂອງທ່ານ",
     "Loading GIF" : "ກຳລັງໂຫຼດ GIF",
     "Search GIFs" : "ຄົ້ນຫາ GIFs",
     "Powered by Giphy" : "ສະໜັບສະໜູນໂດຍ Giphy",

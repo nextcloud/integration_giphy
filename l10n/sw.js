@@ -24,7 +24,6 @@ OC.L10N.register(
     "Enable Giphy link previews" : "Washa utazamaji wa kiungo cha Giphy",
     "Giphy options saved" : "optionsibadala ya Giphy imehifadhiwa",
     "Failed to save Giphy options" : "Imeshindwa kuhifadhi chaguo za Giphy",
-    "Disabled by your administrator" : "Imezimwa na msimamizi wako",
     "Loading GIF" : "Inapakia GIF",
     "Search GIFs" : "Tafuta GIFs",
     "Powered by Giphy" : "Inaendeshwa na Giphy",

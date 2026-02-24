@@ -4,7 +4,6 @@ OC.L10N.register(
     "Bad HTTP method" : "Blogas HTTP metodas",
     "Bad credentials" : "Blogi prisijungimo duomenys",
     "Connected accounts" : "Prijungtos paskyros",
-    "Disabled by your administrator" : "Jūsų administratorius išjungė",
     "Searching..." : "Ieškoma...",
     "No results" : "Nieko nerasta"
 },

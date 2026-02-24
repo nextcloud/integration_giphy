@@ -21,7 +21,6 @@ OC.L10N.register(
     "Enable Giphy link previews" : "Gaitu GIF esteken aurrebistak",
     "Giphy options saved" : "Giphy aukerak gorde dira",
     "Failed to save Giphy options" : "Ezin izan dira Giphy aukerak gorde",
-    "Disabled by your administrator" : "Zure administratzaileak desgaituta",
     "Loading GIF" : "GIFa kargatzen",
     "Search GIFs" : "Bilatu GIFak",
     "Powered by Giphy" : "Giphy-rekin egina",

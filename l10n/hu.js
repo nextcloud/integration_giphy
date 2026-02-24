@@ -24,7 +24,6 @@ OC.L10N.register(
     "Enable Giphy link previews" : "Giphy-hivatkozások előnézetének engedélyezése",
     "Giphy options saved" : "A Giphy beállításai elmentve",
     "Failed to save Giphy options" : "A Giphy beállításainak mentése sikertelen",
-    "Disabled by your administrator" : "Rendszergazda által letiltva",
     "Loading GIF" : "GIF betöltése",
     "Search GIFs" : "GIF-ek keresése",
     "Powered by Giphy" : "A Giphy szolgáltatásra építve",

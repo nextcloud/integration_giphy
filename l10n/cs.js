@@ -24,7 +24,6 @@ OC.L10N.register(
     "Enable Giphy link previews" : "Zapnout náhledy odkazu do Giphy",
     "Giphy options saved" : "Předvolby pro Giphy uloženy",
     "Failed to save Giphy options" : "Nepodařilo se uložit předvolby pro Giphy",
-    "Disabled by your administrator" : "Vypnuto vaším správcem",
     "Loading GIF" : "Načítá se GIF",
     "Search GIFs" : "Hledat GIF obrázky",
     "Powered by Giphy" : "Využívá Giphy",

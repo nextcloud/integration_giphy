@@ -24,7 +24,6 @@ OC.L10N.register(
     "Enable Giphy link previews" : "Ενεργοποίηση προεπισκοπήσεων συνδέσμων Giphy",
     "Giphy options saved" : "Οι επιλογές Giphy αποθηκεύτηκαν",
     "Failed to save Giphy options" : "Αποτυχία αποθήκευσης επιλογών Giphy",
-    "Disabled by your administrator" : "Απενεργοποιημένο από το διαχειριστή σας",
     "Loading GIF" : "Φόρτωση GIF",
     "Search GIFs" : "Αναζήτηση GIF",
     "Powered by Giphy" : "Με την υποστήριξη Giphy",

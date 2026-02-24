@@ -21,7 +21,6 @@ OC.L10N.register(
     "Enable Giphy link previews" : "Aktiver forhåndsvisninger av Giphy-lenker",
     "Giphy options saved" : "Alternativer for Giphy lagret",
     "Failed to save Giphy options" : "Lagring av alternativer for Giphy feilet",
-    "Disabled by your administrator" : "Deaktivert av administratoren din",
     "Loading GIF" : "Laster GIF",
     "Search GIFs" : "Søk etter GIF-er",
     "Powered by Giphy" : "Drevet av Giphy",
