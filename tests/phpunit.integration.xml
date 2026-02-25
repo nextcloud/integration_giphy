@@ -9,15 +9,8 @@
       <directory suffix=".php">../appinfo</directory>
       <directory suffix=".php">../lib</directory>
     </include>
-    <report>
-      <clover outputFile="./clover.xml"/>
-    </report>
   </coverage>
-  <testsuite name="Giphy integration App Tests">
-    <directory suffix="Test.php">./unit</directory>
+  <testsuite name="Giphy Integration Tests">
+    <directory suffix="Test.php">./integration</directory>
   </testsuite>
-  <!-- filters for code coverage -->
-  <logging>
-    <!-- and this is where your report will be written -->
-  </logging>
 </phpunit>
