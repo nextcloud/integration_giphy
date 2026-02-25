@@ -24,6 +24,8 @@ OC.L10N.register(
     "Enable Giphy link previews" : "Giphy bağlantıları ön izlenebilsin",
     "Giphy options saved" : "Giphy ayarları kaydedildi",
     "Failed to save Giphy options" : "Giphy ayarları kaydedilemedi",
+    "Searching gifs has been disabled by your administrator" : "GIF arama özelliği yöneticiniz tarafından kapatılmış",
+    "Gif link previews have been disabled by your administrator" : "GIF bağlantı ön izleme özelliği yöneticiniz tarafından kapatılmış",
     "Loading GIF" : "GIF yükleniyor",
     "Search GIFs" : "GIF arama",
     "Powered by Giphy" : "Giphy tarafından sağlanır",
