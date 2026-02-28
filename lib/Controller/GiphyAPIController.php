@@ -112,7 +112,8 @@ class GiphyAPIController extends OCSController {
 	public function getTrendingGifs(int $cursor = 0, int $limit = 10): DataResponse {
 		$gifs = $this->giphyAPIService->getTrendingGifs($cursor, $limit);
 		if (isset($gifs['error'])) {
-			return new DataResponse($gifs, Http::STATUS_BAD_REQUEST);
+			$statusCode = $gifs['statusCode'] ?? Http::STATUS_BAD_REQUEST;
+			return new DataResponse($gifs, $statusCode);
 		}
 
 		$formattedEntries = array_map(function (array $gif): SearchResultEntry {
@@ -137,7 +138,8 @@ class GiphyAPIController extends OCSController {
 	public function searchGifs(string $term, int $cursor = 0, int $limit = 10): DataResponse {
 		$gifs = $this->giphyAPIService->searchGifs($term, $cursor, $limit);
 		if (isset($gifs['error'])) {
-			return new DataResponse($gifs, Http::STATUS_BAD_REQUEST);
+			$statusCode = $gifs['statusCode'] ?? Http::STATUS_BAD_REQUEST;
+			return new DataResponse($gifs, $statusCode);
 		}
 
 		$formattedEntries = array_map(function (array $gif): SearchResultEntry {

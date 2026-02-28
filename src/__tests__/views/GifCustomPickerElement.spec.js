@@ -7,8 +7,9 @@ import { mount, flushPromises } from '@vue/test-utils'
 
 const axiosMock = vi.hoisted(() => ({
 	get: vi.fn(),
+	isCancel: vi.fn(() => false),
 }))
-vi.mock('@nextcloud/axios', () => ({ default: axiosMock }))
+vi.mock('@nextcloud/axios', () => ({ default: axiosMock, isCancel: axiosMock.isCancel }))
 vi.mock('@nextcloud/router', () => ({
 	generateOcsUrl: (tpl, params) => {
 		let url = tpl
@@ -193,5 +194,64 @@ describe('GifCustomPickerElement', () => {
 		wrapper.vm.updateSearch()
 
 		expect(abortSpy).toHaveBeenCalled()
+	})
+
+	it('shows rate limit error message on HTTP 429', async () => {
+		const rateLimitError = new Error('Request failed with status code 429')
+		rateLimitError.response = { status: 429, data: { ocs: { data: { error: 'rate limit', statusCode: 429 } } } }
+		axiosMock.get.mockRejectedValue(rateLimitError)
+
+		const wrapper = mountPicker()
+		await flushPromises()
+
+		expect(wrapper.vm.errorMessage).toBe('Too many requests to Giphy. Please contact your administrator.')
+		const emptyContent = wrapper.findComponent({ name: 'NcEmptyContent' })
+		expect(emptyContent.exists()).toBe(true)
+		expect(emptyContent.attributes('name')).toBe('Too many requests to Giphy. Please contact your administrator.')
+	})
+
+	it('shows generic error message on non-429 API errors', async () => {
+		const apiError = new Error('Request failed with status code 403')
+		apiError.response = { status: 403, data: { ocs: { data: { error: 'Bad credentials', statusCode: 403 } } } }
+		axiosMock.get.mockRejectedValue(apiError)
+
+		const wrapper = mountPicker()
+		await flushPromises()
+
+		expect(wrapper.vm.errorMessage).toBe('Failed to load GIFs')
+		const emptyContent = wrapper.findComponent({ name: 'NcEmptyContent' })
+		expect(emptyContent.exists()).toBe(true)
+		expect(emptyContent.attributes('name')).toBe('Failed to load GIFs')
+	})
+
+	it('does not show error message when request is cancelled', async () => {
+		const cancelError = new Error('cancelled')
+		axiosMock.isCancel.mockReturnValue(true)
+		axiosMock.get.mockRejectedValue(cancelError)
+
+		const wrapper = mountPicker()
+		await flushPromises()
+
+		expect(wrapper.vm.errorMessage).toBe('')
+	})
+
+	it('clears error message when a new search starts', async () => {
+		const apiError = new Error('Request failed')
+		apiError.response = { status: 500 }
+		axiosMock.get
+			.mockRejectedValueOnce(apiError) // mount — error
+			.mockResolvedValueOnce(makeApiResponse([makeGif(1)], null)) // retry
+
+		const wrapper = mountPicker()
+		await flushPromises()
+		expect(wrapper.vm.errorMessage).toBe('Failed to load GIFs')
+
+		// New search should clear the error
+		wrapper.vm.searchQuery = 'cats'
+		wrapper.vm.updateSearch()
+		expect(wrapper.vm.errorMessage).toBe('')
+
+		await flushPromises()
+		expect(wrapper.vm.gifs).toHaveLength(1)
 	})
 })
