@@ -24,6 +24,8 @@ OC.L10N.register(
     "Enable Giphy link previews" : "Включити попередній перегляд посилань Giphy",
     "Giphy options saved" : "Параметри гіф збережено",
     "Failed to save Giphy options" : "Не вдалося зберегти параметри Giphy",
+    "Searching gifs has been disabled by your administrator" : "Пошук GIF вимкнено адміністратором",
+    "Gif link previews have been disabled by your administrator" : "Попередній перегляд посилань GIF вимкнено адміністратором",
     "Loading GIF" : "Завантаження GIF",
     "Search GIFs" : "Пошук GIF-файлів",
     "Powered by Giphy" : "Powered by Giphy",
