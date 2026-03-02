@@ -24,6 +24,8 @@ OC.L10N.register(
     "Enable Giphy link previews" : "Cumasaigh réamhamhairc naisc Giphy",
     "Giphy options saved" : "Roghanna Giphy sábháilte",
     "Failed to save Giphy options" : "Theip ar shábháil roghanna Giphy",
+    "Searching gifs has been disabled by your administrator" : "Tá cuardach gifs díchumasaithe ag do riarthóir",
+    "Gif link previews have been disabled by your administrator" : "Tá réamhamhairc nasc GIF díchumasaithe ag do riarthóir",
     "Loading GIF" : "GIF á lódáil",
     "Search GIFs" : "Cuardaigh GIFs",
     "Powered by Giphy" : "Cumhachtaithe ag Giphy",
