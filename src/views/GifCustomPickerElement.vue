@@ -32,6 +32,12 @@
 					<NcLoadingIcon />
 				</template>
 			</NcEmptyContent>
+			<NcEmptyContent v-else-if="errorMessage"
+				:name="errorMessage">
+				<template #icon>
+					<AlertIcon :size="64" />
+				</template>
+			</NcEmptyContent>
 			<NcEmptyContent v-else
 				:name="t('integration_giphy', 'No results')">
 				<template #icon>
@@ -75,6 +81,7 @@
 </template>
 
 <script>
+import AlertIcon from 'vue-material-design-icons/Alert.vue'
 import MagnifyIcon from 'vue-material-design-icons/Magnify.vue'
 import CloseIcon from 'vue-material-design-icons/Close.vue'
 
@@ -84,7 +91,7 @@ import NcTextField from '@nextcloud/vue/components/NcTextField'
 
 import PickerResult from '../components/PickerResult.vue'
 
-import axios from '@nextcloud/axios'
+import axios, { isCancel } from '@nextcloud/axios'
 import { generateOcsUrl, imagePath } from '@nextcloud/router'
 import { delay } from '../utils.js'
 
@@ -102,6 +109,7 @@ export default {
 		InfiniteLoading,
 		NcEmptyContent,
 		NcTextField,
+		AlertIcon,
 		MagnifyIcon,
 		CloseIcon,
 	},
@@ -121,6 +129,7 @@ export default {
 		return {
 			searchQuery: '',
 			searching: false,
+			errorMessage: '',
 			gifs: [],
 			inputPlaceholder: t('integration_giphy', 'Search GIFs'),
 			cursor: 0,
@@ -174,6 +183,7 @@ export default {
 			this.cancelSearchRequests()
 			this.gifs = []
 			this.cursor = 0
+			this.errorMessage = ''
 			this.search()
 		},
 		cancelSearchRequests() {
@@ -223,6 +233,11 @@ export default {
 				})
 				.catch((error) => {
 					console.debug('giphy search request error', error)
+					if (error.response?.status === 429) {
+						this.errorMessage = t('integration_giphy', 'Too many requests to Giphy. Please contact your administrator.')
+					} else if (!isCancel(error)) {
+						this.errorMessage = t('integration_giphy', 'Failed to load GIFs')
+					}
 					if (state !== null) {
 						state.complete()
 					}

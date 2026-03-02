@@ -266,14 +266,15 @@ class GiphyAPIService {
 			$respCode = $response->getStatusCode();
 
 			if ($respCode >= 400) {
-				return ['error' => $this->l10n->t('Bad credentials')];
+				return ['error' => $this->l10n->t('Bad credentials'), 'statusCode' => $respCode];
 			} else {
 				return json_decode($body, true) ?: [];
 			}
 		} catch (ClientException|ServerException $e) {
 			$responseBody = $e->getResponse()->getBody();
 			$parsedResponseBody = json_decode($responseBody, true);
-			if ($e->getResponse()->getStatusCode() === 404) {
+			$statusCode = $e->getResponse()->getStatusCode();
+			if ($statusCode === 404) {
 				// Only log inaccessible github links as debug
 				$this->logger->debug('Giphy API error : ' . $e->getMessage(), ['response_body' => $responseBody, 'app' => Application::APP_ID]);
 			} else {
@@ -282,6 +283,7 @@ class GiphyAPIService {
 			return [
 				'error' => $e->getMessage(),
 				'body' => $parsedResponseBody,
+				'statusCode' => $statusCode,
 			];
 		} catch (Exception|Throwable $e) {
 			$this->logger->warning('Giphy API error : ' . $e->getMessage(), ['app' => Application::APP_ID]);
