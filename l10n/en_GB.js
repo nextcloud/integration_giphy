@@ -24,6 +24,8 @@ OC.L10N.register(
     "Enable Giphy link previews" : "Enable Giphy link previews",
     "Giphy options saved" : "Giphy options saved",
     "Failed to save Giphy options" : "Failed to save Giphy options",
+    "Searching gifs has been disabled by your administrator" : "Searching gifs has been disabled by your administrator",
+    "Gif link previews have been disabled by your administrator" : "Gif link previews have been disabled by your administrator",
     "Loading GIF" : "Loading GIF",
     "Search GIFs" : "Search GIFs",
     "Powered by Giphy" : "Powered by Giphy",
