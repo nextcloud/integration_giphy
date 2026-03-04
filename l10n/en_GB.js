@@ -29,6 +29,8 @@ OC.L10N.register(
     "Loading GIF" : "Loading GIF",
     "Search GIFs" : "Search GIFs",
     "Powered by Giphy" : "Powered by Giphy",
+    "Too many requests to Giphy. Please contact your administrator." : "Too many requests to Giphy. Please contact your administrator.",
+    "Failed to load GIFs" : "Failed to load GIFs",
     "Giphy GIF picker" : "Giphy GIF picker",
     "Searching..." : "Searching...",
     "No results" : "No results",

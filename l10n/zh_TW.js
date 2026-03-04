@@ -29,6 +29,8 @@ OC.L10N.register(
     "Loading GIF" : "正在載入 GIF",
     "Search GIFs" : "搜尋 GIF",
     "Powered by Giphy" : "威力本源 Giphy",
+    "Too many requests to Giphy. Please contact your administrator." : "對 Giphy 的請求過多。請聯絡您的管理員。",
+    "Failed to load GIFs" : "載入 GIF 失敗",
     "Giphy GIF picker" : "Giphy GIF 挑選器",
     "Searching..." : "正在搜尋……",
     "No results" : "無結果",
