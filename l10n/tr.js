@@ -29,6 +29,8 @@ OC.L10N.register(
     "Loading GIF" : "GIF yükleniyor",
     "Search GIFs" : "GIF arama",
     "Powered by Giphy" : "Giphy tarafından sağlanır",
+    "Too many requests to Giphy. Please contact your administrator." : "Çok fazla sayıda Giphy isteği yapıldı. Lütfen yöneticiniz ile görüşün.",
+    "Failed to load GIFs" : "GIF dosyaları yüklenemedi",
     "Giphy GIF picker" : "Giphy GIF seçici",
     "Searching..." : "Aranıyor...",
     "No results" : "Herhangi bir sonuç bulunamadı",
