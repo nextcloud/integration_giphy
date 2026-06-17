@@ -7,6 +7,7 @@
 
 namespace OCA\Giphy\AppInfo;
 
+use OCA\Giphy\Capabilities;
 use OCA\Giphy\Listener\GiphyReferenceListener;
 use OCA\Giphy\Reference\GiphyReferenceProvider;
 use OCA\Giphy\Search\GiphySearchGifsProvider;
@@ -34,6 +35,8 @@ class Application extends App implements IBootstrap {
 	}
 
 	public function register(IRegistrationContext $context): void {
+		$context->registerCapability(Capabilities::class);
+
 		$adminSearchGifsEnabled = $this->config->getAppValue(Application::APP_ID, 'search_gifs_enabled', '1') === '1';
 		$adminLinkPreviewEnabled = $this->config->getAppValue(Application::APP_ID, 'link_preview_enabled', '1') === '1';
 		$apiKey = $this->config->getAppValue(Application::APP_ID, 'api_key');
