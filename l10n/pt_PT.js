@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Bad HTTP method" : "Método HTTP incorreto",
     "Bad credentials" : "Credenciais inválidas",
+    "Connected accounts" : "Contas conectadas",
     "Searching..." : "A procurar...",
     "No results" : "Sem resultados"
 },
