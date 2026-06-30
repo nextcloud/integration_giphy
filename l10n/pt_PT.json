@@ -1,11 +1,18 @@
 { "translations": {
+    "Giphy GIFs" : "GIFs do Giphy",
     "Bad HTTP method" : "Método HTTP incorreto",
     "Bad credentials" : "Credenciais inválidas",
     "Connected accounts" : "Contas conectadas",
     "Integration of Giphy" : "Integração do Giphy",
     "PG 13 - Level 3" : "PG 13 - Nível 3",
+    "R - Level 4" : "R - Nível 4",
+    "Giphy API key" : "Chave API do Giphy",
+    "Rating filter" : "Filtro de avaliação",
     "Giphy options saved" : "Opções do Giphy salvas",
+    "Searching gifs has been disabled by your administrator" : "A pesquisa de GIFs foi desativada pela sua administração",
     "Search GIFs" : "Pesquisar GIFs",
+    "Powered by Giphy" : "Com a ajuda do Giphy",
+    "Giphy GIF picker" : "Seletor de GIFs do Giphy",
     "Searching..." : "A procurar...",
     "No results" : "Sem resultados",
     "Fold all Giphy GIFs" : "Recolher todos os GIFs do Giphy"
