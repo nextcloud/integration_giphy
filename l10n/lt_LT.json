@@ -7,7 +7,7 @@
     "Connected accounts" : "Prijungtos paskyros",
     "Giphy integration" : "„Giphy“ integracija",
     "Integration of Giphy" : "„Giphy“ integracija",
-    "Giphy integration provides a unified search provider for GIFs.\n\nIt also provides a link reference provider to render links to GIFs and make it possible to search for GIFs in Talk, Text and potentially anywhere in Nextcloud.\n\nTo use SmartPicker, start typing with `/giphy`." : "„Giphy“ integracija suteikia vieningą GIF failų paieškos paslaugą.\n\nBe to, ji teikia nuorodų pateikimo paslaugą, leidžiančią rodyti nuorodas į GIF failus ir ieškoti GIF failų „Talk“, „Text“ bei, galbūt, bet kurioje „Nextcloud“ vietoje.\n\nNorėdami naudoti „SmartPicker“, pradėkite rašyti su simboliu `/giphy`.",
+    "Giphy integration provides a unified search provider for GIFs.\n\nIt also provides a link reference provider to render links to GIFs and make it possible to search for GIFs in Talk, Text and potentially anywhere in Nextcloud.\n\nTo use SmartPicker, start typing with `/giphy`." : "„Giphy“ integracija suteikia vieningą GIF failų paieškos paslaugą.\n\nBe to, ji teikia nuorodų pateikimo paslaugą, leidžiančią rodyti nuorodas į GIF failus ir ieškoti GIF failų „Pokalbiai“, „Tekstai“ bei, galbūt, bet kurioje „Nextcloud“ vietoje.\n\nNorėdami naudoti „Išmanus rinkiklis“, pradėkite rašyti su simboliu `/giphy`.",
     "G - Level 1" : "G – 1 lygis",
     "PG - Level 2" : "PG – 2 lygis",
     "PG 13 - Level 3" : "PG 12 – 3 lygis",
