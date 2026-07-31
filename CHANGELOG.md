@@ -10,6 +10,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## 2.2.2 - 2026-07-31
+
+### Added
+
+- Added support for Nextcloud 35
+
+### Fixed
+
+- Keep the admin settings page working when the stored API key cannot be decrypted
+
+### Changed
+
+- Update dependencies & translations
+
 ## 2.2.1 - 2026-04-20
 
 ### Added
