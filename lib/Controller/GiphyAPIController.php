@@ -16,7 +16,6 @@ use OCP\AppFramework\Http\Attribute\PublicPage;
 use OCP\AppFramework\Http\DataDisplayResponse;
 use OCP\AppFramework\Http\DataResponse;
 use OCP\AppFramework\OCSController;
-
 use OCP\IRequest;
 use OCP\Search\SearchResultEntry;
 
