@@ -11,12 +11,10 @@ use OCA\Giphy\Capabilities;
 use OCA\Giphy\Listener\GiphyReferenceListener;
 use OCA\Giphy\Reference\GiphyReferenceProvider;
 use OCA\Giphy\Search\GiphySearchGifsProvider;
-
 use OCP\AppFramework\App;
 use OCP\AppFramework\Bootstrap\IBootContext;
 use OCP\AppFramework\Bootstrap\IBootstrap;
 use OCP\AppFramework\Bootstrap\IRegistrationContext;
-
 use OCP\Collaboration\Reference\RenderReferenceEvent;
 use OCP\IConfig;
 
