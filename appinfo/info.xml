@@ -16,7 +16,7 @@ It also provides a link reference provider to render links to GIFs and make it p
 To use SmartPicker, start typing with `/giphy`.
 	]]>
 	</description>
-    <version>2.2.1</version>
+    <version>2.2.2</version>
     <licence>agpl</licence>
     <author>Julien Veyssier</author>
     <namespace>Giphy</namespace>
@@ -31,7 +31,7 @@ To use SmartPicker, start typing with `/giphy`.
     <screenshot>https://raw.githubusercontent.com/nextcloud/integration_giphy/main/screenshots/screenshot3.jpg</screenshot>
     <dependencies>
 		<php min-version="8.1"/>
-        <nextcloud min-version="32" max-version="34"/>
+        <nextcloud min-version="32" max-version="35"/>
     </dependencies>
     <settings>
         <admin>OCA\Giphy\Settings\Admin</admin>
