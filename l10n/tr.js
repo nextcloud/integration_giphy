@@ -27,7 +27,7 @@ OC.L10N.register(
     "Searching gifs has been disabled by your administrator" : "GIF arama özelliği yöneticiniz tarafından kapatılmış",
     "Gif link previews have been disabled by your administrator" : "GIF bağlantı ön izleme özelliği yöneticiniz tarafından kapatılmış",
     "Loading GIF" : "GIF yükleniyor",
-    "Search GIFs" : "GIF arama",
+    "Search GIFs" : "GIF ara",
     "Powered by Giphy" : "Giphy tarafından sağlanır",
     "Too many requests to Giphy. Please contact your administrator." : "Çok fazla sayıda Giphy isteği yapıldı. Lütfen yöneticiniz ile görüşün.",
     "Failed to load GIFs" : "GIF dosyaları yüklenemedi",
