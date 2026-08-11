@@ -1,5 +1,5 @@
 { "translations": {
-    "GIF picker (by Giphy)" : "GIF-failide valija (Giphylt)",
+    "GIF picker (by Giphy)" : "GIF-failide valija (Giphy teenusest)",
     "GIF not found" : "GIF-faili ei leidu",
     "Giphy GIFs" : "GIF-failid Giphy teenusest",
     "Bad HTTP method" : "Vigane HTTP-meetod",
@@ -7,6 +7,7 @@
     "Connected accounts" : "Ühendatud kasutajakontod",
     "Giphy integration" : "Giphy lõiming",
     "Integration of Giphy" : "Lõiming Giphy teenusega",
+    "Giphy integration provides a unified search provider for GIFs.\n\nIt also provides a link reference provider to render links to GIFs and make it possible to search for GIFs in Talk, Text and potentially anywhere in Nextcloud.\n\nTo use SmartPicker, start typing with `/giphy`." : "Giphy lõiming võimaldab üldotsingu abil leida GIF-faile.\n\nSamuti pakub see linkide viitepakkujat, mis kuvab GIF-failidele viitavaid linke ja võimaldab GIF-faile otsida kõnerakenduses, tekstirakenduses ja potentsiaalselt kõikjal Nextcloudis.\n\nNutivalija kasutamiseks lisa otsingu algusesse „/giphy“.",
     "G - Level 1" : "G - 1. tase",
     "PG - Level 2" : "PG - 2. tase",
     "PG 13 - Level 3" : "PG 13 - 3. tase",
@@ -14,11 +15,13 @@
     "Giphy admin options saved" : "Giphy haldusseadistused on salvestatud",
     "Failed to save Giphy admin options" : "Giphy haldusseadistuste salvestamine ei õnnestunud",
     "Giphy API key" : "Giphy API-võti",
+    "You can create a Giphy API key in your Giphy developer settings." : "API võtme saad luua oma Giphy arendajatele mõeldud seadistustes.",
+    "Giphy developer settings" : "Giphy arendusseadistused",
     "Rating filter" : "Sobivuse filter",
     "Enable search provider for GIFs" : "Lülita GIF-failide otsinguteenused sisse",
     "Enable Giphy link previews" : "Lülita Giphy linkide eelvaated sisse",
     "Giphy options saved" : "Giphy eelistused on salvestatud",
-    "Failed to save Giphy options" : "Giphy eelistuste on salvestamine ei õnnestunud",
+    "Failed to save Giphy options" : "Giphy eelistuste salvestamine ei õnnestunud",
     "Searching gifs has been disabled by your administrator" : "Gif-failide otsimine on serveri haldaja poolt keelatud",
     "Gif link previews have been disabled by your administrator" : "Gif-failide linkide eelvaated on serveri haldaja poolt keelatud",
     "Loading GIF" : "Laadin GIF-faile",
@@ -28,7 +31,10 @@
     "Failed to load GIFs" : "GIF-failide laadimine ei õnnestunud",
     "Giphy GIF picker" : "Giphy GIF-failide valija",
     "Searching..." : "Otsin...",
-    "No results" : "Vasteid ei leitud",
-    "No more GIFs" : "Rohkem GIF-faile ei leidu"
+    "No results" : "Vasteid ei leidu",
+    "No more GIFs" : "Rohkem GIF-faile ei leidu",
+    "Fold all Giphy GIFs" : "Sulge kõik Giphy GIF-failid",
+    "Unfold all Giphy GIFs" : "Ava kõik Giphy GIF-failid",
+    "GIFs are disabled" : "GIF-failide kasutamine on lülitatud välja"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }
