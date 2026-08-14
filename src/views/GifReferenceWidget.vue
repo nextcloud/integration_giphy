@@ -24,7 +24,7 @@
 			<p v-show="!gifsEnabled" class="gifs-disabled">
 				{{ t('integration_giphy', 'GIFs are disabled') }}
 			</p>
-			<div v-show="gifsEnabled">
+			<div v-if="gifsEnabled">
 				<img v-show="isLoaded"
 					class="image"
 					:src="proxiedUrl"
@@ -50,6 +50,12 @@ import EyeOffOutlineIcon from 'vue-material-design-icons/EyeOffOutline.vue'
 import { imagePath } from '@nextcloud/router'
 import { getRequestToken } from '@nextcloud/auth'
 import { emit, subscribe } from '@nextcloud/event-bus'
+
+const reducedMotionMediaQuery = '(prefers-reduced-motion: reduce)'
+
+function prefersReducedMotion() {
+	return window.matchMedia?.(reducedMotionMediaQuery).matches ?? false
+}
 
 export default {
 	name: 'GifReferenceWidget',
@@ -78,7 +84,7 @@ export default {
 
 	data() {
 		return {
-			gifsEnabled: true,
+			gifsEnabled: !prefersReducedMotion(),
 			isLoaded: false,
 			poweredByImgSrc: imagePath('integration_giphy', 'powered-by-giphy-badge.gif'),
 			poweredByTitle: t('integration_giphy', 'Powered by Giphy'),
