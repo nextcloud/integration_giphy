@@ -3,7 +3,8 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import { mount, flushPromises } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
+import GifReferenceWidget from '../../views/GifReferenceWidget.vue'
 
 vi.mock('@nextcloud/router', () => ({
 	imagePath: (app, img) => `/apps/${app}/img/${img}`,
@@ -14,12 +15,11 @@ vi.mock('@nextcloud/auth', () => ({
 
 const emitMock = vi.hoisted(() => vi.fn())
 const subscribeMock = vi.hoisted(() => vi.fn())
+const matchMediaMock = vi.hoisted(() => vi.fn())
 vi.mock('@nextcloud/event-bus', () => ({
 	emit: emitMock,
 	subscribe: subscribeMock,
 }))
-
-import GifReferenceWidget from '../../views/GifReferenceWidget.vue'
 
 function mountWidget(richObject = { proxied_url: 'https://nc.local/proxy/gif123' }) {
 	return mount(GifReferenceWidget, {
@@ -35,6 +35,8 @@ function mountWidget(richObject = { proxied_url: 'https://nc.local/proxy/gif123'
 describe('GifReferenceWidget', () => {
 	beforeEach(() => {
 		vi.resetAllMocks()
+		matchMediaMock.mockReturnValue({ matches: false })
+		vi.stubGlobal('matchMedia', matchMediaMock)
 	})
 
 	it('constructs proxiedUrl with request token appended', () => {
@@ -62,6 +64,23 @@ describe('GifReferenceWidget', () => {
 		expect(emitMock).toHaveBeenCalledWith('integration_giphy:gifs:enabled', true)
 	})
 
+	it('starts with GIFs disabled when reduced motion is preferred', async () => {
+		matchMediaMock.mockReturnValue({ matches: true })
+
+		const wrapper = mountWidget()
+
+		expect(matchMediaMock).toHaveBeenCalledWith('(prefers-reduced-motion: reduce)')
+		expect(wrapper.vm.gifsEnabled).toBe(false)
+		expect(wrapper.find('img.image').exists()).toBe(false)
+
+		wrapper.vm.handleGifsBtn()
+		await wrapper.vm.$nextTick()
+
+		expect(wrapper.vm.gifsEnabled).toBe(true)
+		expect(wrapper.find('img.image').exists()).toBe(true)
+		expect(emitMock).toHaveBeenCalledWith('integration_giphy:gifs:enabled', true)
+	})
+
 	it('subscribes to event bus and syncs visibility from other widgets', () => {
 		const wrapper = mountWidget()
 
@@ -71,11 +90,11 @@ describe('GifReferenceWidget', () => {
 		)
 
 		// Grab the callback that was registered and simulate an external toggle
-		const callback = subscribeMock.mock.calls[0][1]
-		callback(false)
+		const listener = subscribeMock.mock.calls[0][1]
+		listener(false)
 		expect(wrapper.vm.gifsEnabled).toBe(false)
 
-		callback(true)
+		listener(true)
 		expect(wrapper.vm.gifsEnabled).toBe(true)
 	})
 
