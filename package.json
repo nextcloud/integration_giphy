@@ -17,7 +17,9 @@
 		"stylelint:fix": "stylelint \"src/**/*.vue\" \"src/**/*.scss\" \"src/**/*.css\" --fix",
 		"test": "vitest run",
 		"test:watch": "vitest",
-		"test:coverage": "vitest run --coverage"
+		"test:coverage": "vitest run --coverage",
+		"playwright": "playwright test",
+		"playwright:ui": "playwright test --ui"
 	},
 	"repository": {
 		"type": "git",
@@ -60,9 +62,11 @@
 	"devDependencies": {
 		"@nextcloud/babel-config": "^1.0.0",
 		"@nextcloud/browserslist-config": "^3.0.0",
+		"@nextcloud/e2e-test-server": "^0.6.0",
 		"@nextcloud/eslint-config": "^8.0.0",
 		"@nextcloud/stylelint-config": "^3.0.1",
 		"@nextcloud/vite-config": "^2.5.0",
+		"@playwright/test": "^1.63.0",
 		"@vitejs/plugin-vue": "^6.0.4",
 		"@vue/test-utils": "^2.4.6",
 		"jsdom": "^28.1.0",
