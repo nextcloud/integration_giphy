@@ -27,7 +27,7 @@
 		<div v-if="gifs.length === 0"
 			class="empty-content-wrapper">
 			<NcEmptyContent v-if="searching"
-				:title="t('integration_giphy', 'Searching...')">
+				:name="t('integration_giphy', 'Searching...')">
 				<template #icon>
 					<NcLoadingIcon />
 				</template>
