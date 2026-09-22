@@ -118,10 +118,18 @@ test.describe('Link previews', () => {
 
 test.describe('GIF picker', () => {
 	test('list the GIFs of the search provider', async ({ page }) => {
-		// the picker asks the app for trending GIFs, which the test container cannot fetch from Giphy
-		await page.route('**/apps/integration_giphy/api/v1/gifs/**', (route) => route.fulfill({
-			json: { ocs: { meta: { status: 'ok', statuscode: 200, message: 'OK' }, data: { entries: [searchEntry], cursor: 1 } } },
-		}))
+		// the picker asks the app for trending GIFs, which the test container cannot fetch from Giphy.
+		// The answer is held back until the searching state has been checked.
+		let answerTrending!: () => void
+		const held = new Promise<void>((resolve) => {
+			answerTrending = resolve
+		})
+		await page.route('**/apps/integration_giphy/api/v1/gifs/**', async (route) => {
+			await held
+			await route.fulfill({
+				json: { ocs: { meta: { status: 'ok', statuscode: 200, message: 'OK' }, data: { entries: [searchEntry], cursor: 1 } } },
+			})
+		})
 		const registered = await page.evaluate(async () => {
 			const globals = window as unknown as {
 				OC: { appswebroots: Record<string, string> }
@@ -142,6 +150,10 @@ test.describe('GIF picker', () => {
 		const picker = page.locator('#custom-picker')
 		await expect(picker.getByText('Giphy GIF picker')).toBeVisible()
 		await expect(picker.getByLabel('Search GIFs', { exact: true })).toBeVisible()
+		// the picker says what it is doing while it waits for the answer
+		await expect(picker.getByText('Searching...')).toBeVisible()
+
+		answerTrending()
 		const result = picker.locator('.result')
 		await expect(result).toHaveCount(1)
 		await expect(result).toHaveAttribute('title', searchEntry.title)
