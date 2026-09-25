@@ -4,9 +4,9 @@
  */
 
 import {
-	registerWidget,
-	registerCustomPickerElement,
 	NcCustomPickerRenderResult,
+	registerCustomPickerElement,
+	registerWidget,
 } from '@nextcloud/vue/components/NcRichText'
 
 registerWidget('integration_giphy_gif', async (el, { richObjectType, richObject, accessible }) => {

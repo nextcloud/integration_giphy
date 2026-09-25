@@ -42,14 +42,13 @@
 </template>
 
 <script>
-import NcLoadingIcon from '@nextcloud/vue/components/NcLoadingIcon'
-import NcButton from '@nextcloud/vue/components/NcButton'
-import EyeIcon from 'vue-material-design-icons/Eye.vue'
-import EyeOffOutlineIcon from 'vue-material-design-icons/EyeOffOutline.vue'
-
-import { imagePath } from '@nextcloud/router'
 import { getRequestToken } from '@nextcloud/auth'
 import { emit, subscribe } from '@nextcloud/event-bus'
+import { imagePath } from '@nextcloud/router'
+import NcButton from '@nextcloud/vue/components/NcButton'
+import NcLoadingIcon from '@nextcloud/vue/components/NcLoadingIcon'
+import EyeIcon from 'vue-material-design-icons/Eye.vue'
+import EyeOffOutlineIcon from 'vue-material-design-icons/EyeOffOutline.vue'
 
 const reducedMotionMediaQuery = '(prefers-reduced-motion: reduce)'
 
@@ -72,10 +71,12 @@ export default {
 			type: String,
 			default: '',
 		},
+
 		richObject: {
 			type: Object,
 			default: null,
 		},
+
 		accessible: {
 			type: Boolean,
 			default: true,
@@ -97,6 +98,7 @@ export default {
 				? this.richObject.proxied_url + '?requesttoken=' + encodeURIComponent(getRequestToken())
 				: ''
 		},
+
 		hideButtonTitle() {
 			return this.gifsEnabled
 				? t('integration_giphy', 'Fold all Giphy GIFs')

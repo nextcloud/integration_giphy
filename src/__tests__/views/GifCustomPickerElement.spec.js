@@ -1,9 +1,9 @@
+import { flushPromises, mount } from '@vue/test-utils'
 /**
  * SPDX-FileCopyrightText: 2024 Nextcloud GmbH and Nextcloud contributors
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import { mount, flushPromises } from '@vue/test-utils'
 
 const axiosMock = vi.hoisted(() => ({
 	get: vi.fn(),
@@ -63,9 +63,7 @@ describe('GifCustomPickerElement', () => {
 	beforeEach(() => {
 		vi.resetAllMocks()
 		// Default: trending returns some gifs
-		axiosMock.get.mockResolvedValue(
-			makeApiResponse(Array.from({ length: 5 }, (_, i) => makeGif(i)), 5),
-		)
+		axiosMock.get.mockResolvedValue(makeApiResponse(Array.from({ length: 5 }, (_, i) => makeGif(i)), 5))
 	})
 
 	it('fetches trending GIFs on mount', async () => {

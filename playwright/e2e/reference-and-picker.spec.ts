@@ -151,7 +151,7 @@ test.describe('GIF picker', () => {
 		await expect(picker.getByText('Giphy GIF picker')).toBeVisible()
 		await expect(picker.getByLabel('Search GIFs', { exact: true })).toBeVisible()
 		// the picker says what it is doing while it waits for the answer
-		await expect(picker.getByText('Searching...')).toBeVisible()
+		await expect(picker.getByText('Searching…')).toBeVisible()
 
 		answerTrending()
 		const result = picker.locator('.result')

@@ -21,8 +21,8 @@
 </template>
 
 <script>
-import NcLoadingIcon from '@nextcloud/vue/components/NcLoadingIcon'
 import { getRequestToken } from '@nextcloud/auth'
+import NcLoadingIcon from '@nextcloud/vue/components/NcLoadingIcon'
 
 export default {
 	name: 'PickerResult',
