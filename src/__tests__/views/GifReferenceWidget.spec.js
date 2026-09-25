@@ -2,8 +2,9 @@
  * SPDX-FileCopyrightText: 2024 Nextcloud GmbH and Nextcloud contributors
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
-import { beforeEach, describe, expect, it, vi } from 'vitest'
+
 import { mount } from '@vue/test-utils'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 import GifReferenceWidget from '../../views/GifReferenceWidget.vue'
 
 vi.mock('@nextcloud/router', () => ({
@@ -41,9 +42,7 @@ describe('GifReferenceWidget', () => {
 
 	it('constructs proxiedUrl with request token appended', () => {
 		const wrapper = mountWidget()
-		expect(wrapper.vm.proxiedUrl).toBe(
-			'https://nc.local/proxy/gif123?requesttoken=test-req-token',
-		)
+		expect(wrapper.vm.proxiedUrl).toBe('https://nc.local/proxy/gif123?requesttoken=test-req-token')
 	})
 
 	it('returns empty string when proxied_url is missing', () => {
