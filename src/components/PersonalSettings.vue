@@ -20,15 +20,15 @@
 			</div>
 			<NcFormBox>
 				<NcFormBoxSwitch
-					:model-value="state.admin_search_gifs_enabled && state.search_gifs_enabled"
+					:modelValue="state.admin_search_gifs_enabled && state.search_gifs_enabled"
 					:disabled="!state.admin_search_gifs_enabled"
-					@update:model-value="onCheckboxChanged($event, 'search_gifs_enabled')">
+					@update:modelValue="onCheckboxChanged($event, 'search_gifs_enabled')">
 					{{ t('integration_giphy', 'Enable search provider for GIFs') }}
 				</NcFormBoxSwitch>
 				<NcFormBoxSwitch
-					:model-value="state.admin_link_preview_enabled && state.link_preview_enabled"
+					:modelValue="state.admin_link_preview_enabled && state.link_preview_enabled"
 					:disabled="!state.admin_link_preview_enabled"
-					@update:model-value="onCheckboxChanged($event, 'link_preview_enabled')">
+					@update:modelValue="onCheckboxChanged($event, 'link_preview_enabled')">
 					{{ t('integration_giphy', 'Enable Giphy link previews') }}
 				</NcFormBoxSwitch>
 			</NcFormBox>
@@ -37,16 +37,14 @@
 </template>
 
 <script>
-import GiphyIcon from './icons/GiphyIcon.vue'
-
+import axios from '@nextcloud/axios'
+import { showError, showSuccess } from '@nextcloud/dialogs'
 import { loadState } from '@nextcloud/initial-state'
 import { generateUrl } from '@nextcloud/router'
-import axios from '@nextcloud/axios'
-import { showSuccess, showError } from '@nextcloud/dialogs'
-
 import NcFormBox from '@nextcloud/vue/components/NcFormBox'
 import NcFormBoxSwitch from '@nextcloud/vue/components/NcFormBoxSwitch'
 import NcNoteCard from '@nextcloud/vue/components/NcNoteCard'
+import GiphyIcon from './icons/GiphyIcon.vue'
 
 export default {
 	name: 'PersonalSettings',
@@ -80,6 +78,7 @@ export default {
 			this.state[key] = newValue
 			this.saveOptions({ [key]: this.state[key] ? '1' : '0' })
 		},
+
 		async saveOptions(values) {
 			const req = {
 				values,
@@ -89,10 +88,8 @@ export default {
 				await axios.put(url, req)
 				showSuccess(t('integration_giphy', 'Giphy options saved'))
 			} catch (e) {
-				showError(
-					t('integration_giphy', 'Failed to save Giphy options')
-					+ ': ' + e.response?.data?.error,
-				)
+				showError(t('integration_giphy', 'Failed to save Giphy options')
+					+ ': ' + e.response?.data?.error)
 			}
 		},
 	},

@@ -15,9 +15,9 @@
 				class="input"
 				type="password"
 				:label="t('integration_giphy', 'Giphy API key')"
-				:show-trailing-button="!!state.api_key"
-				@update:model-value="onInput"
-				@trailing-button-click="state.api_key = '' ; onInput()">
+				:showTrailingButton="!!state.api_key"
+				@update:modelValue="onInput"
+				@trailingButtonClick="state.api_key = '' ; onInput()">
 				<template #icon>
 					<KeyOutlineIcon :size="20" />
 				</template>
@@ -32,22 +32,22 @@
 				</a>
 			</NcNoteCard>
 			<NcSelect
-				:model-value="selectedRating"
+				:modelValue="selectedRating"
 				class="rating-select"
-				:input-label="t('integration_giphy', 'Rating filter')"
+				:inputLabel="t('integration_giphy', 'Rating filter')"
 				label="label"
 				:options="ratingOptions"
-				input-id="giphy-rating-select"
-				@update:model-value="onRatingChange" />
+				inputId="giphy-rating-select"
+				@update:modelValue="onRatingChange" />
 			<NcFormBox>
 				<NcFormBoxSwitch
-					:model-value="state.search_gifs_enabled"
-					@update:model-value="onCheckboxChanged($event, 'search_gifs_enabled')">
+					:modelValue="state.search_gifs_enabled"
+					@update:modelValue="onCheckboxChanged($event, 'search_gifs_enabled')">
 					{{ t('integration_giphy', 'Enable search provider for GIFs') }}
 				</NcFormBoxSwitch>
 				<NcFormBoxSwitch
-					:model-value="state.link_preview_enabled"
-					@update:model-value="onCheckboxChanged($event, 'link_preview_enabled')">
+					:modelValue="state.link_preview_enabled"
+					@update:modelValue="onCheckboxChanged($event, 'link_preview_enabled')">
 					{{ t('integration_giphy', 'Enable Giphy link previews') }}
 				</NcFormBoxSwitch>
 			</NcFormBox>
@@ -56,22 +56,19 @@
 </template>
 
 <script>
-import KeyOutlineIcon from 'vue-material-design-icons/KeyOutline.vue'
-
-import GiphyIcon from './icons/GiphyIcon.vue'
-
-import { loadState } from '@nextcloud/initial-state'
-import { generateUrl } from '@nextcloud/router'
 import axios from '@nextcloud/axios'
-import { delay } from '../utils.js'
-import { showSuccess, showError } from '@nextcloud/dialogs'
+import { showError, showSuccess } from '@nextcloud/dialogs'
+import { loadState } from '@nextcloud/initial-state'
 import { confirmPassword } from '@nextcloud/password-confirmation'
-
+import { generateUrl } from '@nextcloud/router'
 import NcFormBox from '@nextcloud/vue/components/NcFormBox'
 import NcFormBoxSwitch from '@nextcloud/vue/components/NcFormBoxSwitch'
-import NcSelect from '@nextcloud/vue/components/NcSelect'
 import NcNoteCard from '@nextcloud/vue/components/NcNoteCard'
+import NcSelect from '@nextcloud/vue/components/NcSelect'
 import NcTextField from '@nextcloud/vue/components/NcTextField'
+import KeyOutlineIcon from 'vue-material-design-icons/KeyOutline.vue'
+import GiphyIcon from './icons/GiphyIcon.vue'
+import { delay } from '../utils.js'
 
 const ratings = {
 	g: {
@@ -117,7 +114,7 @@ export default {
 
 	computed: {
 		ratingOptions() {
-			return Object.values(ratings).map(ra => {
+			return Object.values(ratings).map((ra) => {
 				return {
 					id: ra.value,
 					value: ra.value,
@@ -125,6 +122,7 @@ export default {
 				}
 			})
 		},
+
 		selectedRating() {
 			if (ratings[this.state.rating]) {
 				const ra = ratings[this.state.rating]
@@ -149,11 +147,13 @@ export default {
 			this.state[key] = newValue
 			this.saveOptions({ [key]: this.state[key] ? '1' : '0' })
 		},
+
 		onRatingChange(newRating) {
 			console.debug('rating change', newRating)
 			this.state.rating = newRating.value
 			this.saveOptions({ rating: this.state.rating })
 		},
+
 		onInput() {
 			delay(() => {
 				this.saveOptions({
@@ -161,6 +161,7 @@ export default {
 				}, true)
 			}, 2000)()
 		},
+
 		async saveOptions(values, sensitive = false) {
 			if (sensitive) {
 				await confirmPassword()
@@ -173,7 +174,7 @@ export default {
 				? generateUrl('/apps/integration_giphy/admin-config/sensitive')
 				: generateUrl('/apps/integration_giphy/admin-config')
 			axios.put(url, req)
-				.then((response) => {
+				.then(() => {
 					showSuccess(t('integration_giphy', 'Giphy admin options saved'))
 				})
 				.catch((error) => {

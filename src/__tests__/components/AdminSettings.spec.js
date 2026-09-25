@@ -1,9 +1,9 @@
+import { flushPromises, mount } from '@vue/test-utils'
 /**
  * SPDX-FileCopyrightText: 2024 Nextcloud GmbH and Nextcloud contributors
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import { mount, flushPromises } from '@vue/test-utils'
 
 const axiosMock = vi.hoisted(() => ({
 	put: vi.fn(),
@@ -28,9 +28,9 @@ vi.mock('@nextcloud/password-confirmation', () => ({
 	confirmPassword: vi.fn().mockResolvedValue(undefined),
 }))
 
-import AdminSettings from '../../components/AdminSettings.vue'
-import { showSuccess, showError } from '@nextcloud/dialogs'
+import { showError, showSuccess } from '@nextcloud/dialogs'
 import { confirmPassword } from '@nextcloud/password-confirmation'
+import AdminSettings from '../../components/AdminSettings.vue'
 
 function mountAdmin() {
 	return mount(AdminSettings, { shallow: true })
@@ -47,8 +47,8 @@ describe('AdminSettings', () => {
 		const wrapper = mountAdmin()
 		const opts = wrapper.vm.ratingOptions
 		expect(opts).toHaveLength(4)
-		expect(opts.map(o => o.value)).toEqual(['g', 'pg', 'pg-13', 'r'])
-		opts.forEach(o => {
+		expect(opts.map((o) => o.value)).toEqual(['g', 'pg', 'pg-13', 'r'])
+		opts.forEach((o) => {
 			expect(o).toHaveProperty('id')
 			expect(o).toHaveProperty('label')
 		})
