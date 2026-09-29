@@ -12,10 +12,10 @@
 			<NcTextField
 				ref="giphy-search-input"
 				v-model="searchQuery"
-				:show-trailing-button="searchQuery !== ''"
+				:showTrailingButton="searchQuery !== ''"
 				:label="inputPlaceholder"
-				@trailing-button-click="onClear"
-				@update:model-value="onInput">
+				@trailingButtonClick="onClear"
+				@update:modelValue="onInput">
 				<template #trailing-button-icon>
 					<CloseIcon :size="20" />
 				</template>
@@ -27,7 +27,7 @@
 		<div v-if="gifs.length === 0"
 			class="empty-content-wrapper">
 			<NcEmptyContent v-if="searching"
-				:name="t('integration_giphy', 'Searching...')">
+				:name="t('integration_giphy', 'Searching…')">
 				<template #icon>
 					<NcLoadingIcon />
 				</template>
@@ -81,21 +81,17 @@
 </template>
 
 <script>
-import AlertIcon from 'vue-material-design-icons/Alert.vue'
-import MagnifyIcon from 'vue-material-design-icons/Magnify.vue'
-import CloseIcon from 'vue-material-design-icons/Close.vue'
-
-import NcLoadingIcon from '@nextcloud/vue/components/NcLoadingIcon'
-import NcEmptyContent from '@nextcloud/vue/components/NcEmptyContent'
-import NcTextField from '@nextcloud/vue/components/NcTextField'
-
-import PickerResult from '../components/PickerResult.vue'
-
+import InfiniteLoading from '@codog/vue3-infinite-loading'
 import axios, { isCancel } from '@nextcloud/axios'
 import { generateOcsUrl, imagePath } from '@nextcloud/router'
+import NcEmptyContent from '@nextcloud/vue/components/NcEmptyContent'
+import NcLoadingIcon from '@nextcloud/vue/components/NcLoadingIcon'
+import NcTextField from '@nextcloud/vue/components/NcTextField'
+import AlertIcon from 'vue-material-design-icons/Alert.vue'
+import CloseIcon from 'vue-material-design-icons/Close.vue'
+import MagnifyIcon from 'vue-material-design-icons/Magnify.vue'
+import PickerResult from '../components/PickerResult.vue'
 import { delay } from '../utils.js'
-
-import InfiniteLoading from '@codog/vue3-infinite-loading'
 
 const searchProviderId = 'giphy-search-gifs'
 const LIMIT = 20
@@ -119,6 +115,7 @@ export default {
 			type: String,
 			required: true,
 		},
+
 		accessible: {
 			type: Boolean,
 			default: false,
@@ -163,19 +160,23 @@ export default {
 				this.$refs['giphy-search-input'].$el.getElementsByTagName('input')[0]?.focus()
 			}, 300)
 		},
+
 		onSubmit(gif) {
 			this.cancelSearchRequests()
 			this.$el.dispatchEvent(new CustomEvent('submit', { detail: gif.resourceUrl, bubbles: true }))
 		},
+
 		onInput() {
 			delay(() => {
 				this.updateSearch()
 			}, 500)()
 		},
+
 		onClear() {
 			this.searchQuery = ''
 			this.updateSearch()
 		},
+
 		updateSearch() {
 			if (this.$refs.results?.scrollTop) {
 				this.$refs.results.scrollTop = 0
@@ -186,36 +187,39 @@ export default {
 			this.errorMessage = ''
 			this.search()
 		},
+
 		cancelSearchRequests() {
 			if (this.abortController) {
 				this.abortController.abort()
 			}
 		},
+
 		infiniteHandler($state) {
 			this.search($state)
 		},
+
 		search(state = null, limit = LIMIT) {
 			this.abortController = new AbortController()
 			this.searching = true
 			const url = this.searchQuery === ''
 				? this.cursor === null
 					? generateOcsUrl(
-						'apps/integration_giphy/api/v1/gifs/trending?limit={limit}',
-						{ limit },
-					)
+							'apps/integration_giphy/api/v1/gifs/trending?limit={limit}',
+							{ limit },
+						)
 					: generateOcsUrl(
-						'apps/integration_giphy/api/v1/gifs/trending?cursor={cursor}&limit={limit}',
-						{ cursor: this.cursor, limit },
-					)
+							'apps/integration_giphy/api/v1/gifs/trending?cursor={cursor}&limit={limit}',
+							{ cursor: this.cursor, limit },
+						)
 				: this.cursor === null
 					? generateOcsUrl(
-						'apps/integration_giphy/api/v1/gifs/search?term={term}&limit={limit}',
-						{ searchProviderId, term: this.searchQuery, limit },
-					)
+							'apps/integration_giphy/api/v1/gifs/search?term={term}&limit={limit}',
+							{ searchProviderId, term: this.searchQuery, limit },
+						)
 					: generateOcsUrl(
-						'apps/integration_giphy/api/v1/gifs/search?term={term}&cursor={cursor}&limit={limit}',
-						{ searchProviderId, term: this.searchQuery, cursor: this.cursor, limit },
-					)
+							'apps/integration_giphy/api/v1/gifs/search?term={term}&cursor={cursor}&limit={limit}',
+							{ searchProviderId, term: this.searchQuery, cursor: this.cursor, limit },
+						)
 			return axios.get(url, {
 				signal: this.abortController.signal,
 			})
