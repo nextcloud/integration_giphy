@@ -28,7 +28,6 @@ OC.L10N.register(
     "Search GIFs" : "ຄົ້ນຫາ GIFs",
     "Powered by Giphy" : "ສະໜັບສະໜູນໂດຍ Giphy",
     "Giphy GIF picker" : "ຕົວເລືອກ GIF ຂອງ Giphy",
-    "Searching..." : "ກຳລັງຄົ້ນຫາ...",
     "No results" : "ບໍ່ມີຜົນ",
     "No more GIFs" : "ບໍ່ມີ GIFs ເພີ່ມເຕີມ",
     "Fold all Giphy GIFs" : "ພັບ GIFs ທັງໝົດຂອງ Giphy",

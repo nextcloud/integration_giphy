@@ -25,7 +25,6 @@ OC.L10N.register(
     "Search GIFs" : "Bilatu GIFak",
     "Powered by Giphy" : "Giphy-rekin egina",
     "Giphy GIF picker" : "Giphy GIF hautatzailea",
-    "Searching..." : "Bilatzen...",
     "No results" : "Emaitzarik ez",
     "No more GIFs" : "Ez dago GIF gehiagorik"
 },

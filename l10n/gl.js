@@ -32,7 +32,6 @@ OC.L10N.register(
     "Too many requests to Giphy. Please contact your administrator." : "Demasiadas peticións para Giphy. Contacte coa administración do seu sitio.",
     "Failed to load GIFs" : "Produciuse un fallo ao cargar os GIF",
     "Giphy GIF picker" : "Selector de GIF Giphy",
-    "Searching..." : "Buscando...",
     "No results" : "Sen resultados",
     "No more GIFs" : "Non máis GIF",
     "Fold all Giphy GIFs" : "Repregar todos os GIF de Giphy",

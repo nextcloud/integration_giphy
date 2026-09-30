@@ -32,7 +32,6 @@ OC.L10N.register(
     "Too many requests to Giphy. Please contact your administrator." : "Příliš mnoho požadavků na Giphy. Obraťte se na svého správce.",
     "Failed to load GIFs" : "Nepodařilo se načíst GIF obrázky",
     "Giphy GIF picker" : "Volič GIF obrázků ze služby Giphy",
-    "Searching..." : "Hledání …",
     "No results" : "Žádné výsledky",
     "No more GIFs" : "Žádné další GIFy",
     "Fold all Giphy GIFs" : "Sbalit veškeré GIF obrázky z Giphy",

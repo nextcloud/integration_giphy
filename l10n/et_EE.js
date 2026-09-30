@@ -32,7 +32,6 @@ OC.L10N.register(
     "Too many requests to Giphy. Please contact your administrator." : "Liiga palju päringuid Giphy teenusele. Palun võta ühendust oma serveri peakasutajaga või haldajaga.",
     "Failed to load GIFs" : "GIF-failide laadimine ei õnnestunud",
     "Giphy GIF picker" : "Giphy GIF-failide valija",
-    "Searching..." : "Otsin...",
     "No results" : "Vasteid ei leidu",
     "No more GIFs" : "Rohkem GIF-faile ei leidu",
     "Fold all Giphy GIFs" : "Sulge kõik Giphy GIF-failid",

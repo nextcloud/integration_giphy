@@ -23,7 +23,6 @@
     "Search GIFs" : "Buscar GIFs",
     "Powered by Giphy" : "Proporcionado por Giphy",
     "Giphy GIF picker" : "Selector de GIF de Giphy",
-    "Searching..." : "Buscando...",
     "No results" : "No hay resultados",
     "No more GIFs" : "No hay más GIFs"
 },"pluralForm" :"nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"

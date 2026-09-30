@@ -28,7 +28,6 @@ OC.L10N.register(
     "Search GIFs" : "Tafuta GIFs",
     "Powered by Giphy" : "Inaendeshwa na Giphy",
     "Giphy GIF picker" : "Giphy kiteuzi GIF",
-    "Searching..." : "Inatafuta",
     "No results" : "Hakuna matokeo",
     "No more GIFs" : "Hakuna GIFs zaidi",
     "Fold all Giphy GIFs" : "Kunja GIFs zote za Giphy",

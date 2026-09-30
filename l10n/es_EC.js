@@ -25,7 +25,6 @@ OC.L10N.register(
     "Search GIFs" : "Buscar GIFs",
     "Powered by Giphy" : "Proporcionado por Giphy",
     "Giphy GIF picker" : "Selector de GIF de Giphy",
-    "Searching..." : "Buscando...",
     "No results" : "No hay resultados",
     "No more GIFs" : "No hay más GIFs"
 },

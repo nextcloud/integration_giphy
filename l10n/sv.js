@@ -32,7 +32,6 @@ OC.L10N.register(
     "Too many requests to Giphy. Please contact your administrator." : "För många förfrågningar till Giphy. Kontakta administratören.",
     "Failed to load GIFs" : "Det gick inte att läsa in GIF-filer",
     "Giphy GIF picker" : "Giphy GIF-väljare",
-    "Searching..." : "Söker …",
     "No results" : "Inga resultat",
     "No more GIFs" : "Inga fler GIF-bilder",
     "Fold all Giphy GIFs" : "Fäll ihop alla Giphy-GIF-filer",

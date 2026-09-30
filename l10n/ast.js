@@ -5,7 +5,6 @@ OC.L10N.register(
     "Giphy GIFs" : "GIFs de Giphy",
     "Giphy API key" : "Clave de l'API de Giphy",
     "Powered by Giphy" : "Cola teunoloxía de Giphy",
-    "Searching..." : "Buscando…",
     "No results" : "Nun hai nengún resultáu"
 },
 "nplurals=2; plural=(n != 1);");

@@ -28,7 +28,6 @@ OC.L10N.register(
     "Search GIFs" : "GIF نى ئىزدەڭ",
     "Powered by Giphy" : "Giphy تەرىپىدىن ئىشلەنگەن",
     "Giphy GIF picker" : "Giphy GIF picker",
-    "Searching..." : "ئىزدەش ...",
     "No results" : "ھېچقانداق نەتىجە يوق",
     "No more GIFs" : "تېخىمۇ كۆپ سوۋغات يوق",
     "Fold all Giphy GIFs" : "بارلىق Giphy سوۋغاتلىرىنى قاتلاڭ",

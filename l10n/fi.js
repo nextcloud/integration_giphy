@@ -14,7 +14,6 @@ OC.L10N.register(
     "Search GIFs" : "Etsi GIF-kuvia",
     "Powered by Giphy" : "Taustavoimana Giphy",
     "Giphy GIF picker" : "Giphyn GIF-valitsin",
-    "Searching..." : "Etsitään...",
     "No results" : "Ei tuloksia",
     "No more GIFs" : "Ei enempää GIF-kuvia"
 },

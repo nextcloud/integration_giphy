@@ -25,7 +25,6 @@ OC.L10N.register(
     "Search GIFs" : "Søk etter GIF-er",
     "Powered by Giphy" : "Drevet av Giphy",
     "Giphy GIF picker" : "Giphy GIF-velger",
-    "Searching..." : "Søker...",
     "No results" : "Ingen resultater",
     "No more GIFs" : "Ingen flere GIF-er",
     "Fold all Giphy GIFs" : "Brett alle Giphy GIF-er",

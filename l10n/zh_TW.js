@@ -32,7 +32,6 @@ OC.L10N.register(
     "Too many requests to Giphy. Please contact your administrator." : "對 Giphy 的請求過多。請聯絡您的管理員。",
     "Failed to load GIFs" : "載入 GIF 失敗",
     "Giphy GIF picker" : "Giphy GIF 挑選器",
-    "Searching..." : "正在搜尋……",
     "No results" : "無結果",
     "No more GIFs" : "無更多 GIF",
     "Fold all Giphy GIFs" : "折疊所有 Giphy GIF",

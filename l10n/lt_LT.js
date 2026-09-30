@@ -32,7 +32,6 @@ OC.L10N.register(
     "Too many requests to Giphy. Please contact your administrator." : "Per daug užklausų į „Giphy“. Prašome susisiekti su administratoriumi.",
     "Failed to load GIFs" : "Nepavyko įkelti GIF",
     "Giphy GIF picker" : "„Giphy“ GIF pasirinkimo įrankis",
-    "Searching..." : "Ieškoma...",
     "No results" : "Nieko nerasta",
     "No more GIFs" : "Daugiau jokių GIF",
     "Fold all Giphy GIFs" : "Sutraukti visus „Giphy“ GIF paveikslėlius",
