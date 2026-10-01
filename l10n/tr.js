@@ -32,6 +32,7 @@ OC.L10N.register(
     "Too many requests to Giphy. Please contact your administrator." : "Çok fazla sayıda Giphy isteği yapıldı. Lütfen yöneticiniz ile görüşün.",
     "Failed to load GIFs" : "GIF dosyaları yüklenemedi",
     "Giphy GIF picker" : "Giphy GIF seçici",
+    "Searching…" : "Aranıyor…",
     "No results" : "Herhangi bir sonuç bulunamadı",
     "No more GIFs" : "Başka bir GIF yok",
     "Fold all Giphy GIFs" : "Tüm Giphy GIF görsellerini daralt",
