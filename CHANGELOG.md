@@ -10,9 +10,21 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## 2.3.0 - 2026-10-02
+
 ### Added
 
 - Added support for Nextcloud 36
+- Start GIF previews paused when the browser asks for reduced motion
+
+### Fixed
+
+- Show the text of the GIF picker again while it searches
+
+### Changed
+
+- Update @nextcloud/eslint-config to 9 and sync the lint workflows
+- Update dependencies & translations
 
 ## 2.2.2 - 2026-07-31
 
