@@ -32,6 +32,7 @@ OC.L10N.register(
     "Too many requests to Giphy. Please contact your administrator." : "An iomarca iarratas chuig Giphy. Téigh i dteagmháil le do riarthóir le do thoil.",
     "Failed to load GIFs" : "Theip ar GIFanna a lódáil",
     "Giphy GIF picker" : "Giphy GIF roghnóir",
+    "Searching…" : "Ag cuardach…",
     "No results" : "Gan torthaí",
     "No more GIFs" : "Níl níos mó GIFanna ann",
     "Fold all Giphy GIFs" : "Fill gach GIF Giphy",
