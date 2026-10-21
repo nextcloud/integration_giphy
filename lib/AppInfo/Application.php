@@ -15,29 +15,29 @@ use OCP\AppFramework\App;
 use OCP\AppFramework\Bootstrap\IBootContext;
 use OCP\AppFramework\Bootstrap\IBootstrap;
 use OCP\AppFramework\Bootstrap\IRegistrationContext;
+use OCP\AppFramework\Services\IAppConfig;
 use OCP\Collaboration\Reference\RenderReferenceEvent;
-use OCP\IConfig;
 
 class Application extends App implements IBootstrap {
 
 	public const APP_ID = 'integration_giphy';
 	public const DEFAULT_RATING = 'g';
 
-	private IConfig $config;
+	private IAppConfig $appConfig;
 
 	public function __construct(array $urlParams = []) {
 		parent::__construct(self::APP_ID, $urlParams);
 
 		$container = $this->getContainer();
-		$this->config = $container->get(IConfig::class);
+		$this->appConfig = $container->get(IAppConfig::class);
 	}
 
 	public function register(IRegistrationContext $context): void {
 		$context->registerCapability(Capabilities::class);
 
-		$adminSearchGifsEnabled = $this->config->getAppValue(Application::APP_ID, 'search_gifs_enabled', '1') === '1';
-		$adminLinkPreviewEnabled = $this->config->getAppValue(Application::APP_ID, 'link_preview_enabled', '1') === '1';
-		$apiKey = $this->config->getAppValue(Application::APP_ID, 'api_key');
+		$adminSearchGifsEnabled = $this->appConfig->getAppValueString('search_gifs_enabled', '1') === '1';
+		$adminLinkPreviewEnabled = $this->appConfig->getAppValueString('link_preview_enabled', '1') === '1';
+		$apiKey = $this->appConfig->getAppValueString('api_key');
 
 		if ($adminSearchGifsEnabled && $apiKey !== '') {
 			$context->registerSearchProvider(GiphySearchGifsProvider::class);

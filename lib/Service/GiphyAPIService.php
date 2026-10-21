@@ -11,9 +11,9 @@ use Exception;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ServerException;
 use OCA\Giphy\AppInfo\Application;
+use OCP\AppFramework\Services\IAppConfig;
 use OCP\Http\Client\IClient;
 use OCP\Http\Client\IClientService;
-use OCP\IConfig;
 use OCP\IL10N;
 use OCP\IURLGenerator;
 use OCP\Security\ICrypto;
@@ -29,7 +29,7 @@ class GiphyAPIService {
 	public function __construct(
 		private LoggerInterface $logger,
 		private IL10N $l10n,
-		private IConfig $config,
+		private IAppConfig $appConfig,
 		private IURLGenerator $urlGenerator,
 		private ICrypto $crypto,
 		IClientService $clientService,
@@ -187,7 +187,7 @@ class GiphyAPIService {
 	 * @return array request result
 	 */
 	public function searchGifs(string $query, int $offset = 0, int $limit = 5): array {
-		$rating = $this->config->getAppValue(Application::APP_ID, 'rating', Application::DEFAULT_RATING) ?: Application::DEFAULT_RATING;
+		$rating = $this->appConfig->getAppValueString('rating', Application::DEFAULT_RATING, lazy: true) ?: Application::DEFAULT_RATING;
 		$params = [
 			'q' => $query,
 			'rating' => $rating,
@@ -209,7 +209,7 @@ class GiphyAPIService {
 	 * @return array request result
 	 */
 	public function getTrendingGifs(int $offset = 0, int $limit = 10): array {
-		$rating = $this->config->getAppValue(Application::APP_ID, 'rating', Application::DEFAULT_RATING) ?: Application::DEFAULT_RATING;
+		$rating = $this->appConfig->getAppValueString('rating', Application::DEFAULT_RATING, lazy: true) ?: Application::DEFAULT_RATING;
 		$params = [
 			'rating' => $rating,
 			'limit' => $limit,
@@ -238,7 +238,7 @@ class GiphyAPIService {
 				],
 			];
 
-			$apiKey = $this->config->getAppValue(Application::APP_ID, 'api_key');
+			$apiKey = $this->appConfig->getAppValueString('api_key');
 			$apiKey = $apiKey === '' ? '' : $this->crypto->decrypt($apiKey);
 			$params['api_key'] = $apiKey;
 

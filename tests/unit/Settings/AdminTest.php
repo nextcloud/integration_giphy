@@ -9,8 +9,8 @@ namespace OCA\Giphy\Tests\Settings;
 
 use OCA\Giphy\AppInfo\Application;
 use OCA\Giphy\Settings\Admin;
+use OCP\AppFramework\Services\IAppConfig;
 use OCP\AppFramework\Services\IInitialState;
-use OCP\IConfig;
 use OCP\Security\ICrypto;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -18,7 +18,7 @@ use Psr\Log\LoggerInterface;
 
 class AdminTest extends TestCase {
 
-	private IConfig|MockObject $config;
+	private IAppConfig|MockObject $appConfig;
 	private ICrypto|MockObject $crypto;
 	private IInitialState|MockObject $initialState;
 	private LoggerInterface|MockObject $logger;
@@ -26,11 +26,13 @@ class AdminTest extends TestCase {
 
 	protected function setUp(): void {
 		parent::setUp();
-		$this->config = $this->createMock(IConfig::class);
+		$this->appConfig = $this->createMock(IAppConfig::class);
+		// the untyped method ignores lazy values
+		$this->appConfig->expects($this->never())->method('getAppValue');
 		$this->crypto = $this->createMock(ICrypto::class);
 		$this->initialState = $this->createMock(IInitialState::class);
 		$this->logger = $this->createMock(LoggerInterface::class);
-		$this->admin = new Admin($this->config, $this->crypto, $this->initialState, $this->logger);
+		$this->admin = new Admin($this->appConfig, $this->crypto, $this->initialState, $this->logger);
 	}
 
 	/**
@@ -49,8 +51,8 @@ class AdminTest extends TestCase {
 	}
 
 	private function configReturns(string $apiKey): void {
-		$this->config->method('getAppValue')
-			->willReturnCallback(function (string $app, string $key, string $default = '') use ($apiKey): string {
+		$this->appConfig->method('getAppValueString')
+			->willReturnCallback(function (string $key, string $default = '', bool $lazy = false) use ($apiKey): string {
 				return $key === 'api_key' ? $apiKey : $default;
 			});
 	}
@@ -84,6 +86,39 @@ class AdminTest extends TestCase {
 		$this->logger->expects($this->once())->method('warning');
 
 		$this->assertSame('', $this->captureAdminConfig()['api_key']);
+	}
+
+	/**
+	 * The server only loads a lazy value for a lazy read, so the rating has to be
+	 * read with lazy: true. The other keys are read on every request by
+	 * Application::register() and must stay non-lazy.
+	 */
+	public function testOnlyTheRatingIsReadLazily(): void {
+		$reads = [];
+		$this->appConfig->method('getAppValueString')
+			->willReturnCallback(function (string $key, string $default = '', bool $lazy = false) use (&$reads): string {
+				$reads[$key] = $lazy;
+				return ($key === 'rating' && $lazy) ? 'pg-13' : $default;
+			});
+
+		$this->assertSame('pg-13', $this->captureAdminConfig()['rating']);
+		$this->assertSame([
+			'api_key' => false,
+			'link_preview_enabled' => false,
+			'search_gifs_enabled' => false,
+			'rating' => true,
+		], $reads);
+	}
+
+	public function testDefaultsWhenNothingIsStored(): void {
+		$this->configReturns('');
+
+		$this->assertSame([
+			'api_key' => '',
+			'link_preview_enabled' => true,
+			'search_gifs_enabled' => true,
+			'rating' => 'g',
+		], $this->captureAdminConfig());
 	}
 
 	public function testSectionAndPriority(): void {

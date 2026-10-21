@@ -9,8 +9,8 @@ namespace OCA\Giphy\Settings;
 
 use OCA\Giphy\AppInfo\Application;
 use OCP\AppFramework\Http\TemplateResponse;
+use OCP\AppFramework\Services\IAppConfig;
 use OCP\AppFramework\Services\IInitialState;
-use OCP\IConfig;
 use OCP\Security\ICrypto;
 use OCP\Settings\ISettings;
 use Psr\Log\LoggerInterface;
@@ -18,7 +18,7 @@ use Psr\Log\LoggerInterface;
 class Admin implements ISettings {
 
 	public function __construct(
-		private IConfig $config,
+		private IAppConfig $appConfig,
 		private ICrypto $crypto,
 		private IInitialState $initialStateService,
 		private LoggerInterface $logger,
@@ -29,7 +29,7 @@ class Admin implements ISettings {
 	 * @return TemplateResponse
 	 */
 	public function getForm(): TemplateResponse {
-		$apiKey = $this->config->getAppValue(Application::APP_ID, 'api_key');
+		$apiKey = $this->appConfig->getAppValueString('api_key');
 		if ($apiKey !== '') {
 			try {
 				$apiKey = $this->crypto->decrypt($apiKey);
@@ -45,9 +45,9 @@ class Admin implements ISettings {
 			}
 		}
 
-		$linkPreviewEnabled = $this->config->getAppValue(Application::APP_ID, 'link_preview_enabled', '1') === '1';
-		$searchEnabled = $this->config->getAppValue(Application::APP_ID, 'search_gifs_enabled', '1') === '1';
-		$rating = $this->config->getAppValue(Application::APP_ID, 'rating', Application::DEFAULT_RATING) ?: Application::DEFAULT_RATING;
+		$linkPreviewEnabled = $this->appConfig->getAppValueString('link_preview_enabled', '1') === '1';
+		$searchEnabled = $this->appConfig->getAppValueString('search_gifs_enabled', '1') === '1';
+		$rating = $this->appConfig->getAppValueString('rating', Application::DEFAULT_RATING, lazy: true) ?: Application::DEFAULT_RATING;
 
 		$adminConfig = [
 			'api_key' => $apiKey === '' ? '' : 'dummyApiKey',
