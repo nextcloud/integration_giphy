@@ -10,6 +10,7 @@ namespace OCA\Giphy\Reference;
 use OC\Collaboration\Reference\LinkReferenceProvider;
 use OCA\Giphy\AppInfo\Application;
 use OCA\Giphy\Service\GiphyAPIService;
+use OCP\AppFramework\Services\IAppConfig;
 use OCP\Collaboration\Reference\ADiscoverableReferenceProvider;
 use OCP\Collaboration\Reference\IReference;
 use OCP\Collaboration\Reference\IReferenceManager;
@@ -25,6 +26,7 @@ class GiphyReferenceProvider extends ADiscoverableReferenceProvider implements I
 
 	public function __construct(
 		private GiphyAPIService $giphyAPIService,
+		private IAppConfig $appConfig,
 		private IConfig $config,
 		private IL10N $l10n,
 		private IURLGenerator $urlGenerator,
@@ -76,7 +78,7 @@ class GiphyReferenceProvider extends ADiscoverableReferenceProvider implements I
 	 * @inheritDoc
 	 */
 	public function matchReference(string $referenceText): bool {
-		$adminLinkPreviewEnabled = $this->config->getAppValue(Application::APP_ID, 'link_preview_enabled', '1') === '1';
+		$adminLinkPreviewEnabled = $this->appConfig->getAppValueString('link_preview_enabled', '1') === '1';
 		if (!$adminLinkPreviewEnabled) {
 			return false;
 		}

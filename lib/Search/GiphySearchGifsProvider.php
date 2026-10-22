@@ -13,6 +13,7 @@ use OCA\Giphy\AppInfo\Application;
 use OCA\Giphy\Service\GiphyAPIService;
 use OCA\Giphy\Service\GiphySearchService;
 use OCP\App\IAppManager;
+use OCP\AppFramework\Services\IAppConfig;
 use OCP\IConfig;
 use OCP\IL10N;
 use OCP\IUser;
@@ -27,6 +28,7 @@ class GiphySearchGifsProvider implements IProvider, IExternalProvider {
 	public function __construct(
 		private IAppManager $appManager,
 		private IL10N $l10n,
+		private IAppConfig $appConfig,
 		private IConfig $config,
 		private GiphyAPIService $giphyAPIService,
 		private GiphySearchService $giphySearchService,
@@ -76,7 +78,7 @@ class GiphySearchGifsProvider implements IProvider, IExternalProvider {
 		$requestedFromSmartPicker = $routeFrom === '' || $routeFrom === 'smart-picker';
 
 		if (!$requestedFromSmartPicker) {
-			$adminSearchGifsEnabled = $this->config->getAppValue(Application::APP_ID, 'search_gifs_enabled', '1') === '1';
+			$adminSearchGifsEnabled = $this->appConfig->getAppValueString('search_gifs_enabled', '1') === '1';
 			$userSearchGifsEnabled = $this->config->getUserValue($user->getUID(), Application::APP_ID, 'search_gifs_enabled', '1') === '1';
 			if (!$adminSearchGifsEnabled || !$userSearchGifsEnabled) {
 				return SearchResult::paginated($this->getName(), [], 0);

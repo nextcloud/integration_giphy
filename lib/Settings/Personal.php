@@ -9,6 +9,7 @@ namespace OCA\Giphy\Settings;
 
 use OCA\Giphy\AppInfo\Application;
 use OCP\AppFramework\Http\TemplateResponse;
+use OCP\AppFramework\Services\IAppConfig;
 use OCP\AppFramework\Services\IInitialState;
 use OCP\IConfig;
 use OCP\Settings\ISettings;
@@ -16,6 +17,7 @@ use OCP\Settings\ISettings;
 class Personal implements ISettings {
 
 	public function __construct(
+		private IAppConfig $appConfig,
 		private IConfig $config,
 		private IInitialState $initialStateService,
 		private ?string $userId,
@@ -26,10 +28,10 @@ class Personal implements ISettings {
 	 * @return TemplateResponse
 	 */
 	public function getForm(): TemplateResponse {
-		$adminLinkPreviewEnabled = $this->config->getAppValue(Application::APP_ID, 'link_preview_enabled', '1') === '1';
+		$adminLinkPreviewEnabled = $this->appConfig->getAppValueString('link_preview_enabled', '1') === '1';
 		$linkPreviewEnabled = $this->config->getUserValue($this->userId, Application::APP_ID, 'link_preview_enabled', '1') === '1';
 
-		$adminSearchEnabled = $this->config->getAppValue(Application::APP_ID, 'search_gifs_enabled', '1') === '1';
+		$adminSearchEnabled = $this->appConfig->getAppValueString('search_gifs_enabled', '1') === '1';
 		$userSearchEnabled = $this->config->getUserValue($this->userId, Application::APP_ID, 'search_gifs_enabled', '0') === '1';
 
 		$userConfig = [
