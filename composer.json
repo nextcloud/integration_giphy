@@ -9,12 +9,12 @@
 	},
 	"minimum-stability": "stable",
 	"require-dev": {
-		"nextcloud/ocp": "dev-master",
+		"nextcloud/ocp": "dev-stable33",
 		"nextcloud/coding-standard": "^1.1",
 		"phpunit/phpunit": "^10"
 	},
 	"require": {
-		"php": ">=8.1.0",
+		"php": ">=8.2.0",
 		"bamarni/composer-bin-plugin": "^1.8"
 	},
 	"scripts": {
@@ -29,7 +29,7 @@
 	},
 	"config": {
 		"platform": {
-			"php": "8.1.0"
+			"php": "8.2.35"
 		},
 		"allow-plugins": {
 			"bamarni/composer-bin-plugin": true
