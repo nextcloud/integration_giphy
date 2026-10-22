@@ -10,6 +10,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Removed
+
+- Nextcloud 32 and PHP 8.1 support
+
 ## 2.3.0 - 2026-10-02
 
 ### Added
