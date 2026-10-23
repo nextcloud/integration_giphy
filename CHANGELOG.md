@@ -21,14 +21,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Added support for Nextcloud 36
 - Start GIF previews paused when the browser asks for reduced motion
 
-### Fixed
-
-- Show the text of the GIF picker again while it searches
-
 ### Changed
 
 - Update @nextcloud/eslint-config to 9 and sync the lint workflows
 - Update dependencies & translations
+
+### Fixed
+
+- Show the text of the GIF picker again while it searches
 
 ## 2.2.2 - 2026-07-31
 
@@ -36,13 +36,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 - Added support for Nextcloud 35
 
-### Fixed
-
-- Keep the admin settings page working when the stored API key cannot be decrypted
-
 ### Changed
 
 - Update dependencies & translations
+
+### Fixed
+
+- Keep the admin settings page working when the stored API key cannot be decrypted
 
 ## 2.2.1 - 2026-04-20
 
@@ -62,26 +62,34 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 
-- Migrate to Vue 3 and nc/vue 9 [#53](https://github.com/nextcloud/integration_giphy/pull/53)
-- Use new IExternalProvider in the search provider [#54](https://github.com/nextcloud/integration_giphy/pull/54)
+- Migrate to Vue 3 and @nextcloud/vue 9
+- Use the new IExternalProvider in the search provider
 - Update dependencies & translations
+
+### Removed
+
+- Nextcloud 30 and 31 support
 
 ## 2.1.0 - 2025-07-10
 
-### Changed
+### Added
 
-- Added support for NC 32, removed support for NC 28/29 [#41](https://github.com/nextcloud/integration_giphy/pull/41)
+- Added support for Nextcloud 32
+
+### Removed
+
+- Nextcloud 28 and 29 support
 
 ## 2.0.2 - 2025-05-21
 
 ### Changed
 
-- readme and info.xml adjustments @oleksandr-nc [#34](https://github.com/nextcloud/integration_giphy/pull/34)
+- README and info.xml adjustments
 
 ### Fixed
 
-- Use product name "Smart Picker" @rakekniven [#35](https://github.com/nextcloud/integration_giphy/pull/35)
-- Make getGifProxiedUrl safer @julien-nc [#38](https://github.com/nextcloud/integration_giphy/pull/38)
+- Use the product name "Smart Picker"
+- Make getGifProxiedUrl safer
 
 ## 2.0.1 - 2024-10-18
 
@@ -91,75 +99,110 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## 2.0.0 - 2024-10-16
 
+### Added
+
+- Added support for Nextcloud 31
+
 ### Changed
 
 - SPDX headers for licencing
-- switched to Vite
-- update npm pkgs
+- Switch to Vite
+- Update dependencies
 
 ### Fixed
 
-- removed default API key
-- encryption of stored api key, encrypting only non-empty API key
-- added password confirmation for sensitive value
+- Remove the default API key
+- Encryption of the stored API key, encrypting only a non-empty API key
+- Add password confirmation for the sensitive value
 
 ## 1.0.11 - 2024-07-24
 
+### Added
+
+- Added support for Nextcloud 30
+
 ### Changed
 
-- update npm pkgs
-- added NC 30 support
+- Update dependencies
 
 ## 1.0.10 - 2023-11-30
 
+### Added
+
+- Added support for Nextcloud 29
+
 ### Fixed
 
-- avoid breaking the style with nc/vue v7
+- Avoid breaking the style with @nextcloud/vue v7
 
 ## 1.0.9 - 2023-11-21
 
 ### Changed
 
-- update npm pkgs
+- Update dependencies
+
+### Removed
+
+- Nextcloud 27 support
 
 ### Fixed
 
-- fix picker modal height for 28
+- Fix the picker modal height for Nextcloud 28
 
 ## 1.0.8 - 2023-08-21
 
 ### Added
 
-- Add button to disable all GIFs in the current context [#15](https://github.com/nextcloud/integration_giphy/pull/15) @kyteinsky
+- Add a button to disable all GIFs in the current context
 
 ### Fixed
 
-- Fix casing of 'GIF' in translated text [#13](https://github.com/nextcloud/integration_giphy/pull/13) @rakekniven
+- Fix the casing of "GIF" in translated text
 
 ## 1.0.7 - 2023-07-06
-### Added
-- Allow users to avoid Giphy GIF links to be resolved and rendered by the Giphy integration [#9](https://github.com/nextcloud/integration_giphy/pull/9) @julien-nc
-- Add user setting to toggle unified search (opt-in) [#12](https://github.com/nextcloud/integration_giphy/pull/12) @julien-nc
 
-## 1.0.6 – 2023-04-26
+### Added
+
+- Added support for Nextcloud 28
+- Allow users to avoid Giphy GIF links to be resolved and rendered by the Giphy integration
+- Add a user setting to toggle unified search (opt-in)
+
+### Removed
+
+- Nextcloud 26 support
+
+## 1.0.6 - 2023-04-26
+
 ### Fixed
-- keep CSRF check for image endpoint and fix CSRF in the widget
-- allow the picker to use the search provider even when it's disabled in the unified search menu
-- show error in the widget if the GIF was not found
-- use latest webpack config solving the nc/vue import bug
-- make gif direct url parsing more tolerant
 
-## 1.0.3 – 2023-04-06
+- Keep the CSRF check for the image endpoint and fix CSRF in the widget
+- Allow the picker to use the search provider even when it's disabled in the unified search menu
+- Show an error in the widget if the GIF was not found
+- Use the latest webpack config solving the @nextcloud/vue import bug
+- Make GIF direct URL parsing more tolerant
+
+## 1.0.3 - 2023-04-06
+
 ### Added
-- admin option to choose the rating filter used when searching and getting trending GIFs
 
-## 1.0.2 – 2023-03-08
+- Admin option to choose the rating filter used when searching and getting trending GIFs
+
+## 1.0.2 - 2023-03-08
+
+### Added
+
+- Added support for Nextcloud 27
+
 ### Changed
-- lazy load reference scripts
+
+- Lazy load reference scripts
 
 ### Fixed
-- fix potential redundant v-for keys because giphy gives duplicate results
 
-## 1.0.0 – 2022-12-19
+- Fix potential redundant v-for keys because Giphy gives duplicate results
+
+## 1.0.0 - 2022-12-19
+
 ### Added
-* the app
+
+- Initial release for Nextcloud 26
